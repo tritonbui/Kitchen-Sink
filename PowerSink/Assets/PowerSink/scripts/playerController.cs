@@ -10,8 +10,6 @@ public class playerController : MonoBehaviour
     public Transform cam;
     private Rigidbody _rb;
     private float xRotation;
-    private float sensitivity = 75f;
-    private float sensMultiplier = 1f;
     public float moveSpeed = 4500f;
     public float maxSpeed = 20f;
     public bool isGrounded;
