@@ -8,27 +8,23 @@ public class playerController : MonoBehaviour
     public Transform orientation;
     public Transform player;
     public Transform cam;
-    public GameObject touchedPowerOrb = null;
     private Rigidbody _rb;
-
     private float xRotation;
-    private float jumpCooldown = 0.25f;
-    private float threshold = 0.01f;
-    private float desiredX;
     public float moveSpeed = 4500f;
     public float maxSpeed = 20f;
+    public bool isGrounded;
+    public LayerMask whatIsGround;
     public float counterMovement = 0.175f;
+    private float threshold = 0.01f;
     public float maxSlopeAngle = 35f;
-    public float jumpForce = 550f;
-    private float x;
-    private float y;
-
-    private LayerMask whatIsGround;
-
     private bool isReadyToJump = true;
-    private bool isGrounded;
-    public bool hasPowerOrb = false;
+    private float jumpCooldown = 0.25f;
+    public float jumpForce = 550f;
+    private float desiredX;
     private bool cancellingGrounded;
+
+    float x, y;
+    bool jumping, sprinting;
 
     void Awake()
     {
@@ -48,7 +44,6 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
-        pickUpPutDown();
         MyInput();
         Look();
     }
@@ -57,12 +52,13 @@ public class playerController : MonoBehaviour
     {
         x = Input.GetAxisRaw("Horizontal");
         y = Input.GetAxisRaw("Vertical");
+        jumping = Input.GetButton("Jump");
     }
 
     public void Movement()
     {
         //Extra gravity
-        _rb.AddForce(Vector3.down * Time.deltaTime * 10);
+        //_rb.AddForce(Vector3.down * Time.deltaTime * 10);
         
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
@@ -72,10 +68,8 @@ public class playerController : MonoBehaviour
         CounterMovement(x, y, mag);
         
         //If holding jump && ready to jump, then jump
-        if (isReadyToJump && Input.GetButtonDown("Jump")) 
-        {
-            Jump();
-        }
+        if (isReadyToJump && jumping) Jump();
+
         //Set max speed
         float maxSpeed = this.maxSpeed;
         
@@ -98,47 +92,6 @@ public class playerController : MonoBehaviour
         //Apply forces to move player
         _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
         _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
-    }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        if (LayerMask.NameToLayer("powerOrb") == col.gameObject.layer)
-        {
-            touchedPowerOrb = col.gameObject;
-        }
-    }
-
-    private void OnTriggerExit(Collider col)
-    {
-        if (LayerMask.NameToLayer("powerOrb") == col.gameObject.layer)
-        {
-            touchedPowerOrb = null;
-        }
-    }
-
-    public void pickUpPutDown()
-    {
-        if (Input.GetButtonDown("Interact") && !hasPowerOrb && touchedPowerOrb != null)
-        {
-            pickUp();
-        }
-
-        if (Input.GetButtonDown("Interact") && hasPowerOrb && touchedPowerOrb == null)
-        {
-            putDown();
-        }
-    }
-    
-    public void pickUp()
-    {
-        hasPowerOrb = true;
-        
-    }
-
-    public void putDown()
-    {
-        hasPowerOrb = false;
-
     }
 
     private void Jump()
@@ -171,19 +124,15 @@ public class playerController : MonoBehaviour
     public void Look()
     {
         float targetAngle = cam.eulerAngles.y;
-        float moveAngle = Mathf.Atan2(_rb.velocity.x, _rb.velocity.z) * Mathf.Rad2Deg;
 
-        if (x != 0 || y != 0)
-        {
-            player.transform.localRotation = Quaternion.Euler(0, moveAngle, 0);
-        }
 
+        player.transform.localRotation = Quaternion.Euler(0, targetAngle, 0);
         orientation.transform.localRotation = Quaternion.Euler(0, targetAngle, 0);
     }
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!isGrounded || Input.GetButtonDown("Jump")) return;
+        if (!isGrounded || jumping) return;
 
         //Counter movement
         if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0)) 
@@ -213,9 +162,9 @@ public class playerController : MonoBehaviour
         float u = Mathf.DeltaAngle(lookAngle, moveAngle);
         float v = 90 - u;
 
-        float magnitude = _rb.velocity.magnitude;
-        float yMag = magnitude * Mathf.Cos(u * Mathf.Deg2Rad);
-        float xMag = magnitude * Mathf.Cos(v * Mathf.Deg2Rad);
+        float magnitue = _rb.velocity.magnitude;
+        float yMag = magnitue * Mathf.Cos(u * Mathf.Deg2Rad);
+        float xMag = magnitue * Mathf.Cos(v * Mathf.Deg2Rad);
         
         return new Vector2(xMag, yMag);
     }
