@@ -9,6 +9,8 @@ public class playerController : MonoBehaviour
     public Transform player;
     public Transform cam;
     public GameObject touchedPowerOrb = null;
+    public Transform orbSpawnPoint;
+    public GameObject _orb;
     private Rigidbody _rb;
 
     private float xRotation;
@@ -126,13 +128,13 @@ public class playerController : MonoBehaviour
     public void pickUp()
     {
         hasPowerOrb = true;
-
+        Destroy(touchedPowerOrb);
     }
 
     public void putDown()
     {
         hasPowerOrb = false;
-
+        GameObject newPowerOrb = Instantiate(_orb, new Vector3(orbSpawnPoint.position.x, orbSpawnPoint.position.y, orbSpawnPoint.position.z), Quaternion.Euler(0, 0, 90));
     }
 
     private void Jump()
