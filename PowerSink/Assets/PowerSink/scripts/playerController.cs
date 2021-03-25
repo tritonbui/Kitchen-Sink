@@ -12,22 +12,22 @@ public class playerController : MonoBehaviour
     private Rigidbody _rb;
 
     private float xRotation;
-    private float jumpCooldown = 0.25f;
-    private float threshold = 0.01f;
-    private float desiredX;
     public float moveSpeed = 4500f;
     public float maxSpeed = 20f;
     public float counterMovement = 0.175f;
+    private float threshold = 0.01f;
     public float maxSlopeAngle = 35f;
+    private bool isReadyToJump = true;
+    private float jumpCooldown = 0.25f;
     public float jumpForce = 550f;
+    private float desiredX;
     private float x;
     private float y;
 
-    private LayerMask whatIsGround;
-
-    private bool isReadyToJump = true;
-    private bool isGrounded;
+    
+    public bool isGrounded;
     public bool hasPowerOrb = false;
+    public LayerMask whatIsGround;
     private bool cancellingGrounded;
 
     void Awake()
@@ -41,13 +41,9 @@ public class playerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void FixedUpdate()
-    {
-        Movement();
-    }
-
     private void Update()
     {
+        Movement();
         pickUpPutDown();
         MyInput();
         Look();
@@ -62,7 +58,7 @@ public class playerController : MonoBehaviour
     public void Movement()
     {
         //Extra gravity
-        _rb.AddForce(Vector3.down * Time.deltaTime * 10);
+        //_rb.AddForce(Vector3.down * Time.deltaTime * 10);
         
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
@@ -72,10 +68,8 @@ public class playerController : MonoBehaviour
         CounterMovement(x, y, mag);
         
         //If holding jump && ready to jump, then jump
-        if (isReadyToJump && Input.GetButtonDown("Jump")) 
-        {
-            Jump();
-        }
+        if (isReadyToJump && Input.GetButtonDown("Jump")) Jump();
+
         //Set max speed
         float maxSpeed = this.maxSpeed;
         
@@ -102,7 +96,7 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (LayerMask.NameToLayer("powerOrb") == col.gameObject.layer)
+        if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
         {
             touchedPowerOrb = col.gameObject;
         }
@@ -110,7 +104,7 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if (LayerMask.NameToLayer("powerOrb") == col.gameObject.layer)
+        if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
         {
             touchedPowerOrb = null;
         }
@@ -128,11 +122,11 @@ public class playerController : MonoBehaviour
             putDown();
         }
     }
-    
+
     public void pickUp()
     {
         hasPowerOrb = true;
-        
+
     }
 
     public void putDown()
@@ -172,7 +166,7 @@ public class playerController : MonoBehaviour
     {
         float targetAngle = cam.eulerAngles.y;
         float moveAngle = Mathf.Atan2(_rb.velocity.x, _rb.velocity.z) * Mathf.Rad2Deg;
-
+    
         if (x != 0 || y != 0)
         {
             player.transform.localRotation = Quaternion.Euler(0, moveAngle, 0);
