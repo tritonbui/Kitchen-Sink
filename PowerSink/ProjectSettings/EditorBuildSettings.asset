@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/scenes/mainMenu.unity
+    guid: aec6db4b40d5a674ca35d30feb762531
+  - enabled: 1
+    path: Assets/scenes/lukeLevel.unity
+    guid: f61536ec90da0d147a7c703a778329bb
   m_configObjects: {}
