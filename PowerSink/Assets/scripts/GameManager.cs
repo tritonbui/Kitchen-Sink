@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 	
 	void Start()
 	{
-		StartLoadMainMenu();
+		//StartLoadMainMenu();
 	}
 	
 	void Update () 

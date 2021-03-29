@@ -60,7 +60,7 @@ public class playerController : MonoBehaviour
     public void Movement()
     {
         //Extra gravity
-        //_rb.AddForce(Vector3.down * Time.deltaTime * 10);
+        _rb.AddForce(Vector3.down * Time.deltaTime * 10);
         
         //Find actual velocity relative to where player is looking
         Vector2 mag = FindVelRelativeToLook();
