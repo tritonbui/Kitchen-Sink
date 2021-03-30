@@ -8,22 +8,22 @@ public class baseBlock : MonoBehaviour
     public bool doesConductPower;
     public float checkDist = 0.1f;
     public Transform _topRay;
-    public GameObject _top;
+    protected GameObject _top = null;
 
     public Transform _botRay;    
-    public GameObject _bot;
+    protected GameObject _bot = null;
 
     public Transform _frontRay;
-    public GameObject _front;
+    protected GameObject _front = null;
 
     public Transform _backRay;
-    public GameObject _back;
+    protected GameObject _back = null;
 
     public Transform _leftRay;
-    public GameObject _left;
+    protected GameObject _left = null;
 
     public Transform _rightRay;
-    public GameObject _right;
+    protected GameObject _right = null;
 
     public void Start()
     {   
