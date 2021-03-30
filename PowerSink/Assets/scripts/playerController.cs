@@ -8,7 +8,8 @@ public class playerController : MonoBehaviour
     public Transform orientation;
     public Transform player;
     public Transform cam;
-    public GameObject touchedPowerOrb = null;
+    protected GameObject touchedPowerOrb = null;
+    public GameObject touchedReceptacle = null;
     public Transform orbSpawnPoint;
     public GameObject _orb;
     private Rigidbody _rb;
@@ -25,7 +26,6 @@ public class playerController : MonoBehaviour
     private float desiredX;
     private float x;
     private float y;
-
     
     public bool isGrounded;
     public bool hasPowerOrb = false;
@@ -102,6 +102,11 @@ public class playerController : MonoBehaviour
         {
             touchedPowerOrb = col.gameObject;
         }
+
+        if (col.gameObject.name == "receptacleBlock")
+        {
+            touchedReceptacle = col.gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider col)
@@ -110,6 +115,11 @@ public class playerController : MonoBehaviour
         {
             touchedPowerOrb = null;
         }
+
+        if (col.gameObject.name == "receptacleBlock")
+        {
+            touchedReceptacle = null;
+        }
     }
 
     public void pickUpPutDown()
@@ -117,26 +127,58 @@ public class playerController : MonoBehaviour
         if (Input.GetButtonDown("Interact") && !hasPowerOrb && touchedPowerOrb != null)
         {
             pickUp();
-            GameManager._instance.gameUI.ToggleOrb();
         }
 
         if (Input.GetButtonDown("Interact") && hasPowerOrb && touchedPowerOrb == null)
         {
-            putDown();
-            GameManager._instance.gameUI.ToggleOrb();
+            if(touchedReceptacle != null && !touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
+            {
+                receptaclePutDown();
+                return;
+            }
+            else if (touchedReceptacle == null)
+            {
+                putDown();
+            }
+        }
+
+        if (Input.GetButtonDown("Interact") && !hasPowerOrb && touchedPowerOrb == null && touchedReceptacle != null)
+        {
+            if (touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
+            {
+                receptaclePickUp();
+            }
         }
     }
 
     public void pickUp()
     {
         hasPowerOrb = true;
+        GameManager._instance.gameUI.ToggleOrb();
         Destroy(touchedPowerOrb);
+    }
+
+    public void receptaclePickUp()
+    {
+        hasPowerOrb = true;
+        touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = false;
+        touchedReceptacle.GetComponent<receptacleBlock>().startPowerDown();
+        GameManager._instance.gameUI.ToggleOrb();
     }
 
     public void putDown()
     {
         hasPowerOrb = false;
+        GameManager._instance.gameUI.ToggleOrb();
         GameObject newPowerOrb = Instantiate(_orb, new Vector3(orbSpawnPoint.position.x, orbSpawnPoint.position.y, orbSpawnPoint.position.z), Quaternion.Euler(0, 0, 90));
+    }
+
+    public void receptaclePutDown()
+    {
+        hasPowerOrb = false;
+        GameManager._instance.gameUI.ToggleOrb();
+        touchedReceptacle.GetComponent<receptacleBlock>().startPowerUp();
+        touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = true;
     }
 
     private void Jump()

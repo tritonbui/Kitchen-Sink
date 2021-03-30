@@ -6,7 +6,8 @@ public class baseBlock : MonoBehaviour
 {
     public bool isPowered = false;
     public bool doesConductPower;
-    public float checkDist = 0.1f;
+    public float checkDist = 0.5f;
+
     public Transform _topRay;
     protected GameObject _top = null;
 
@@ -36,7 +37,6 @@ public class baseBlock : MonoBehaviour
             doesConductPower = false;
         }
 
-        //powerOn();
         assignAdjBlocks();
     }
 
@@ -85,35 +85,30 @@ public class baseBlock : MonoBehaviour
 
             if(doesConductPower)
             {
-                if(_top != null)
-                {
-                    _top.GetComponent<baseBlock>().powerOn();
-                }
+                _top?.GetComponent<baseBlock>().powerOn();
+                _bot?.GetComponent<baseBlock>().powerOn();
+                _front?.GetComponent<baseBlock>().powerOn();
+                _back?.GetComponent<baseBlock>().powerOn();
+                _left?.GetComponent<baseBlock>().powerOn();
+                _right?.GetComponent<baseBlock>().powerOn();
+            }
+        }
+    }
 
-                if(_bot != null)
-                {
-                    _bot.GetComponent<baseBlock>().powerOn();
-                }
+    public void powerOff()
+    {
+        if(isPowered)
+        {
+            isPowered = false;
 
-                if(_front != null)
-                {
-                    _front.GetComponent<baseBlock>().powerOn();
-                }
-
-                if(_back != null)
-                {
-                    _back.GetComponent<baseBlock>().powerOn();
-                }
-
-                if(_left != null)
-                {
-                    _left.GetComponent<baseBlock>().powerOn();
-                }
-
-                if(_right != null)
-                {
-                    _right.GetComponent<baseBlock>().powerOn();
-                }
+            if(doesConductPower)
+            {
+                _top?.GetComponent<baseBlock>().powerOff();
+                _bot?.GetComponent<baseBlock>().powerOff();
+                _front?.GetComponent<baseBlock>().powerOff();
+                _back?.GetComponent<baseBlock>().powerOff();
+                _left?.GetComponent<baseBlock>().powerOff();
+                _right?.GetComponent<baseBlock>().powerOff();
             }
         }
     }
