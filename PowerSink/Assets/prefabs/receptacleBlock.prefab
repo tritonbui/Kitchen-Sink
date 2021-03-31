@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 7720137393161213612}
   m_Layer: 6
   m_Name: receptacleBlock
-  m_TagString: conductsPower
+  m_TagString: receptacleBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseBlock: {fileID: 7720137393161213613}
+  _prb: {fileID: 0}
   hasPowerOrb: 0
 --- !u!1 &7720137393440490893
 GameObject:

@@ -103,7 +103,7 @@ public class playerController : MonoBehaviour
             touchedPowerOrb = col.gameObject;
         }
 
-        if (col.gameObject.name == "receptacleBlock")
+        if (col.gameObject.tag == "receptacleBlock")
         {
             touchedReceptacle = col.gameObject;
         }
@@ -116,7 +116,7 @@ public class playerController : MonoBehaviour
             touchedPowerOrb = null;
         }
 
-        if (col.gameObject.name == "receptacleBlock")
+        if (col.gameObject.tag == "receptacleBlock")
         {
             touchedReceptacle = null;
         }
@@ -144,7 +144,7 @@ public class playerController : MonoBehaviour
 
         if (Input.GetButtonDown("Interact") && !hasPowerOrb && touchedPowerOrb == null && touchedReceptacle != null)
         {
-            if (touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
+            if (touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb)
             {
                 receptaclePickUp();
             }

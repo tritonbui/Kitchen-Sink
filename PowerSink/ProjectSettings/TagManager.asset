@@ -6,6 +6,7 @@ TagManager:
   tags:
   - conductsPower
   - insulatesPower
+  - receptacleBlock
   layers:
   - Default
   - TransparentFX

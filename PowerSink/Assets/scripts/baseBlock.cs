@@ -28,7 +28,7 @@ public class baseBlock : MonoBehaviour
 
     public void Start()
     {   
-        if (this.tag == "conductsPower")
+        if (this.tag == "conductsPower" || this.tag == "receptacleBlock")
         {
             doesConductPower = true;
         }
