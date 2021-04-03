@@ -92,8 +92,8 @@ public class playerController : MonoBehaviour
         }
 
         //Apply forces to move player
-        _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
-        _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
+        _rb.AddForce(orientation.transform.forward * y * moveSpeed);
+        _rb.AddForce(orientation.transform.right * x * moveSpeed);
     }
 
     private void OnTriggerEnter(Collider col)
