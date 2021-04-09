@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 	
 	void Start()
 	{
-		//StartLoadMainMenu();
+		StartLoadMainMenu();
 	}
 	
 	void Update () 
@@ -119,7 +119,6 @@ public class GameManager : MonoBehaviour
 	public void LoadLukeLevel()
 	{
 		SceneManager.LoadScene(1);
-
 		uiManager.OnGame();
 		_playingGame = true;
 	}
@@ -127,6 +126,7 @@ public class GameManager : MonoBehaviour
 	public void ReturnToMainMenu()
 	{
 		uiManager.OnMainMenu();
+		_playingGame = false;
 	}
 
 	public void StartLoadMainMenu()
@@ -155,12 +155,13 @@ public class GameManager : MonoBehaviour
 
 	public void NextLevel()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+		StartLoadMainMenu();
+		/*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
 		gameData.currentLevel = SceneManager.GetActiveScene().buildIndex + 1;
 		TogglePause();
 		_playingGame = true;
 		isPlayerDead = false;
-		uiManager.OnGame();
+		uiManager.OnGame();*/
 	}
 
 	public void ResumeGame()

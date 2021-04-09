@@ -119,6 +119,11 @@ public class playerController : MonoBehaviour
         {
             touchedReceptacle = col.gameObject;
         }
+
+        if (col.gameObject.tag == "endBox")
+        {
+            GameManager._instance.NextLevel();
+        }
     }
 
     private void OnTriggerExit(Collider col)
@@ -166,7 +171,7 @@ public class playerController : MonoBehaviour
     public void pickUp()
     {
         hasPowerOrb = true;
-        GameManager._instance.gameUI.ToggleOrb();
+        GameManager._instance.gameUI.pickUpOrb();
         Destroy(touchedPowerOrb);
     }
 
@@ -175,20 +180,20 @@ public class playerController : MonoBehaviour
         hasPowerOrb = true;
         touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = false;
         touchedReceptacle.GetComponent<receptacleBlock>().startPowerDown();
-        GameManager._instance.gameUI.ToggleOrb();
+        GameManager._instance.gameUI.pickUpOrb();
     }
 
     public void putDown()
     {
         hasPowerOrb = false;
-        GameManager._instance.gameUI.ToggleOrb();
+        GameManager._instance.gameUI.putDownOrb();
         GameObject newPowerOrb = Instantiate(_orb, new Vector3(orbSpawnPoint.position.x, orbSpawnPoint.position.y, orbSpawnPoint.position.z), Quaternion.Euler(0, 0, 90));
     }
 
     public void receptaclePutDown()
     {
         hasPowerOrb = false;
-        GameManager._instance.gameUI.ToggleOrb();
+        GameManager._instance.gameUI.putDownOrb();
         touchedReceptacle.GetComponent<receptacleBlock>().startPowerUp();
         touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = true;
     }

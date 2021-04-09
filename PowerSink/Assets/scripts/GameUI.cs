@@ -21,15 +21,13 @@ public class GameUI : MonoBehaviour
 		levelText.text = "Level: " + level;
 	}
 
-	public void ToggleOrb()
+	public void pickUpOrb()
 	{
-		if(powerOrbImage.activeInHierarchy)
-		{
-			powerOrbImage.SetActive(false);
-		}
-		else
-		{
-			powerOrbImage.SetActive(true);
-		}
+		powerOrbImage.SetActive(true);
+	}
+
+	public void putDownOrb()
+	{
+		powerOrbImage.SetActive(false);
 	}
 }

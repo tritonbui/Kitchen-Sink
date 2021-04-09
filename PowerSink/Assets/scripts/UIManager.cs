@@ -36,6 +36,7 @@ using UnityEngine.SceneManagement;
 			gameMenu.SetActive(false);
 			mainMenu.SetActive(false);
 			gameUI.gameObject.SetActive(true);
+			gameUI.putDownOrb();
 
 			Cursor.lockState = CursorLockMode.Locked;
         	Cursor.visible = false;

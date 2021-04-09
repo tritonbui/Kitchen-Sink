@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class powerReceptorBlock : MonoBehaviour
 {
+    public GameObject levelTramDoor;
     public GameObject[] receptacles; //prefab
     public List<receptacleBlock> receptacleBlocks;
     public int receptacleNo;
@@ -11,6 +12,16 @@ public class powerReceptorBlock : MonoBehaviour
     public bool isLevelFinished = false;
 
     public void Start()
+    {
+        ReceptacleStuff();
+    }
+
+    public void Update()
+    {
+        LevelFinish();
+    }
+
+    public void ReceptacleStuff()
     {
         receptacles = GameObject.FindGameObjectsWithTag("receptacleBlock");
         foreach (GameObject receptacle in receptacles)
@@ -24,11 +35,12 @@ public class powerReceptorBlock : MonoBehaviour
         receptacleNo = receptacles.Length;
     }
 
-    public void Update()
+    public void LevelFinish()
     {
         if (receptacleNo == poweredReceptacles)
         {
             isLevelFinished = true;
+            levelTramDoor.SetActive(false);
             foreach (receptacleBlock blocks in receptacleBlocks)
             {
                 blocks.canTakePowerOrb = false;
