@@ -14,15 +14,12 @@ public class playerController : MonoBehaviour
     public GameObject _orb;
     private Rigidbody _rb;
 
-    private float xRotation;
-    public float moveSpeed = 4500f;
-    public float maxSpeed = 20f;
-    public float counterMovement = 0.175f;
+    public Vector2 currentSpeed;
+    
     private float threshold = 0.01f;
-    public float maxSlopeAngle = 35f;
+    private float maxSlopeAngle = 35f;
     private bool isReadyToJump = true;
     private float jumpCooldown = 0.25f;
-    public float jumpForce = 550f;
     private float desiredX;
     private float x;
     private float y;
@@ -32,10 +29,16 @@ public class playerController : MonoBehaviour
     public LayerMask whatIsGround;
     private bool cancellingGrounded;
 
+    [Header("Movement Stuff")]
+    public float moveSpeed = 4500f;
+    public float jumpForce = 550f;
+    public float maxSpeed = 7f;
+    public float counterMovement = 0.175f;
+
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        
     }
     
     void Start()
@@ -72,28 +75,37 @@ public class playerController : MonoBehaviour
         //If holding jump && ready to jump, then jump
         if (isReadyToJump && Input.GetButtonDown("Jump")) Jump();
 
-        //Set max speed
-        float maxSpeed = this.maxSpeed;
-        
-        //If speed is larger than maxspeed, cancel out the input so you don't go over max speed
-        if (x > 0 && xMag > maxSpeed) x = 0;
-        if (x < 0 && xMag < -maxSpeed) x = 0;
-        if (y > 0 && yMag > maxSpeed) y = 0;
-        if (y < 0 && yMag < -maxSpeed) y = 0;
-
-        //Some multipliers
-        float multiplier = 1f, multiplierV = 1f;
+        //Some airMultipliers
+        float airMultiplier = 1f;
         
         // Movement in air
         if (!isGrounded) 
         {
-            multiplier = 0.5f;
-            multiplierV = 0.5f;
+            airMultiplier = 0.5f;
         }
 
         //Apply forces to move player
-        _rb.AddForce(orientation.transform.forward * y * moveSpeed);
-        _rb.AddForce(orientation.transform.right * x * moveSpeed);
+        if(xMag < maxSpeed && x > 0)
+        {
+            _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * airMultiplier);
+        }
+
+        if(xMag > -maxSpeed && x < 0)
+        {
+            _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * airMultiplier);
+        }
+
+        if(yMag < maxSpeed && y > 0)
+        {
+            _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * airMultiplier);
+        }
+
+        if(yMag > -maxSpeed && y < 0)
+        {
+            _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * airMultiplier);
+        }
+
+        currentSpeed = new Vector2(xMag, yMag);
     }
 
     private void OnTriggerEnter(Collider col)
@@ -187,17 +199,7 @@ public class playerController : MonoBehaviour
         {
             isReadyToJump = false;
 
-            _rb.AddForce(Vector2.up * jumpForce * 1.5f);
-
-            Vector3 velocity = _rb.velocity;
-            if (_rb.velocity.y < 0.5f)
-            {
-                _rb.velocity = new Vector3(velocity.x, 0, velocity.z);
-            }
-            else if (_rb.velocity.y > 0f)
-            {
-                _rb.velocity = new Vector3(velocity.x, velocity.y / 2, velocity.z);
-            }
+            _rb.AddForce(Vector2.up * jumpForce);
             
             Invoke(nameof(ResetJump), jumpCooldown);
         }
@@ -223,25 +225,31 @@ public class playerController : MonoBehaviour
 
     private void CounterMovement(float x, float y, Vector2 mag)
     {
-        if (!isGrounded || Input.GetButtonDown("Jump")) return;
-
-        //Counter movement
-        if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0)) 
+        if (isGrounded && x == 0)
         {
-            _rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
+            if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0)) 
+            {
+                _rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
+            }
         }
 
-        if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0)) 
+        if (isGrounded && y == 0)
         {
-            _rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
+            if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0)) 
+            {
+                _rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
+            }
         }
         
-        //Limit diagonal running.
-        if (Mathf.Sqrt((Mathf.Pow(_rb.velocity.x, 2) + Mathf.Pow(_rb.velocity.z, 2))) > maxSpeed) 
+        if (isGrounded && x == 0 && y == 0)
         {
-            float fallspeed = _rb.velocity.y;
-            Vector3 n = _rb.velocity.normalized * maxSpeed;
-            _rb.velocity = new Vector3(n.x, fallspeed, n.z);
+            //Limit diagonal running.
+            if (Mathf.Sqrt((Mathf.Pow(_rb.velocity.x, 2) + Mathf.Pow(_rb.velocity.z, 2))) > maxSpeed) 
+            {
+                float fallspeed = _rb.velocity.y;
+                Vector3 n = _rb.velocity.normalized * maxSpeed;
+                _rb.velocity = new Vector3(n.x, fallspeed, n.z);
+            }
         }
     }
 
