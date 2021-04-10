@@ -34,6 +34,7 @@ public class playerController : MonoBehaviour
     public float jumpForce = 550f;
     public float maxSpeed = 7f;
     public float counterMovement = 0.175f;
+    public float airMultiplier = 0.5f;
 
 
     void Awake()
@@ -76,33 +77,28 @@ public class playerController : MonoBehaviour
         if (isReadyToJump && Input.GetButtonDown("Jump")) Jump();
 
         //Some airMultipliers
-        float airMultiplier = 1f;
-        
-        // Movement in air
-        if (!isGrounded) 
-        {
-            airMultiplier = 0.5f;
-        }
+        float aMultiplier;
+        aMultiplier = isGrounded ? 1f : airMultiplier;
 
         //Apply forces to move player
         if(xMag < maxSpeed && x > 0)
         {
-            _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * airMultiplier);
+            _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * aMultiplier);
         }
 
         if(xMag > -maxSpeed && x < 0)
         {
-            _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * airMultiplier);
+            _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * aMultiplier);
         }
 
         if(yMag < maxSpeed && y > 0)
         {
-            _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * airMultiplier);
+            _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * aMultiplier);
         }
 
         if(yMag > -maxSpeed && y < 0)
         {
-            _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * airMultiplier);
+            _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * aMultiplier);
         }
 
         currentSpeed = new Vector2(xMag, yMag);
@@ -246,7 +242,7 @@ public class playerController : MonoBehaviour
             }
         }
         
-        if (isGrounded && x == 0 && y == 0)
+        if (isGrounded)
         {
             //Limit diagonal running.
             if (Mathf.Sqrt((Mathf.Pow(_rb.velocity.x, 2) + Mathf.Pow(_rb.velocity.z, 2))) > maxSpeed) 

@@ -54,7 +54,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690750644034084}
-  m_LocalRotation: {x: 0.17842482, y: 0.000000008465139, z: -0.0000000015350226, w: 0.98395354}
+  m_LocalRotation: {x: 0.1784248, y: 0.000000008465139, z: -0.0000000015350226, w: 0.98395354}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -823,7 +823,7 @@ MonoBehaviour:
   - m_Height: 3
     m_Radius: 8
   - m_Height: -0.5
-    m_Radius: 4
+    m_Radius: 6
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 2368690750644034086}
@@ -951,7 +951,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: 0.14256498, y: -0.000000008515315, z: 0.0000000012265138, w: 0.9897855}
+  m_LocalRotation: {x: 0.14256498, y: 0.0000000084751415, z: -0.0000000012207276, w: 0.9897855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1025,7 +1025,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752203351772}
-  m_LocalRotation: {x: 0.16049767, y: 1e-45, z: -0, w: 0.9870362}
+  m_LocalRotation: {x: 0.16049767, y: -0, z: -0, w: 0.9870362}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1152,7 +1152,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3423568436341008139}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: dbb7f73635d5c014392e1323e8fc5d77, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -1167,9 +1167,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3423568436341008139}
   serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 4
+  m_Drag: 0.85
+  m_AngularDrag: 0.85
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1193,15 +1193,17 @@ MonoBehaviour:
   touchedReceptacle: {fileID: 0}
   orbSpawnPoint: {fileID: 2386793890935512958}
   _orb: {fileID: 333699759305996349, guid: 1ad8682af3ae048498fdc6fa689b83e9, type: 3}
+  currentSpeed: {x: 0, y: 0}
   isGrounded: 0
   hasPowerOrb: 0
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  moveSpeed: 4500
-  jumpForce: 3000
-  maxSpeed: 7
-  counterMovement: 0.175
+  moveSpeed: 3000
+  jumpForce: 1500
+  maxSpeed: 6
+  counterMovement: 0.2
+  airMultiplier: 0.2
 --- !u!1 &3423568437879732586
 GameObject:
   m_ObjectHideFlags: 0
