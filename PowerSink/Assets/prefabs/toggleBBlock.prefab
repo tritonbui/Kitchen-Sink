@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8231998889663365800}
   - component: {fileID: 8231998889663365807}
   m_Layer: 6
-  m_Name: toggleOffBlock
-  m_TagString: insulatesPower
+  m_Name: toggleBBlock
+  m_TagString: toggleB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8231998889663365805}
-  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -4.4880695, y: 7.8, z: -16.942978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

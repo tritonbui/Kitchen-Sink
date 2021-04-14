@@ -9,8 +9,11 @@ public class playerController : MonoBehaviour
     public Transform player;
     public Transform cam;
     protected GameObject touchedPowerOrb = null;
+    protected GameObject heldPowerOrb = null;
     public GameObject touchedReceptacle = null;
+    public GameObject touchedToggleSwitch = null;
     public Transform orbSpawnPoint;
+    public Transform playerSpawnPoint;
     public GameObject _orb;
     private Rigidbody _rb;
         
@@ -29,7 +32,7 @@ public class playerController : MonoBehaviour
     private bool cancellingGrounded;
 
     [Range (0, 180)]
-    public float pickUpTolerance = 45f;
+    public float angleTolerance = 45f;
 
     [Header("Movement Stuff")]
     public float moveSpeed = 4500f;
@@ -53,6 +56,7 @@ public class playerController : MonoBehaviour
     {
         Movement();
         pickUpPutDown();
+        toggleSwitch();
         MyInput();
         Look();
     }
@@ -104,6 +108,33 @@ public class playerController : MonoBehaviour
         }
     }
 
+    private void toggleSwitch()
+    {
+        if (Input.GetButtonDown("Interact 2") && touchedToggleSwitch != null)
+        {
+            float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedToggleSwitch.transform.position - transform.position).normalized, transform.forward, Vector3.up);
+
+            if (angle < angleTolerance && angle > -angleTolerance)
+            {
+                touchedToggleSwitch.GetComponent<toggleSwitch>().Toggle();
+            }
+        }
+
+        if (touchedToggleSwitch != null)
+        {
+            float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedToggleSwitch.transform.position - transform.position).normalized, transform.forward, Vector3.up);
+
+            if (angle < angleTolerance && angle > -angleTolerance)
+            {
+                GameManager._instance.gameUI.lookAtSwitch();
+            }
+            
+        }
+        else if (touchedPowerOrb == null && (touchedReceptacle == null || !hasPowerOrb))
+        {
+            GameManager._instance.gameUI.lookAtNothing();
+        }
+    }
     private void OnTriggerEnter(Collider col)
     {
         if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
@@ -120,6 +151,16 @@ public class playerController : MonoBehaviour
         {
             GameManager._instance.NextLevel();
         }
+
+        if (LayerMask.NameToLayer("deathBarrier") == col.gameObject.layer)
+        {
+            Respawn();
+        }
+
+        if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
+        {
+            touchedToggleSwitch = col.gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider col)
@@ -133,10 +174,60 @@ public class playerController : MonoBehaviour
         {
             touchedReceptacle = null;
         }
+
+        if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
+        {
+            touchedToggleSwitch = null;
+        }
     }
 
+    public void Respawn()
+    {
+        GameObject _pf;
+        _pf = GameObject.Find("playerFollow");
+
+        GameObject _cam;
+        _cam = GameObject.Find("Main Camera");
+
+        _cam.transform.position = playerSpawnPoint.position + new Vector3(0, 5, -17);
+        _pf.transform.position = playerSpawnPoint.position;
+        transform.position = playerSpawnPoint.position;
+        _rb.velocity = Vector3.zero;
+
+        if (heldPowerOrb != null)
+        {
+            GameManager._instance.gameUI.putDownOrb();
+            heldPowerOrb.GetComponent<powerOrb>().Respawn();
+            heldPowerOrb.SetActive(true);
+            heldPowerOrb = null;
+            hasPowerOrb = false;
+        }
+    }
     public void pickUpPutDown()
     {
+        if (touchedReceptacle != null && hasPowerOrb)
+        {
+            if (!touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
+            {
+                float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
+
+                if (angle < angleTolerance && angle > -angleTolerance)
+                {
+                    GameManager._instance.gameUI.lookAtReceptacle();
+                }
+            }
+        }
+
+        if (touchedPowerOrb != null)
+        {
+            float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedPowerOrb.transform.position - transform.position).normalized, transform.forward, Vector3.up);
+
+            if (angle < angleTolerance && angle > -angleTolerance)
+            {
+                GameManager._instance.gameUI.lookAtOrb();
+            }
+        }
+
         if (Input.GetButtonDown("Interact") && !hasPowerOrb && touchedPowerOrb != null)
         {
             pickUp();
@@ -144,6 +235,8 @@ public class playerController : MonoBehaviour
             {
                 canPlaceOrb = true;
             }
+            
+            return;
         }
 
         if (Input.GetButtonDown("Interact") && hasPowerOrb && touchedPowerOrb == null)
@@ -151,20 +244,17 @@ public class playerController : MonoBehaviour
             if(touchedReceptacle != null && !touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
             {
                 receptaclePutDown();
-                Debug.Log(1);
                 return;
             }
             else if (touchedReceptacle == null && canPlaceOrb)
             {
                 putDown();
-                Debug.Log(2);
             }
             else if (touchedReceptacle != null && canPlaceOrb)
             {
                 float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-                Debug.Log(angle);
 
-                if (angle > pickUpTolerance || angle < -pickUpTolerance)
+                if (angle > angleTolerance || angle < -angleTolerance)
                 {
                     putDown();
                 }
@@ -185,11 +275,13 @@ public class playerController : MonoBehaviour
     {
         float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedPowerOrb.transform.position - transform.position).normalized, transform.forward, Vector3.up);
 
-        if (isGrounded && angle < pickUpTolerance && angle > -pickUpTolerance)
+        if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
         {
             hasPowerOrb = true;
             GameManager._instance.gameUI.pickUpOrb();
-            Destroy(touchedPowerOrb);
+            heldPowerOrb = touchedPowerOrb;
+            touchedPowerOrb = null;
+            heldPowerOrb.SetActive(false);
         }
     }
 
@@ -197,9 +289,11 @@ public class playerController : MonoBehaviour
     {   
         float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
 
-        if (isGrounded && angle < pickUpTolerance && angle > -pickUpTolerance)
+        if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
         {
             hasPowerOrb = true;
+            heldPowerOrb = touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb;
+            touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb = null;
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = false;
             touchedReceptacle.GetComponent<receptacleBlock>().startPowerDown();
             GameManager._instance.gameUI.pickUpOrb();
@@ -212,7 +306,9 @@ public class playerController : MonoBehaviour
         {
             hasPowerOrb = false;
             GameManager._instance.gameUI.putDownOrb();
-            GameObject newPowerOrb = Instantiate(_orb, new Vector3(orbSpawnPoint.position.x, orbSpawnPoint.position.y, orbSpawnPoint.position.z), Quaternion.Euler(0, 0, 90));
+            heldPowerOrb.transform.position = orbSpawnPoint.position;
+            heldPowerOrb.SetActive(true);
+            heldPowerOrb = null;
         }
     }
 
@@ -220,9 +316,11 @@ public class playerController : MonoBehaviour
     {
         float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
 
-        if (isGrounded && angle < pickUpTolerance && angle > -pickUpTolerance)
+        if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
         {
             hasPowerOrb = false;
+            touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb = heldPowerOrb;
+            heldPowerOrb = null;
             GameManager._instance.gameUI.putDownOrb();
             touchedReceptacle.GetComponent<receptacleBlock>().startPowerUp();
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = true;

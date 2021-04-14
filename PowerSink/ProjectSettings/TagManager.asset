@@ -8,6 +8,9 @@ TagManager:
   - insulatesPower
   - receptacleBlock
   - endBox
+  - playerSpawnPoint
+  - toggleA
+  - toggleB
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - Ground
   - PowerOrb
   - IgnoreOrbCol
-  - 
-  - 
+  - deathBarrier
+  - toggleSwitch
   - 
   - 
   - 

@@ -6,6 +6,7 @@ public class receptacleBlock : MonoBehaviour
 {
     public baseBlock baseBlock;
     public powerReceptorBlock _prb;
+    public GameObject insertedPowerOrb = null;
     public bool hasPowerOrb = false;
     public bool canTakePowerOrb = true;
 
