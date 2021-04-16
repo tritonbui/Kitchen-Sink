@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 	public int powerOrb;
 
 	private bool _playingGame;
+	public bool isLevelFinished = false;
 	public bool isPlayerDead = false;
 	public bool isPaused = false;
 

@@ -45,6 +45,7 @@ public class GameUI : MonoBehaviour
 
 	public void lookAtOrb()
 	{
+		
 		interact2.SetActive(false);
 		interacta.SetActive(true);
 		interactb.SetActive(false);

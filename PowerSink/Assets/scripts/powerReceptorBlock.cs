@@ -40,6 +40,7 @@ public class powerReceptorBlock : MonoBehaviour
         if (receptacleNo == poweredReceptacles)
         {
             isLevelFinished = true;
+            GameManager._instance.isLevelFinished = true;
             levelTramDoor.SetActive(false);
             foreach (receptacleBlock blocks in receptacleBlocks)
             {
@@ -49,6 +50,7 @@ public class powerReceptorBlock : MonoBehaviour
         else
         {
             isLevelFinished = false;
+            GameManager._instance.isLevelFinished = false;
         }
     }
 

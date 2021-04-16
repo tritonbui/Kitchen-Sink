@@ -130,9 +130,21 @@ public class playerController : MonoBehaviour
             }
             
         }
-        else if (touchedPowerOrb == null && (touchedReceptacle == null || !hasPowerOrb))
+        else if (touchedPowerOrb == null)
         {
-            GameManager._instance.gameUI.lookAtNothing();
+            if (touchedReceptacle != null)
+            {
+                float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
+
+                if (angle > angleTolerance && angle < -angleTolerance)
+                {
+                    GameManager._instance.gameUI.lookAtNothing();
+                }
+            }
+            else if (touchedReceptacle == null)
+            {
+                GameManager._instance.gameUI.lookAtNothing();
+            }
         }
     }
     private void OnTriggerEnter(Collider col)
@@ -214,6 +226,20 @@ public class playerController : MonoBehaviour
                 if (angle < angleTolerance && angle > -angleTolerance)
                 {
                     GameManager._instance.gameUI.lookAtReceptacle();
+                }
+            }
+        }
+
+        if (touchedReceptacle != null && !hasPowerOrb)
+        {
+            if (touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb)
+            {
+                float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
+
+                if (angle < angleTolerance && angle > -angleTolerance)
+                {
+                    GameManager._instance.gameUI.lookAtOrb();
+                    
                 }
             }
         }
