@@ -27,12 +27,18 @@ public class receptacleBlock : MonoBehaviour
     public void startPowerUp()
     {
         baseBlock.powerOn();
-        _prb.IncreasePoweredReceptacles();
+        if (this.tag == "receptacleBlock")
+        {
+            _prb.IncreasePoweredReceptacles();
+        }
     }
 
     public void startPowerDown()
     {
         baseBlock.powerOff();
-        _prb.DecreasePoweredReceptacles();
+        if (this.tag == "receptacleBlock")
+        {
+            _prb.DecreasePoweredReceptacles();
+        }
     }
 }

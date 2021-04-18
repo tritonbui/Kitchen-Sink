@@ -111,15 +111,62 @@ public class GameManager : MonoBehaviour
 	//Load Menu Scene
 	public void LoadMainMenu()
 	{
-		SceneManager.LoadScene(0);
+		SceneManager.LoadScene("mainMenu");
 		TogglePause();
 		uiManager.OnMainMenu();
+		_playingGame = false;
+	}
+
+	public void FinishToMainMenu()
+	{
+		SceneManager.LoadScene("mainMenu");
+		uiManager.OnMainMenu();
+		_playingGame = false;
+	}
+
+	public void LoadLevelOne()
+	{
+		SceneManager.LoadScene("levelOne");
+		uiManager.OnGame();
+		_playingGame = true;
+	}
+
+	public void LoadLevelTwo()
+	{
+		SceneManager.LoadScene("levelTwo");
+		uiManager.OnGame();
+		_playingGame = true;
+	}
+
+	public void LoadLevelThree()
+	{
+		SceneManager.LoadScene("levelThree");
+		uiManager.OnGame();
+		_playingGame = true;
+	}
+
+	public void LoadLevelFour()
+	{
+		SceneManager.LoadScene("levelFour");
+		uiManager.OnGame();
+		_playingGame = true;
+	}
+
+	public void TestLevels()
+	{
+		uiManager.OnTestLevelSelect();
+		_playingGame = false;
+	}
+
+	public void LevelSelect()
+	{
+		uiManager.OnLevelSelect();
 		_playingGame = false;
 	}
 	
 	public void LoadLukeLevel()
 	{
-		SceneManager.LoadScene(1);
+		SceneManager.LoadScene("lukeLevel");
 		uiManager.OnGame();
 		_playingGame = true;
 	}
@@ -135,13 +182,6 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(0);
 		uiManager.OnMainMenu();
 		_playingGame = false;
-	}
-
-	//Execute when Player is Dead
-	public void PlayerIsDead()
-	{
-		TogglePause();
-		uiManager.Dead();
 	}
 
 	//Reloads Game Scene

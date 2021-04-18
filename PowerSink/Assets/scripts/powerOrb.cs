@@ -5,6 +5,7 @@ using UnityEngine;
 public class powerOrb : MonoBehaviour
 {
     public Transform powerOrbSpawnPoint;
+    public GameObject psuedoReceptacle = null;
     public Rigidbody _rb;
 
     public void Start()
@@ -17,11 +18,23 @@ public class powerOrb : MonoBehaviour
         _rb.velocity = Vector3.zero;
     }
 
+    public void Die()
+    {
+        if (psuedoReceptacle != null)
+        {
+            psuedoReceptacle.GetComponent<psuedoReceptacle>().Respawn();
+        }
+        else
+        {
+            Respawn();
+        }
+    }
+
     private void OnTriggerEnter(Collider col)
     {
         if (LayerMask.NameToLayer("deathBarrier") == col.gameObject.layer)
         {
-            Respawn();
+            Die();
         }
     }
 }

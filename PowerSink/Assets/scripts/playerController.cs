@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -154,14 +155,32 @@ public class playerController : MonoBehaviour
             touchedPowerOrb = col.gameObject;
         }
 
-        if (col.gameObject.tag == "receptacleBlock")
+        if (col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle")
         {
             touchedReceptacle = col.gameObject;
         }
 
         if (col.gameObject.tag == "endBox")
         {
-            GameManager._instance.NextLevel();
+            if (SceneManager.GetActiveScene().name == "levelOne")
+            {
+                GameManager._instance.LoadLevelTwo();
+            }
+            
+            if (SceneManager.GetActiveScene().name == "levelTwo")
+            {
+                GameManager._instance.LoadLevelThree();
+            }
+            
+            if (SceneManager.GetActiveScene().name == "levelThree")
+            {
+                GameManager._instance.LoadLevelFour();
+            }
+            
+            if (SceneManager.GetActiveScene().name == "levelFour" || SceneManager.GetActiveScene().name == "lukeLevel")
+            {
+                GameManager._instance.FinishToMainMenu();
+            }
         }
 
         if (LayerMask.NameToLayer("deathBarrier") == col.gameObject.layer)
@@ -182,7 +201,7 @@ public class playerController : MonoBehaviour
             touchedPowerOrb = null;
         }
 
-        if (col.gameObject.tag == "receptacleBlock")
+        if (col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle")
         {
             touchedReceptacle = null;
         }
@@ -209,8 +228,8 @@ public class playerController : MonoBehaviour
         if (heldPowerOrb != null)
         {
             GameManager._instance.gameUI.putDownOrb();
-            heldPowerOrb.GetComponent<powerOrb>().Respawn();
             heldPowerOrb.SetActive(true);
+            heldPowerOrb.GetComponent<powerOrb>().Die();
             heldPowerOrb = null;
             hasPowerOrb = false;
         }

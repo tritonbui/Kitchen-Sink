@@ -11,6 +11,7 @@ TagManager:
   - playerSpawnPoint
   - toggleA
   - toggleB
+  - psuedoReceptacle
   layers:
   - Default
   - TransparentFX
