@@ -21,6 +21,7 @@ public class playerController : MonoBehaviour
     private float threshold = 0.01f;
     private float maxSlopeAngle = 35f;
     private bool isReadyToJump = true;
+    private bool isTouchingToggle = false;
     private float jumpCooldown = 0.25f;
     private float desiredX;
     private float x;
@@ -111,7 +112,7 @@ public class playerController : MonoBehaviour
 
     private void toggleSwitch()
     {
-        if (Input.GetButtonDown("Interact 2") && touchedToggleSwitch != null)
+        if (Input.GetButtonDown("Interact 2") && touchedToggleSwitch != null && isTouchingToggle)
         {
             float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedToggleSwitch.transform.position - transform.position).normalized, transform.forward, Vector3.up);
 
@@ -191,6 +192,7 @@ public class playerController : MonoBehaviour
         if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
         {
             touchedToggleSwitch = col.gameObject;
+            isTouchingToggle = true;
         }
     }
 
@@ -208,7 +210,7 @@ public class playerController : MonoBehaviour
 
         if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
         {
-            touchedToggleSwitch = null;
+            isTouchingToggle = false;
         }
     }
 
@@ -233,7 +235,13 @@ public class playerController : MonoBehaviour
             heldPowerOrb = null;
             hasPowerOrb = false;
         }
+
+        if (touchedToggleSwitch != null)
+        {
+            touchedToggleSwitch.GetComponent<toggleSwitch>().StateA();
+        }
     }
+
     public void pickUpPutDown()
     {
         if (touchedReceptacle != null && hasPowerOrb)

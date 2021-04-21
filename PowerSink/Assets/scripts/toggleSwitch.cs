@@ -28,16 +28,26 @@ public class toggleSwitch : MonoBehaviour
     {
         if (isSwitchedOn)
         {
-            TurnOffToggleAs();
-            TurnOnToggleBs();
+            StateB();
             isSwitchedOn = false;
         }
         else
         {
-            TurnOnToggleAs();
-            TurnOffToggleBs();
+            StateA();
             isSwitchedOn = true;
         }
+    }
+
+    public void StateA()
+    {
+        TurnOnToggleAs();
+        TurnOffToggleBs();
+    }
+
+    public void StateB()
+    {
+        TurnOffToggleAs();
+        TurnOnToggleBs();
     }
 
     public void TurnOnToggleAs()
