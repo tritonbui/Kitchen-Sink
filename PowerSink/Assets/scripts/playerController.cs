@@ -122,7 +122,7 @@ public class playerController : MonoBehaviour
             }
         }
 
-        if (touchedToggleSwitch != null)
+        if (isTouchingToggle)
         {
             float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedToggleSwitch.transform.position - transform.position).normalized, transform.forward, Vector3.up);
 
@@ -142,6 +142,7 @@ public class playerController : MonoBehaviour
                 {
                     GameManager._instance.gameUI.lookAtNothing();
                 }
+
             }
             else if (touchedReceptacle == null)
             {
