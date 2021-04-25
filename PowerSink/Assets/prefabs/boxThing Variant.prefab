@@ -166,7 +166,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -278,6 +278,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: e93f682374809fa40b0afc002ec1150c, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e93f682374809fa40b0afc002ec1150c, type: 3}
       propertyPath: m_Name
       value: boxThing
@@ -293,6 +297,10 @@ PrefabInstance:
     - target: {fileID: 8164078558771037576, guid: e93f682374809fa40b0afc002ec1150c, type: 3}
       propertyPath: m_TagString
       value: endBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: e93f682374809fa40b0afc002ec1150c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e93f682374809fa40b0afc002ec1150c, type: 3}
