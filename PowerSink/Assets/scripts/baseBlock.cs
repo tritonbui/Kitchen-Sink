@@ -48,7 +48,10 @@ public class baseBlock : MonoBehaviour
 
         if(Physics.Raycast(_topRay.position, _topRay.up, out hit, checkDist, ground))   
         {
-            _top = hit.transform.gameObject;
+            if(hit.transform.gameObject.ToString() == "signalBlock")
+            {
+                _top = hit.transform.gameObject;
+            }
         }
 
         if(Physics.Raycast(_botRay.position, -_botRay.up, out hit, checkDist, ground))   

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager _instance;
 	public GameUI gameUI;
+	public levelChanger levelChanger;
 	public UIManager uiManager;
 	private GameData _gd;
 
@@ -111,45 +112,48 @@ public class GameManager : MonoBehaviour
 	//Load Menu Scene
 	public void LoadMainMenu()
 	{
-		SceneManager.LoadScene("mainMenu");
-		TogglePause();
+		levelChanger.FadeToLevel("mainMenu");
+		Time.timeScale = 1f;
+		isPaused = false;
+	}
+
+	public void MainMenuLoad()
+	{
 		uiManager.OnMainMenu();
 		_playingGame = false;
+	}
+
+	public void LevelLoad()
+	{
+		uiManager.OnGame();
+		_playingGame = true;
 	}
 
 	public void FinishToMainMenu()
 	{
-		SceneManager.LoadScene("mainMenu");
-		uiManager.OnMainMenu();
-		_playingGame = false;
+		levelChanger.FadeToLevel("mainMenu");
+		Time.timeScale = 1f;
+		isPaused = false;
 	}
 
 	public void LoadLevelOne()
 	{
-		SceneManager.LoadScene("levelOne");
-		uiManager.OnGame();
-		_playingGame = true;
+		levelChanger.FadeToLevel("levelOne");
 	}
 
 	public void LoadLevelTwo()
 	{
-		SceneManager.LoadScene("levelTwo");
-		uiManager.OnGame();
-		_playingGame = true;
+		levelChanger.FadeToLevel("levelTwo");
 	}
 
 	public void LoadLevelThree()
 	{
-		SceneManager.LoadScene("levelThree");
-		uiManager.OnGame();
-		_playingGame = true;
+		levelChanger.FadeToLevel("levelThree");
 	}
 
 	public void LoadLevelFour()
 	{
-		SceneManager.LoadScene("levelFour");
-		uiManager.OnGame();
-		_playingGame = true;
+		levelChanger.FadeToLevel("levelFour");
 	}
 
 	public void TestLevels()
@@ -166,9 +170,7 @@ public class GameManager : MonoBehaviour
 	
 	public void LoadLukeLevel()
 	{
-		SceneManager.LoadScene("lukeLevel");
-		uiManager.OnGame();
-		_playingGame = true;
+		levelChanger.FadeToLevel("lukeLevel");
 	}
 
 	public void ReturnToMainMenu()
