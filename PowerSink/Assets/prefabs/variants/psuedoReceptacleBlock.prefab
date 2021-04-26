@@ -56,7 +56,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7720137393161213608, guid: 7fc7f8e398aa971429c936fa3302be0e, type: 3}
       propertyPath: m_Name
-      value: psuedoReceptacleBlock 1
+      value: psuedoReceptacleBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720137393161213608, guid: 7fc7f8e398aa971429c936fa3302be0e, type: 3}
+      propertyPath: m_TagString
+      value: psuedoReceptacle
       objectReference: {fileID: 0}
     - target: {fileID: 7720137393161213611, guid: 7fc7f8e398aa971429c936fa3302be0e, type: 3}
       propertyPath: m_RootOrder
