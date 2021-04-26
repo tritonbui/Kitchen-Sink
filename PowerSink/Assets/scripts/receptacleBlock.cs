@@ -5,14 +5,14 @@ using UnityEngine;
 public class receptacleBlock : MonoBehaviour
 {
     public baseBlock baseBlock;
-    public powerReceptorBlock _prb;
+    public signalBlock _sb;
     public GameObject insertedPowerOrb = null;
     public bool hasPowerOrb = false;
     public bool canTakePowerOrb = true;
 
     public void Start()
     {
-        _prb = GameObject.Find("powerReceptorBlock").GetComponent<powerReceptorBlock>();
+        _sb = GameObject.Find("signalBlock").GetComponent<signalBlock>();
         canTakePowerOrb = true;
     }
     
@@ -29,7 +29,7 @@ public class receptacleBlock : MonoBehaviour
         baseBlock.powerOn();
         if (this.tag == "receptacleBlock")
         {
-            _prb.IncreasePoweredReceptacles();
+            _sb.IncreasePoweredReceptacles();
         }
     }
 
@@ -38,7 +38,7 @@ public class receptacleBlock : MonoBehaviour
         baseBlock.powerOff();
         if (this.tag == "receptacleBlock")
         {
-            _prb.DecreasePoweredReceptacles();
+            _sb.DecreasePoweredReceptacles();
         }
     }
 }

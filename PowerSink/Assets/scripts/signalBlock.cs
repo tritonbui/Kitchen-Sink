@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class powerReceptorBlock : MonoBehaviour
+public class signalBlock : MonoBehaviour
 {
     public GameObject levelTramDoor;
     public GameObject[] receptacles; //prefab
