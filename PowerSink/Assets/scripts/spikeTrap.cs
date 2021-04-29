@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class spikeTrap : MonoBehaviour
 {
+    public Animator animator;
     public baseBlock _bb;
     public GameObject _deathField;
     public GameObject _spikes;
@@ -29,11 +30,11 @@ public class spikeTrap : MonoBehaviour
 
     public void extendSpikes()
     {
-        _spikes.transform.position += new Vector3(0, 2.2f, 0);
+        animator.Play("spike_out", 0, 0f);
     }
 
     public void retractSpikes()
     {
-        _spikes.transform.position -= new Vector3(0, 2.2f, 0);
+        animator.Play("spike_in", 0, 0f);
     }
 }
