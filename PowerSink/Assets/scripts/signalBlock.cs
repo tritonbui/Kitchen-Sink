@@ -37,7 +37,7 @@ public class signalBlock : MonoBehaviour
 
     public void LevelFinish()
     {
-        if (receptacleNo == poweredReceptacles)
+        if (receptacleNo == poweredReceptacles && !isLevelFinished)
         {
             isLevelFinished = true;
             GameManager._instance.isLevelFinished = true;
