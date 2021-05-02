@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class toggleSwitch : MonoBehaviour
 {
+    public Animator animator;
     public bool isSwitchedOn = true;
     public GameObject[] toggleABlocks; //prefab
     public GameObject[] toggleBBlocks;
@@ -33,11 +34,13 @@ public class toggleSwitch : MonoBehaviour
         if (isSwitchedOn)
         {
             StateB();
+            animator.Play("toggle_Off", 0, 0f);
             isSwitchedOn = false;
         }
         else
         {
             StateA();
+            animator.Play("toggle_On", 0, 0f);
             isSwitchedOn = true;
         }
     }
