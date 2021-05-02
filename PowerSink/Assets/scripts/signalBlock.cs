@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class signalBlock : MonoBehaviour
 {
+    public Animator animator;
     public GameObject levelTramDoor;
     public GameObject[] receptacles; //prefab
     public List<receptacleBlock> receptacleBlocks;
@@ -40,6 +41,7 @@ public class signalBlock : MonoBehaviour
         if (receptacleNo == poweredReceptacles && !isLevelFinished)
         {
             isLevelFinished = true;
+            animator.SetTrigger("Signal On");
             GameManager._instance.isLevelFinished = true;
             levelTramDoor.SetActive(false);
             foreach (receptacleBlock blocks in receptacleBlocks)
