@@ -5,6 +5,8 @@ using UnityEngine;
 public class signalBlock : MonoBehaviour
 {
     public Animator animator;
+    public AudioSource levelFinishSound;
+    public AudioSource doorOpenSound;
     public GameObject levelTramDoor;
     public GameObject[] receptacles; //prefab
     public List<receptacleBlock> receptacleBlocks;
@@ -41,6 +43,8 @@ public class signalBlock : MonoBehaviour
         if (receptacleNo == poweredReceptacles && !isLevelFinished)
         {
             isLevelFinished = true;
+            levelFinishSound.Play();
+            doorOpenSound.Play();
             animator.SetTrigger("Signal On");
             GameManager._instance.isLevelFinished = true;
             levelTramDoor.SetActive(false);
@@ -48,11 +52,6 @@ public class signalBlock : MonoBehaviour
             {
                 blocks.canTakePowerOrb = false;
             }
-        }
-        else
-        {
-            isLevelFinished = false;
-            GameManager._instance.isLevelFinished = false;
         }
     }
 
