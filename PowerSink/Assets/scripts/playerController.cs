@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour
     public Transform orientation;
     public Transform player;
     public Transform cam;
+    public AudioSource receptacleSound;
     protected GameObject touchedPowerOrb = null;
     protected GameObject heldPowerOrb = null;
     public GameObject touchedReceptacle = null;
@@ -332,6 +333,7 @@ public class playerController : MonoBehaviour
         if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
         {
             hasPowerOrb = true;
+            receptacleSound.Play();
             GameManager._instance.gameUI.pickUpOrb();
             heldPowerOrb = touchedPowerOrb;
             touchedPowerOrb = null;
@@ -346,6 +348,7 @@ public class playerController : MonoBehaviour
         if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
         {
             hasPowerOrb = true;
+            receptacleSound.Play();
             heldPowerOrb = touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb;
             touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb = null;
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = false;
@@ -359,6 +362,7 @@ public class playerController : MonoBehaviour
         if(isGrounded)
         {
             hasPowerOrb = false;
+            receptacleSound.Play();
             GameManager._instance.gameUI.putDownOrb();
             heldPowerOrb.transform.position = orbSpawnPoint.position;
             heldPowerOrb.SetActive(true);
@@ -373,6 +377,7 @@ public class playerController : MonoBehaviour
         if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
         {
             hasPowerOrb = false;
+            receptacleSound.Play();
             touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb = heldPowerOrb;
             heldPowerOrb = null;
             GameManager._instance.gameUI.putDownOrb();

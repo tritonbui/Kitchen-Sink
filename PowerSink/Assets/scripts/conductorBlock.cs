@@ -5,6 +5,7 @@ using UnityEngine;
 public class conductorBlock : MonoBehaviour
 {
     public baseBlock baseBlock;
+    public AudioSource powerUp;
     public bool isLightOn = true;
     public GameObject lightOn;
     public GameObject lightOff;
@@ -15,6 +16,7 @@ public class conductorBlock : MonoBehaviour
         {
             lightOn.SetActive(true);
             lightOff.SetActive(false);
+            powerUp.Play();
             isLightOn = true;
         }
         
