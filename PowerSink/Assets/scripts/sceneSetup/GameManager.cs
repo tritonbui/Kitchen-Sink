@@ -173,6 +173,11 @@ public class GameManager : MonoBehaviour
 		levelChanger.FadeToLevel("lukeLevel");
 	}
 
+	public void LoadRhysLevel()
+	{
+		levelChanger.FadeToLevel("rhysLevel");
+	}
+
 	public void ReturnToMainMenu()
 	{
 		uiManager.OnMainMenu();

@@ -77,7 +77,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5801122672091901102, guid: b8fb1619d219f06438f0ca33c7769afe, type: 3}
+  - {fileID: 2100000, guid: 7912be7074e1e034bb7e4727112de289, type: 2}
   - {fileID: 2100000, guid: 9bf1ad207c385ff4891470009ee64a64, type: 2}
   - {fileID: 2100000, guid: fd6bc0f4923d33b4980c4dc1fd6f126b, type: 2}
   m_StaticBatchInfo:
@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0356a61c5cb15cc4cbac1c58453fba12, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -5801122672091901102, guid: b8fb1619d219f06438f0ca33c7769afe, type: 3}
+      objectReference: {fileID: 2100000, guid: 7912be7074e1e034bb7e4727112de289, type: 2}
     - target: {fileID: 919132149155446097, guid: 0356a61c5cb15cc4cbac1c58453fba12, type: 3}
       propertyPath: m_Name
       value: tramDoorMVP_Model
