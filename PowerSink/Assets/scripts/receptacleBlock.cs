@@ -5,10 +5,12 @@ using UnityEngine;
 public class receptacleBlock : MonoBehaviour
 {
     public baseBlock baseBlock;
+    public Animator animator;
     public signalBlock _sb;
     public GameObject powerOrbAsset;
     public GameObject insertedPowerOrb = null;
     public bool hasPowerOrb = false;
+    public bool check = false;
     public bool canTakePowerOrb = true;
 
     public void Start()
@@ -25,21 +27,19 @@ public class receptacleBlock : MonoBehaviour
             startPowerUp();
         }
 
-        if (hasPowerOrb && !powerOrbAsset.activeSelf)
+        if (hasPowerOrb && !powerOrbAsset.activeSelf && !check)
         {
-            powerOrbAsset.SetActive(true);
-            transform.GetChild(0).gameObject.SetActive(true);
-            transform.GetChild(1).gameObject.SetActive(false);
-        }
-        
-        if (!hasPowerOrb && powerOrbAsset.activeSelf)
-        {
-            powerOrbAsset.SetActive(false);
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(1).gameObject.SetActive(true);
+            animator.Play("receptacleOn", 0, 0f);
+            check = true;
         }
     }
-    
+
+    public void receptacleOff()
+    {
+        animator.Play("receptacleOff", 0, 0f);
+        check = false;
+    }
+
     public void startPowerUp()
     {
         baseBlock.powerOn();

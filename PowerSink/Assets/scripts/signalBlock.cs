@@ -45,7 +45,7 @@ public class signalBlock : MonoBehaviour
             isLevelFinished = true;
             levelFinishSound.Play();
             doorOpenSound.Play();
-            animator.SetTrigger("Signal On");
+            animator.Play("signal_On", 0, 0f);
             GameManager._instance.isLevelFinished = true;
             levelTramDoor.SetActive(false);
             foreach (receptacleBlock blocks in receptacleBlocks)

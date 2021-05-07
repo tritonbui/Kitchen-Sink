@@ -322,6 +322,7 @@ public class playerController : MonoBehaviour
             if (touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb)
             {
                 receptaclePickUp();
+                touchedReceptacle.GetComponent<receptacleBlock>().receptacleOff();
             }
         }
     }

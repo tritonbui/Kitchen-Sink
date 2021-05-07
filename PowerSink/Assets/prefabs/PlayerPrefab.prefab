@@ -41,7 +41,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9fb720535f2e5cf41b8e970cf90f9c1c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: dd55041e9e3967647ba550b0b8171e4c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
@@ -273,7 +273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690750644034084}
-  m_LocalRotation: {x: -0.0000000051818683, y: 0.9839536, z: -0.17842479, w: -0.000000028576276}
+  m_LocalRotation: {x: -0.00000000656565, y: 0.9839536, z: -0.17842478, w: -0.000000036207375}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -939,7 +939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690751696560558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000006993822, y: 3, z: 8}
+  m_LocalPosition: {x: 0.00000071525574, y: 3, z: 8.000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2368690750644034085}
@@ -1201,7 +1201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: -0.00000001707669, y: 0.9897855, z: -0.14256506, w: -0.00000011855822}
+  m_LocalRotation: {x: -0.000000003920122, y: 0.9897855, z: -0.14256495, w: -0.000000027216235}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1275,7 +1275,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752203351772}
-  m_LocalRotation: {x: -0.00000001179878, y: 0.9870362, z: -0.16049767, w: -0.000000072560695}
+  m_LocalRotation: {x: -0.0000000057940106, y: 0.9870362, z: -0.16049765, w: -0.000000035632294}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1371,7 +1371,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3423568436341008136}
-  - component: {fileID: 3423568436341008143}
+  - component: {fileID: 5258548667920133663}
+  - component: {fileID: 4469555874907710175}
   - component: {fileID: 3423568436341008142}
   - component: {fileID: 3423568436341008137}
   - component: {fileID: 467601343}
@@ -1400,20 +1401,32 @@ Transform:
   m_Father: {fileID: 2368690752335150763}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!136 &3423568436341008143
-CapsuleCollider:
+--- !u!65 &5258548667920133663
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3423568436341008139}
-  m_Material: {fileID: 13400000, guid: dbb7f73635d5c014392e1323e8fc5d77, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.7257496
-  m_Height: 1.9450698
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0}
+  serializedVersion: 2
+  m_Size: {x: 1.1674063, y: 1.0145416, z: 0.7498665}
+  m_Center: {x: -0.0051676035, y: -0.4259987, z: -0.05756569}
+--- !u!135 &4469555874907710175
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423568436341008139}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.53
+  m_Center: {x: 0, y: 0.45, z: 0.21}
 --- !u!54 &3423568436341008142
 Rigidbody:
   m_ObjectHideFlags: 0
