@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874999989655119050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.44099998, z: 1.307}
+  m_LocalPosition: {x: 0, y: -0.6, z: -1.348}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2368690752335150763}
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41c669e964eda24ba69cc14f71f2b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 3423568436341008137}
+  _pi: {fileID: 1134457127913124457}
   target: {fileID: 4045961117316713561}
   smoothSpeed: 0.125
 --- !u!54 &960591170
@@ -1201,8 +1201,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: -0.000000003920122, y: 0.9897855, z: -0.14256495, w: -0.000000027216235}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.14256501, y: -0.00000017107384, z: 0.000000024640837, w: -0.9897855}
+  m_LocalPosition: {x: -0.00000071525574, y: 0, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2368690750913365733}
@@ -1275,7 +1275,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752203351772}
-  m_LocalRotation: {x: -0.0000000057940106, y: 0.9870362, z: -0.16049765, w: -0.000000035632294}
+  m_LocalRotation: {x: -0.000000008555595, y: 0.9870362, z: -0.16049765, w: -0.000000052615615}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1375,6 +1375,8 @@ GameObject:
   - component: {fileID: 4469555874907710175}
   - component: {fileID: 3423568436341008142}
   - component: {fileID: 3423568436341008137}
+  - component: {fileID: 1134457127913124457}
+  - component: {fileID: 7863825962699964554}
   - component: {fileID: 467601343}
   m_Layer: 3
   m_Name: PlayerContainer
@@ -1458,21 +1460,46 @@ MonoBehaviour:
   orientation: {fileID: 2368690751146669046}
   player: {fileID: 3423568436341008136}
   cam: {fileID: 2368690751612090811}
-  receptacleSound: {fileID: 467601343}
-  touchedReceptacle: {fileID: 0}
-  touchedToggleSwitch: {fileID: 0}
-  orbSpawnPoint: {fileID: 2386793890935512958}
-  playerSpawnPoint: {fileID: 6258116520470077354}
-  _orb: {fileID: 0}
+  playerInteraction: {fileID: 1134457127913124457}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  angleTolerance: 60
   moveSpeed: 3000
   jumpForce: 1950
   maxSpeed: 6
   counterMovement: 0.2
   airMultiplier: 0.5
+--- !u!114 &1134457127913124457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423568436341008139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edcdccd9e71e7ff44b9ea599415a3af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbSpawnPoint: {fileID: 4045961117316713561}
+  receptacleSound: {fileID: 467601343}
+  heldPowerOrb: {fileID: 0}
+  touchedToggleSwitch: {fileID: 0}
+  angleTolerance: 45
+--- !u!114 &7863825962699964554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423568436341008139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b799afe011ac8de44ad31af9dc4f1f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pi: {fileID: 1134457127913124457}
+  playerSpawnPoint: {fileID: 6258116520470077354}
 --- !u!82 &467601343
 AudioSource:
   m_ObjectHideFlags: 0

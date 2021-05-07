@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class orbSpawnLogic : MonoBehaviour
 {
-    public playerController playerController;
+    public playerInteraction _pi;
     public Transform target;
     public float smoothSpeed = 0.125f;
     private Vector3 velocity = Vector3.zero;
@@ -18,7 +18,7 @@ public class orbSpawnLogic : MonoBehaviour
     {
         if ((LayerMask.NameToLayer("Ground") == col.gameObject.layer || LayerMask.NameToLayer("Default") == col.gameObject.layer || LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer || LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer) && col.gameObject.tag != "receptacleBlock")
         {
-            playerController.canPlaceOrb = false;
+            _pi.canPlaceOrb = false;
         }
     }
 
@@ -26,7 +26,7 @@ public class orbSpawnLogic : MonoBehaviour
     {
         if ((LayerMask.NameToLayer("Ground") == col.gameObject.layer || LayerMask.NameToLayer("Default") == col.gameObject.layer || LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer || LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer) && col.gameObject.tag != "receptacleBlock")
         {
-            playerController.canPlaceOrb = true;
+            _pi.canPlaceOrb = true;
         }
     }
 }
