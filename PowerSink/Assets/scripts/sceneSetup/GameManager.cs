@@ -178,6 +178,21 @@ public class GameManager : MonoBehaviour
 		levelChanger.FadeToLevel("rhysLevel");
 	}
 
+	public void LoadTristonLevel()
+	{
+		levelChanger.FadeToLevel("tristonLevel");
+	}
+
+	public void LoadTashLevel()
+	{
+		levelChanger.FadeToLevel("tashLevel");
+	}
+
+	public void LoadZharaLevel()
+	{
+		levelChanger.FadeToLevel("zharaLevel");
+	}
+
 	public void ReturnToMainMenu()
 	{
 		uiManager.OnMainMenu();

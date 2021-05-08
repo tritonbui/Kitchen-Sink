@@ -23,6 +23,7 @@ public class playerMovement : MonoBehaviour
     public bool isGrounded {get; protected set;}
     public LayerMask whatIsGround;
     private bool cancellingGrounded;
+    private bool isLevelLoading = false;
 
     [Header("Movement Stuff")]
     public float moveSpeed = 4500f;
@@ -35,6 +36,7 @@ public class playerMovement : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        isLevelLoading = false;
     }
 
     private void Update()
@@ -211,27 +213,31 @@ public class playerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "endBox")
+        if (col.gameObject.tag == "endBox" && !isLevelLoading)
         {
             if (SceneManager.GetActiveScene().name == "levelOne")
             {
                 GameManager._instance.LoadLevelTwo();
+                isLevelLoading = true;
                 Debug.Log("Level 2 Loaded");
             }
             
             if (SceneManager.GetActiveScene().name == "levelTwo")
             {
                 GameManager._instance.LoadLevelThree();
+                isLevelLoading = true;
             }
             
             if (SceneManager.GetActiveScene().name == "levelThree")
             {
                 GameManager._instance.LoadLevelFour();
+                isLevelLoading = true;
             }
             
-            if (SceneManager.GetActiveScene().name == "levelFour" || SceneManager.GetActiveScene().name == "lukeLevel")
+            if (SceneManager.GetActiveScene().name == "levelFour" || SceneManager.GetActiveScene().name == "lukeLevel" || SceneManager.GetActiveScene().name == "rhysLevel" || SceneManager.GetActiveScene().name == "tristonLevel" || SceneManager.GetActiveScene().name == "tashLevel" || SceneManager.GetActiveScene().name == "zharaLevel")
             {
                 GameManager._instance.FinishToMainMenu();
+                isLevelLoading = true;
             }
         }
     }
