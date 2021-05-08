@@ -216,6 +216,7 @@ public class playerMovement : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "levelOne")
             {
                 GameManager._instance.LoadLevelTwo();
+                Debug.Log("Level 2 Loaded");
             }
             
             if (SceneManager.GetActiveScene().name == "levelTwo")
