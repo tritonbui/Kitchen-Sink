@@ -48,8 +48,11 @@ public class playerMovement : MonoBehaviour
 
     public void MyInput(InputAction.CallbackContext context)
     {
-        x = context.ReadValue<Vector2>().x;
-        y = context.ReadValue<Vector2>().y;
+        if (!GameManager._instance.isPaused)
+        {
+            x = context.ReadValue<Vector2>().x;
+            y = context.ReadValue<Vector2>().y;
+        }
     }
 
     public void Look()
@@ -105,7 +108,7 @@ public class playerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if(context.performed && isGrounded && isReadyToJump)
+        if(context.performed && isGrounded && isReadyToJump && !GameManager._instance.isPaused)
         {
             isReadyToJump = false;
 

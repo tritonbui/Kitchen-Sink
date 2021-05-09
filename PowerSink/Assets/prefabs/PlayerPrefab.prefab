@@ -273,7 +273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690750644034084}
-  m_LocalRotation: {x: -0.000000004906162, y: 0.9839536, z: -0.17842479, w: -0.000000027055858}
+  m_LocalRotation: {x: -0.000000009762972, y: 0.9839536, z: -0.17842478, w: -0.00000005383956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -988,8 +988,8 @@ MonoBehaviour:
     Value: 0.5
     m_SpeedMode: 0
     m_MaxSpeed: 1
-    m_AccelTime: 0.2
-    m_DecelTime: 0.1
+    m_AccelTime: 0.25
+    m_DecelTime: 0.25
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
@@ -1011,9 +1011,9 @@ MonoBehaviour:
   m_XAxis:
     Value: 180
     m_SpeedMode: 0
-    m_MaxSpeed: 200
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_MaxSpeed: 150
+    m_AccelTime: 0.25
+    m_DecelTime: 0.25
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -1217,8 +1217,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: -0.14256492, y: -0.00000008626379, z: 0.0000000124251045, w: -0.9897855}
-  m_LocalPosition: {x: -0.00000071525574, y: 0, z: -16}
+  m_LocalRotation: {x: -0.00000003118966, y: 0.9897855, z: -0.14256494, w: -0.00000021654044}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2368690750913365733}
@@ -1650,6 +1650,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 282b9f25-c2ac-4d35-b194-ebba0b97954f
     m_ActionName: Player/Jump[/Keyboard/space,/DualShock4GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6ea21882-3652-40ca-92cb-00bec80bc5d9
+    m_ActionName: UI/Pause[/Keyboard/escape,/DualShock4GamepadHID/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1134457127913124457}
+        m_TargetAssemblyTypeName: playerInteraction, Assembly-CSharp
+        m_MethodName: pauseMenuToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 37e450a7-e5b9-4616-8301-5561e13d37ae
+    m_ActionName: Player/Pause[/Keyboard/escape,/DualShock4GamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

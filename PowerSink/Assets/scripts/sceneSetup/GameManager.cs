@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 		else
 		{
 			if (_instance != this)
-				Destroy(gameObject);
+			Destroy(gameObject);
 		}
 	}
 	
@@ -64,12 +64,7 @@ public class GameManager : MonoBehaviour
 		{
 			currentLevel = SceneManager.GetActiveScene().buildIndex;
 			uiManager.gameUI.SetGameUI(currentLevel);
-		}
-
-		/*if (Input.GetButtonDown("Pause") && SceneManager.GetActiveScene().buildIndex != 0 && !isPlayerDead)
-		{
-			ResumeGame();
-		}*/
+		}		
 	}
 	
 	//new game start
@@ -204,27 +199,6 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(0);
 		uiManager.OnMainMenu();
 		_playingGame = false;
-	}
-
-	//Reloads Game Scene
-	public void ContinueGame()
-	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-		TogglePause();
-		_playingGame = true;
-		isPlayerDead = false;
-		uiManager.OnGame();
-	}
-
-	public void NextLevel()
-	{
-		StartLoadMainMenu();
-		/*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
-		gameData.currentLevel = SceneManager.GetActiveScene().buildIndex + 1;
-		TogglePause();
-		_playingGame = true;
-		isPlayerDead = false;
-		uiManager.OnGame();*/
 	}
 
 	public void ResumeGame()

@@ -32,9 +32,17 @@ public class playerInteraction : MonoBehaviour
         LookAtUI();
     }
 
+    public void pauseMenuToggle(InputAction.CallbackContext context)
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0 && !GameManager._instance.isPlayerDead)
+        {
+            GameManager._instance.ResumeGame();
+        }
+    }
+
     public void toggleSwitch(InputAction.CallbackContext context)
     {
-        if (context.performed && touchedToggleSwitch != null && isTouchingToggle)
+        if (context.performed && touchedToggleSwitch != null && isTouchingToggle && !GameManager._instance.isPaused)
         {
             float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedToggleSwitch.transform.position - transform.position).normalized, transform.forward, Vector3.up);
 
@@ -47,7 +55,7 @@ public class playerInteraction : MonoBehaviour
 
     public void orbInteraction(InputAction.CallbackContext context)
     {
-        if (context.performed && !hasPowerOrb && touchedPowerOrb != null)
+        if (context.performed && !hasPowerOrb && touchedPowerOrb != null && !GameManager._instance.isPaused)
         {
             pickUp();
             if (!canPlaceOrb)
@@ -58,7 +66,7 @@ public class playerInteraction : MonoBehaviour
             return;
         }
 
-        if (context.performed && hasPowerOrb && touchedPowerOrb == null)
+        if (context.performed && hasPowerOrb && touchedPowerOrb == null && !GameManager._instance.isPaused)
         {
             if(touchedReceptacle != null && !touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
             {
@@ -81,7 +89,7 @@ public class playerInteraction : MonoBehaviour
             }
         }
 
-        if (context.performed && !hasPowerOrb && touchedPowerOrb == null && touchedReceptacle != null)
+        if (context.performed && !hasPowerOrb && touchedPowerOrb == null && touchedReceptacle != null && !GameManager._instance.isPaused)
         {
             if (touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb)
             {
