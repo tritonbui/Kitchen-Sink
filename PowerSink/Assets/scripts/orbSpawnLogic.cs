@@ -16,7 +16,7 @@ public class orbSpawnLogic : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if ((LayerMask.NameToLayer("Ground") == col.gameObject.layer || LayerMask.NameToLayer("Default") == col.gameObject.layer || LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer || LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer) && col.gameObject.tag != "receptacleBlock")
+        if ((LayerMask.NameToLayer("Ground") == col.gameObject.layer || LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer || LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer) && col.gameObject.tag != "receptacleBlock")
         {
             _pi.canPlaceOrb = false;
         }
@@ -24,7 +24,7 @@ public class orbSpawnLogic : MonoBehaviour
 
     private void OnTriggerExit(Collider col)
     {
-        if ((LayerMask.NameToLayer("Ground") == col.gameObject.layer || LayerMask.NameToLayer("Default") == col.gameObject.layer || LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer || LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer) && col.gameObject.tag != "receptacleBlock")
+        if ((LayerMask.NameToLayer("Ground") == col.gameObject.layer || LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer || LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer) && col.gameObject.tag != "receptacleBlock")
         {
             _pi.canPlaceOrb = true;
         }

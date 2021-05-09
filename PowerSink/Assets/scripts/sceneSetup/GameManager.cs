@@ -66,10 +66,10 @@ public class GameManager : MonoBehaviour
 			uiManager.gameUI.SetGameUI(currentLevel);
 		}
 
-		if (Input.GetButtonDown("Pause") && SceneManager.GetActiveScene().buildIndex != 0 && !isPlayerDead)
+		/*if (Input.GetButtonDown("Pause") && SceneManager.GetActiveScene().buildIndex != 0 && !isPlayerDead)
 		{
 			ResumeGame();
-		}
+		}*/
 	}
 	
 	//new game start

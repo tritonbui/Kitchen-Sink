@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class playerInteraction : MonoBehaviour
 {
@@ -29,13 +30,11 @@ public class playerInteraction : MonoBehaviour
     private void Update()
     {
         LookAtUI();
-        toggleSwitch();
-        orbInteraction();
     }
 
-    private void toggleSwitch()
+    public void toggleSwitch(InputAction.CallbackContext context)
     {
-        if (Input.GetButtonDown("Interact 2") && touchedToggleSwitch != null && isTouchingToggle)
+        if (context.performed && touchedToggleSwitch != null && isTouchingToggle)
         {
             float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedToggleSwitch.transform.position - transform.position).normalized, transform.forward, Vector3.up);
 
@@ -46,10 +45,9 @@ public class playerInteraction : MonoBehaviour
         }
     }
 
-    public void orbInteraction()
+    public void orbInteraction(InputAction.CallbackContext context)
     {
-
-        if (Input.GetButtonDown("Interact") && !hasPowerOrb && touchedPowerOrb != null)
+        if (context.performed && !hasPowerOrb && touchedPowerOrb != null)
         {
             pickUp();
             if (!canPlaceOrb)
@@ -60,7 +58,7 @@ public class playerInteraction : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Interact") && hasPowerOrb && touchedPowerOrb == null)
+        if (context.performed && hasPowerOrb && touchedPowerOrb == null)
         {
             if(touchedReceptacle != null && !touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
             {
@@ -83,12 +81,11 @@ public class playerInteraction : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Interact") && !hasPowerOrb && touchedPowerOrb == null && touchedReceptacle != null)
+        if (context.performed && !hasPowerOrb && touchedPowerOrb == null && touchedReceptacle != null)
         {
             if (touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb)
             {
                 receptaclePickUp();
-                Debug.Log("picked up R");
                 touchedReceptacle.GetComponent<receptacleBlock>().receptacleOff();
             }
         }
@@ -106,7 +103,6 @@ public class playerInteraction : MonoBehaviour
             heldPowerOrb = touchedPowerOrb;
             touchedPowerOrb = null;
             heldPowerOrb.SetActive(false);
-            Debug.Log("picked up");
         }
     }
 

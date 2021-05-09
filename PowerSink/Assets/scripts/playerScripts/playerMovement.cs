@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class playerMovement : MonoBehaviour
 {
@@ -41,15 +42,14 @@ public class playerMovement : MonoBehaviour
 
     private void Update()
     {
-        MyInput();
         Look();
         Movement();
     }
 
-    private void MyInput()
+    public void MyInput(InputAction.CallbackContext context)
     {
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
+        x = context.ReadValue<Vector2>().x;
+        y = context.ReadValue<Vector2>().y;
     }
 
     public void Look()
@@ -76,9 +76,6 @@ public class playerMovement : MonoBehaviour
 
         //Counteractsloppy movement
         CounterMovement(x, y, mag);
-        
-        //If holding jump && ready to jump, then jump
-        if (isReadyToJump && Input.GetButtonDown("Jump")) Jump();
 
         //Some airMultipliers
         float aMultiplier;
@@ -106,9 +103,9 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void Jump(InputAction.CallbackContext context)
     {
-        if(isGrounded && isReadyToJump)
+        if(context.performed && isGrounded && isReadyToJump)
         {
             isReadyToJump = false;
 
