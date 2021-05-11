@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
     public Transform cam;
     private Rigidbody _rb;
     public playerInteraction playerInteraction;
+    public riggedDiverScript _rds;
         
     private float threshold = 0.01f;
     private float maxSlopeAngle = 35f;
@@ -52,6 +53,19 @@ public class playerMovement : MonoBehaviour
         {
             x = context.ReadValue<Vector2>().x;
             y = context.ReadValue<Vector2>().y;
+        }
+    }
+
+    public void Animations(InputAction.CallbackContext context)
+    {
+        if (context.performed && (context.ReadValue<Vector2>().x >= 0.1f || context.ReadValue<Vector2>().x <= -0.1f || context.ReadValue<Vector2>().y >= 0.1f || context.ReadValue<Vector2>().y <= -0.1f))
+        {
+            _rds.playRun();
+        }
+
+        if (context.canceled && (context.ReadValue<Vector2>().x <= 0.1f && context.ReadValue<Vector2>().x >= -0.1f && context.ReadValue<Vector2>().y <= 0.1f && context.ReadValue<Vector2>().y >= -0.1f))
+        {
+            _rds.playIdle();
         }
     }
 
