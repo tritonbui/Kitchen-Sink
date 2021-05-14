@@ -273,7 +273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690750644034084}
-  m_LocalRotation: {x: -0.000000011046252, y: 0.9839536, z: -0.17842479, w: -0.00000006091642}
+  m_LocalRotation: {x: -0.00000000884493, y: 0.98395354, z: -0.17842482, w: -0.00000004877685}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -940,7 +940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690751696560558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00000071525574, y: 3, z: 8.000001}
+  m_LocalPosition: {x: 0.0000006993822, y: 3, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2368690750644034085}
@@ -1217,7 +1217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: -0.000000030883758, y: 0.9897855, z: -0.14256501, w: -0.00000021441653}
+  m_LocalRotation: {x: -0.000000006231713, y: 0.9897855, z: -0.14256501, w: -0.000000043264897}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1291,7 +1291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752203351772}
-  m_LocalRotation: {x: -0.000000008555595, y: 0.9870362, z: -0.16049765, w: -0.000000052615615}
+  m_LocalRotation: {x: -0.0000000070155766, y: 0.9870362, z: -0.1604977, w: -0.000000043144727}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1395,7 +1395,6 @@ GameObject:
   - component: {fileID: 7863825962699964554}
   - component: {fileID: 8030725529595031685}
   - component: {fileID: 467601343}
-  - component: {fileID: 1697173159}
   m_Layer: 3
   m_Name: PlayerContainer
   m_TagString: Untagged
@@ -1433,8 +1432,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1777554, y: 0.8270664, z: 0.7020588}
-  m_Center: {x: 0.001393795, y: -0.3322611, z: -0.06219387}
+  m_Size: {x: 1.134716, y: 1.0011922, z: 0.6582632}
+  m_Center: {x: 0, y: -0.41932404, z: -0.062748894}
 --- !u!135 &4469555874907710175
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1488,7 +1487,7 @@ MonoBehaviour:
   jumpForce: 1950
   maxSpeed: 6
   counterMovement: 0.2
-  airMultiplier: 0.5
+  airMultiplier: 1
 --- !u!114 &1134457127913124457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1786,19 +1785,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &1697173159
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3423568436341008139}
-  m_Material: {fileID: 13400000, guid: e9a15afb9462994449bb78ccaa2006f4, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.1333237, y: 0.35013866, z: 0.651083}
-  m_Center: {x: 0.0018286705, y: -0.74954367, z: -0.063129425}
 --- !u!114 &73529312
 MonoBehaviour:
   m_ObjectHideFlags: 0

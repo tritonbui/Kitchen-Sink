@@ -33,6 +33,7 @@ public class playerMovement : MonoBehaviour
     public float maxSpeed = 7f;
     public float counterMovement = 0.175f;
     public float airMultiplier = 0.5f;
+    public float rotationSpeed = 1f;
 
 
     void Awake()
@@ -79,7 +80,7 @@ public class playerMovement : MonoBehaviour
         Vector3 targ_dir = Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized;
         if (x != 0 || y != 0)
         {
-            player.transform.rotation = Quaternion.LookRotation(Quaternion.LookRotation(targ_dir, Vector3.up) * input_dir, Vector3.up);
+            player.transform.rotation = Quaternion.Lerp(player.transform.rotation, Quaternion.LookRotation(Quaternion.LookRotation(targ_dir, Vector3.up) * input_dir, Vector3.up), Time.deltaTime * rotationSpeed);
         }
         orientation.transform.rotation = Quaternion.LookRotation(targ_dir, Vector3.up);
     }
