@@ -49,5 +49,10 @@ public class playerRespawn : MonoBehaviour
         {
             Respawn();
         }
+
+        if (col.gameObject.tag == "checkpoint")
+        {
+            playerSpawnPoint.position = col.gameObject.transform.position;
+        }
     }
 }

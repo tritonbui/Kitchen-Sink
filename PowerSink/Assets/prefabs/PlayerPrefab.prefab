@@ -1217,7 +1217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: -0.000000003920122, y: 0.9897855, z: -0.14256495, w: -0.000000027216235}
+  m_LocalRotation: {x: -0.000000030883758, y: 0.9897855, z: -0.14256501, w: -0.00000021441653}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1395,6 +1395,7 @@ GameObject:
   - component: {fileID: 7863825962699964554}
   - component: {fileID: 8030725529595031685}
   - component: {fileID: 467601343}
+  - component: {fileID: 1697173159}
   m_Layer: 3
   m_Name: PlayerContainer
   m_TagString: Untagged
@@ -1432,8 +1433,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1674063, y: 1.01767, z: 0.7498665}
-  m_Center: {x: -0.0051676035, y: -0.4275629, z: -0.05756569}
+  m_Size: {x: 1.1777554, y: 0.8270664, z: 0.7020588}
+  m_Center: {x: 0.001393795, y: -0.3322611, z: -0.06219387}
 --- !u!135 &4469555874907710175
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1479,10 +1480,11 @@ MonoBehaviour:
   player: {fileID: 3423568436341008136}
   cam: {fileID: 2368690751612090811}
   playerInteraction: {fileID: 1134457127913124457}
+  _rds: {fileID: 73529312}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  moveSpeed: 3000
+  moveSpeed: 6
   jumpForce: 1950
   maxSpeed: 6
   counterMovement: 0.2
@@ -1503,7 +1505,7 @@ MonoBehaviour:
   receptacleSound: {fileID: 467601343}
   heldPowerOrb: {fileID: 0}
   touchedToggleSwitch: {fileID: 0}
-  angleTolerance: 45
+  angleTolerance: 60
 --- !u!114 &7863825962699964554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1548,6 +1550,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3423568436341008137}
         m_TargetAssemblyTypeName: playerMovement, Assembly-CSharp
         m_MethodName: MyInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3423568436341008137}
+        m_TargetAssemblyTypeName: playerMovement, Assembly-CSharp
+        m_MethodName: Animations
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1772,6 +1786,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1697173159
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423568436341008139}
+  m_Material: {fileID: 13400000, guid: e9a15afb9462994449bb78ccaa2006f4, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1333237, y: 0.35013866, z: 0.651083}
+  m_Center: {x: 0.0018286705, y: -0.74954367, z: -0.063129425}
+--- !u!114 &73529312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3884122638241611007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187faf5e14f9ae5419edbef4861f5e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7515611186406898751}
 --- !u!1 &4345301597421492044
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,10 +2130,28 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 94719275ddf3821428d1ef5da546d640, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ab127aeaca41f784980601083e40ee85, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 94719275ddf3821428d1ef5da546d640, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94719275ddf3821428d1ef5da546d640, type: 3}
+--- !u!95 &7515611186406898751 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 94719275ddf3821428d1ef5da546d640, type: 3}
+  m_PrefabInstance: {fileID: 4118054930206196142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4516261987654690373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 94719275ddf3821428d1ef5da546d640, type: 3}
+  m_PrefabInstance: {fileID: 4118054930206196142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3884122638241611007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 94719275ddf3821428d1ef5da546d640, type: 3}
   m_PrefabInstance: {fileID: 4118054930206196142}
   m_PrefabAsset: {fileID: 0}

@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
 	//Load Menu Scene
 	public void LoadMainMenu()
 	{
+		uiManager.OnMainMenu();
 		levelChanger.FadeToLevel("mainMenu");
 		Time.timeScale = 1f;
 		isPaused = false;
@@ -126,6 +127,7 @@ public class GameManager : MonoBehaviour
 
 	public void FinishToMainMenu()
 	{
+		uiManager.OnMainMenu();
 		levelChanger.FadeToLevel("mainMenu");
 		Time.timeScale = 1f;
 		isPaused = false;

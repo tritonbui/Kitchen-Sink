@@ -12,6 +12,7 @@ TagManager:
   - toggleA
   - toggleB
   - psuedoReceptacle
+  - checkpoint
   layers:
   - Default
   - TransparentFX

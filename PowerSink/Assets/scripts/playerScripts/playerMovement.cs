@@ -44,6 +44,10 @@ public class playerMovement : MonoBehaviour
     private void Update()
     {
         Look();
+    }
+
+    private void FixedUpdate()
+    {
         Movement();
     }
 
@@ -58,12 +62,12 @@ public class playerMovement : MonoBehaviour
 
     public void Animations(InputAction.CallbackContext context)
     {
-        if (context.performed && (context.ReadValue<Vector2>().x >= 0.1f || context.ReadValue<Vector2>().x <= -0.1f || context.ReadValue<Vector2>().y >= 0.1f || context.ReadValue<Vector2>().y <= -0.1f))
+        if (context.performed && (x != 0 || y != 0) && (context.ReadValue<Vector2>().x >= 0.1f || context.ReadValue<Vector2>().x <= -0.1f || context.ReadValue<Vector2>().y >= 0.1f || context.ReadValue<Vector2>().y <= -0.1f))
         {
             _rds.playRun();
         }
 
-        if (context.canceled && (context.ReadValue<Vector2>().x <= 0.1f && context.ReadValue<Vector2>().x >= -0.1f && context.ReadValue<Vector2>().y <= 0.1f && context.ReadValue<Vector2>().y >= -0.1f))
+        if (context.canceled && x == 0 && y == 0 && (context.ReadValue<Vector2>().x <= 0.1f && context.ReadValue<Vector2>().x >= -0.1f && context.ReadValue<Vector2>().y <= 0.1f && context.ReadValue<Vector2>().y >= -0.1f))
         {
             _rds.playIdle();
         }
@@ -71,52 +75,32 @@ public class playerMovement : MonoBehaviour
 
     public void Look()
     {
-        float targetAngle = cam.eulerAngles.y;
-        float moveAngle = Mathf.Atan2(_rb.velocity.x, _rb.velocity.z) * Mathf.Rad2Deg;
-    
+        Vector3 input_dir = new Vector3(x, 0f, y).normalized;
+        Vector3 targ_dir = Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized;
         if (x != 0 || y != 0)
         {
-            player.transform.localRotation = Quaternion.Euler(0, moveAngle, 0);
+            player.transform.rotation = Quaternion.LookRotation(Quaternion.LookRotation(targ_dir, Vector3.up) * input_dir, Vector3.up);
         }
-
-        orientation.transform.localRotation = Quaternion.Euler(0, targetAngle, 0);
+        orientation.transform.rotation = Quaternion.LookRotation(targ_dir, Vector3.up);
     }
 
     public void Movement()
     {
-        //Extra gravity
-        _rb.AddForce(Vector3.down * Time.deltaTime * 10);
-        
-        //Find actual velocity relative to where player is looking
-        Vector2 mag = FindVelRelativeToLook();
-        float xMag = mag.x, yMag = mag.y;
+        //Target Direction Angle
+        Quaternion targetDir = Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized, Vector3.up);
 
-        //Counteractsloppy movement
-        CounterMovement(x, y, mag);
+        //finds target velocity
+        Vector3 targetVel = targetDir * new Vector3(x, 0f, y).normalized * moveSpeed;
 
-        //Some airMultipliers
-        float aMultiplier;
-        aMultiplier = isGrounded ? 1f : airMultiplier;
-
-        //Apply forces to move player
-        if(xMag < maxSpeed && x > 0)
+        //applies forces to player
+        if(isGrounded)
         {
-            _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * aMultiplier);
+            targetVel += Vector3.up * _rb.velocity.y;
+            _rb.AddForce(targetVel - _rb.velocity, ForceMode.Impulse);
         }
-
-        if(xMag > -maxSpeed && x < 0)
+        else
         {
-            _rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * aMultiplier);
-        }
-
-        if(yMag < maxSpeed && y > 0)
-        {
-            _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * aMultiplier);
-        }
-
-        if(yMag > -maxSpeed && y < 0)
-        {
-            _rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * aMultiplier);
+            _rb.AddForce(targetVel * airMultiplier);
         }
     }
 
@@ -157,13 +141,7 @@ public class playerMovement : MonoBehaviour
         
         if (isGrounded)
         {
-            //Limit diagonal running.
-            if (Mathf.Sqrt((Mathf.Pow(_rb.velocity.x, 2) + Mathf.Pow(_rb.velocity.z, 2))) > maxSpeed) 
-            {
-                float fallspeed = _rb.velocity.y;
-                Vector3 n = _rb.velocity.normalized * maxSpeed;
-                _rb.velocity = new Vector3(n.x, fallspeed, n.z);
-            }
+        
         }
     }
 
