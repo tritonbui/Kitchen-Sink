@@ -273,7 +273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690750644034084}
-  m_LocalRotation: {x: -0.00000000884493, y: 0.98395354, z: -0.17842482, w: -0.00000004877685}
+  m_LocalRotation: {x: -0.000000004906162, y: 0.9839536, z: -0.17842479, w: -0.000000027055858}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -940,7 +940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690751696560558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000006993822, y: 3, z: 8}
+  m_LocalPosition: {x: 0.00000071525574, y: 3, z: 8.000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2368690750644034085}
@@ -1217,7 +1217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: -0.000000006231713, y: 0.9897855, z: -0.14256501, w: -0.000000043264897}
+  m_LocalRotation: {x: -0.000000008826177, y: 0.9897855, z: -0.14256495, w: -0.00000006127748}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1291,7 +1291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752203351772}
-  m_LocalRotation: {x: -0.0000000070155766, y: 0.9870362, z: -0.1604977, w: -0.000000043144727}
+  m_LocalRotation: {x: -0.000000008555595, y: 0.9870362, z: -0.16049765, w: -0.000000052615615}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1389,6 +1389,7 @@ GameObject:
   - component: {fileID: 3423568436341008136}
   - component: {fileID: 5258548667920133663}
   - component: {fileID: 4469555874907710175}
+  - component: {fileID: 5865049601008185401}
   - component: {fileID: 3423568436341008142}
   - component: {fileID: 3423568436341008137}
   - component: {fileID: 1134457127913124457}
@@ -1447,6 +1448,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.53
   m_Center: {x: 0, y: 0.45, z: 0.21}
+--- !u!65 &5865049601008185401
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423568436341008139}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1033344, y: 0.06435394, z: 0.62234116}
+  m_Center: {x: 0, y: -0.9178772, z: -0.06335735}
 --- !u!54 &3423568436341008142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1488,6 +1502,7 @@ MonoBehaviour:
   maxSpeed: 6
   counterMovement: 0.2
   airMultiplier: 1
+  rotationSpeed: 10
 --- !u!114 &1134457127913124457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,6 +1520,7 @@ MonoBehaviour:
   heldPowerOrb: {fileID: 0}
   touchedToggleSwitch: {fileID: 0}
   angleTolerance: 60
+  distanceTolerance: 5
 --- !u!114 &7863825962699964554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,6 +1535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pi: {fileID: 1134457127913124457}
   playerSpawnPoint: {fileID: 6258116520470077354}
+  toggleSwitches: []
 --- !u!114 &8030725529595031685
 MonoBehaviour:
   m_ObjectHideFlags: 0

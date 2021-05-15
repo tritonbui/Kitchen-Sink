@@ -14,20 +14,22 @@ public class playerInteraction : MonoBehaviour
     protected GameObject touchedReceptacle = null;
     public GameObject touchedToggleSwitch = null;
 
-    private bool isTouchingToggle = false;
     public bool isGrounded {get; set;}
     public bool hasPowerOrb {get; set;} = false;
     public bool canPlaceOrb {get; set;} = true;
 
     [Range (0, 180)]
     public float angleTolerance = 45f;
+    
+    [Range (0, 10)]
+    public float distanceTolerance = 5f;
 
     void Start()
     {
         canPlaceOrb = true;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         LookAtUI();
     }
@@ -42,14 +44,9 @@ public class playerInteraction : MonoBehaviour
 
     public void toggleSwitch(InputAction.CallbackContext context)
     {
-        if (context.performed && touchedToggleSwitch != null && isTouchingToggle && !GameManager._instance.isPaused)
+        if (context.performed && touchedToggleSwitch != null && !GameManager._instance.isPaused)
         {
-            float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedToggleSwitch.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-            if (angle < angleTolerance && angle > -angleTolerance)
-            {
-                touchedToggleSwitch.GetComponent<toggleSwitch>().Toggle();
-            }
+            touchedToggleSwitch.GetComponent<toggleSwitch>().Toggle();
         }
     }
 
@@ -73,19 +70,9 @@ public class playerInteraction : MonoBehaviour
                 receptaclePutDown();
                 return;
             }
-            else if (touchedReceptacle == null && canPlaceOrb)
+            else if (canPlaceOrb)
             {
                 putDown();
-            }
-            else if (touchedReceptacle != null && canPlaceOrb)
-            {
-                float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-                if (angle > angleTolerance || angle < -angleTolerance)
-                {
-                    putDown();
-                }
-
             }
         }
 
@@ -101,9 +88,7 @@ public class playerInteraction : MonoBehaviour
 
     public void pickUp()
     {
-        float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedPowerOrb.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-        if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
+        if (isGrounded)
         {
             hasPowerOrb = true;
             receptacleSound.Play();
@@ -116,9 +101,7 @@ public class playerInteraction : MonoBehaviour
 
     public void receptaclePickUp()
     {   
-        float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-        if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
+        if (isGrounded)
         {
             hasPowerOrb = true;
             receptacleSound.Play();
@@ -145,9 +128,7 @@ public class playerInteraction : MonoBehaviour
 
     public void receptaclePutDown()
     {
-        float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-        if (isGrounded && angle < angleTolerance && angle > -angleTolerance)
+        if (isGrounded)
         {
             hasPowerOrb = false;
             receptacleSound.Play();
@@ -165,106 +146,67 @@ public class playerInteraction : MonoBehaviour
 
     private void LookAtUI()
     {
-        if (isTouchingToggle)
+        if ((touchedPowerOrb != null || touchedReceptacle != null || touchedToggleSwitch != null) && isGrounded)
         {
-            float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedToggleSwitch.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-            if (angle < angleTolerance && angle > -angleTolerance)
-            {
-                GameManager._instance.gameUI.lookAtSwitch();
-            }
-            
-        }
-        else if (touchedPowerOrb == null)
-        {
-            if (touchedReceptacle != null)
-            {
-                float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-                if (angle > angleTolerance && angle < -angleTolerance)
-                {
-                    GameManager._instance.gameUI.lookAtNothing();
-                }
-
-            }
-            else if (touchedReceptacle == null)
-            {
-                GameManager._instance.gameUI.lookAtNothing();
-            }
-        }
-
-        if (touchedReceptacle != null && hasPowerOrb)
-        {
-            if (!touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
-            {
-                float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-                if (angle < angleTolerance && angle > -angleTolerance)
-                {
-                    GameManager._instance.gameUI.lookAtReceptacle();
-                }
-            }
-        }
-
-        if (touchedReceptacle != null && !hasPowerOrb)
-        {
-            if (touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb)
-            {
-                float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedReceptacle.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-                if (angle < angleTolerance && angle > -angleTolerance)
-                {
-                    GameManager._instance.gameUI.lookAtOrb();
-                    
-                }
-            }
-        }
-
-        if (touchedPowerOrb != null)
-        {
-            float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), touchedPowerOrb.transform.position - transform.position).normalized, transform.forward, Vector3.up);
-
-            if (angle < angleTolerance && angle > -angleTolerance)
+            if ((touchedPowerOrb != null && !hasPowerOrb) || (touchedReceptacle != null && !hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb))
             {
                 GameManager._instance.gameUI.lookAtOrb();
             }
+
+            if (touchedToggleSwitch != null)
+            {
+                GameManager._instance.gameUI.lookAtSwitch();
+            }
+
+            if (touchedReceptacle != null && hasPowerOrb && !touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
+            {
+                GameManager._instance.gameUI.lookAtReceptacle();
+            }
+        }
+        else
+        {
+            GameManager._instance.gameUI.lookAtNothing();
         }
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerStay(Collider col)
     {
-        if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
-        {
-            touchedPowerOrb = col.gameObject;
-        }
+        float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), col.gameObject.transform.position - transform.position).normalized, transform.forward, Vector3.up);
+        float dist = Vector3.Distance(col.gameObject.transform.position, transform.position);
 
-        if (col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle")
+        if (angle < angleTolerance && angle > - angleTolerance)
         {
-            touchedReceptacle = col.gameObject;
-        }
+            if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
+            {
+                touchedPowerOrb = col.gameObject;
+            }
 
-        if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
-        {
-            touchedToggleSwitch = col.gameObject;
-            isTouchingToggle = true;
-        }
-    }
+            if (col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle")
+            {
+                touchedReceptacle = col.gameObject;
+            }
 
-    private void OnTriggerExit(Collider col)
-    {
-        if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
-        {
-            touchedPowerOrb = null;
+            if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
+            {
+                touchedToggleSwitch = col.gameObject;
+            }
         }
-
-        if (col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle")
+        else
         {
-            touchedReceptacle = null;
-        }
+            if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer && touchedPowerOrb == col.gameObject)
+            {
+                touchedPowerOrb = null;
+            }
 
-        if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
-        {
-            isTouchingToggle = false;
+            if ((col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle") && touchedReceptacle == col.gameObject)
+            {
+                touchedReceptacle = null;
+            }
+
+            if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer && touchedToggleSwitch == col.gameObject)
+            {
+                touchedToggleSwitch = null;
+            }
         }
     }
 }

@@ -34,25 +34,25 @@ public class toggleSwitch : MonoBehaviour
         if (isSwitchedOn)
         {
             StateB();
-            animator.Play("toggle_Off", 0, 0f);
-            isSwitchedOn = false;
         }
         else
         {
             StateA();
-            animator.Play("toggle_On", 0, 0f);
-            isSwitchedOn = true;
         }
     }
 
     public void StateA()
     {
+        animator.Play("toggle_On", 0, 0f);
+        isSwitchedOn = true;
         TurnOnToggleAs();
         TurnOffToggleBs();
     }
 
     public void StateB()
     {
+        animator.Play("toggle_Off", 0, 0f);
+        isSwitchedOn = false;
         TurnOffToggleAs();
         TurnOnToggleBs();
     }

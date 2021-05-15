@@ -9,6 +9,7 @@ public class playerRespawn : MonoBehaviour
     public playerInteraction _pi;
     private Rigidbody _rb;
     public Transform playerSpawnPoint;
+    public GameObject[] toggleSwitches;
 
     public void Awake()
     {
@@ -37,9 +38,9 @@ public class playerRespawn : MonoBehaviour
             _pi.hasPowerOrb = false;
         }
 
-        if (_pi.touchedToggleSwitch != null)
+        foreach (GameObject toggleSwitch in toggleSwitches)
         {
-            _pi.touchedToggleSwitch.GetComponent<toggleSwitch>().StateA();
+            toggleSwitch.GetComponent<toggleSwitch>().StateA();
         }
     }
 

@@ -176,8 +176,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.011659259, y: 0.009901506, z: 0.011659259}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.013656929, y: 0.010089683, z: 0.013490729}
+  m_Center: {x: -0.00003927112, y: 0.00009408966, z: -0.00006138802}
 --- !u!1001 &7231910322147672578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +252,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a30cbd84b48b0484cab1c2a0593b085a, type: 3}
       propertyPath: m_Name
       value: toggleSwitchBody_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a30cbd84b48b0484cab1c2a0593b085a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a30cbd84b48b0484cab1c2a0593b085a, type: 3}
       propertyPath: m_StaticEditorFlags
