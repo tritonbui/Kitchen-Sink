@@ -13,6 +13,7 @@ public class playerInteraction : MonoBehaviour
     public GameObject heldPowerOrb = null;
     protected GameObject touchedReceptacle = null;
     public GameObject touchedToggleSwitch = null;
+    public PlayerInput playerInput;
 
     public bool isGrounded {get; set;}
     public bool hasPowerOrb {get; set;} = false;
@@ -150,17 +151,38 @@ public class playerInteraction : MonoBehaviour
         {
             if ((touchedPowerOrb != null && !hasPowerOrb) || (touchedReceptacle != null && !hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb))
             {
-                GameManager._instance.gameUI.lookAtOrb();
+                if (playerInput.currentControlScheme == "Keyboard&Mouse")
+                {
+                    GameManager._instance.gameUI.lookAtOrbKM();
+                }
+                else if (playerInput.currentControlScheme == "Gamepad")
+                {
+                    GameManager._instance.gameUI.lookAtOrbGP();
+                }
             }
 
             if (touchedToggleSwitch != null)
             {
-                GameManager._instance.gameUI.lookAtSwitch();
+                if (playerInput.currentControlScheme == "Keyboard&Mouse")
+                {
+                    GameManager._instance.gameUI.lookAtSwitchKM();
+                }
+                else if (playerInput.currentControlScheme == "Gamepad")
+                {
+                    GameManager._instance.gameUI.lookAtSwitchGP();
+                }
             }
 
             if (touchedReceptacle != null && hasPowerOrb && !touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb)
             {
-                GameManager._instance.gameUI.lookAtReceptacle();
+                if (playerInput.currentControlScheme == "Keyboard&Mouse")
+                {
+                    GameManager._instance.gameUI.lookAtReceptacleKM();
+                }
+                else if (playerInput.currentControlScheme == "Gamepad")
+                {
+                    GameManager._instance.gameUI.lookAtReceptacleGP();
+                }
             }
         }
         else

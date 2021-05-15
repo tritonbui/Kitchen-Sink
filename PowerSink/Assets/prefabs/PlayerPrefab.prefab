@@ -1217,7 +1217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: -0.000000008826177, y: 0.9897855, z: -0.14256495, w: -0.00000006127748}
+  m_LocalRotation: {x: -0.00000002047682, y: 0.9897855, z: -0.14256494, w: -0.00000014216441}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1291,7 +1291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752203351772}
-  m_LocalRotation: {x: -0.000000008555595, y: 0.9870362, z: -0.16049765, w: -0.000000052615615}
+  m_LocalRotation: {x: -0.0000000057940106, y: 0.9870362, z: -0.16049765, w: -0.000000035632294}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1519,6 +1519,7 @@ MonoBehaviour:
   receptacleSound: {fileID: 467601343}
   heldPowerOrb: {fileID: 0}
   touchedToggleSwitch: {fileID: 0}
+  playerInput: {fileID: 8030725529595031685}
   angleTolerance: 60
   distanceTolerance: 5
 --- !u!114 &7863825962699964554
