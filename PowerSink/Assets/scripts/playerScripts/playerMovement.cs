@@ -14,8 +14,6 @@ public class playerMovement : MonoBehaviour
     public playerInteraction playerInteraction;
     public riggedDiverScript _rds;
         
-    private float threshold = 0.01f;
-    private float maxSlopeAngle = 35f;
     private bool isReadyToJump = true;
     private float jumpCooldown = 0.25f;
     private float desiredX;
@@ -32,7 +30,9 @@ public class playerMovement : MonoBehaviour
     public float jumpForce = 550f;
     public float maxSpeed = 7f;
     public float counterMovement = 0.175f;
-    public float airMultiplier = 0.5f;
+    public float airMultiplierA = 4f;
+    public float airMultiplierB = 0.5f;
+    public Vector2 maxAir;
     public float rotationSpeed = 1f;
 
 
@@ -61,19 +61,6 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public void Animations(InputAction.CallbackContext context)
-    {
-        if (context.performed && (x != 0 || y != 0) && (context.ReadValue<Vector2>().x >= 0.1f || context.ReadValue<Vector2>().x <= -0.1f || context.ReadValue<Vector2>().y >= 0.1f || context.ReadValue<Vector2>().y <= -0.1f))
-        {
-            _rds.playRun();
-        }
-
-        if (context.canceled && x == 0 && y == 0 && (context.ReadValue<Vector2>().x <= 0.1f && context.ReadValue<Vector2>().x >= -0.1f && context.ReadValue<Vector2>().y <= 0.1f && context.ReadValue<Vector2>().y >= -0.1f))
-        {
-            _rds.playIdle();
-        }
-    }
-
     public void Look()
     {
         Vector3 input_dir = new Vector3(x, 0f, y).normalized;
@@ -87,6 +74,8 @@ public class playerMovement : MonoBehaviour
 
     public void Movement()
     {
+        FallingCheck();
+
         //Target Direction Angle
         Quaternion targetDir = Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized, Vector3.up);
 
@@ -101,7 +90,14 @@ public class playerMovement : MonoBehaviour
         }
         else
         {
-            _rb.AddForce(targetVel * airMultiplier);
+            if((FindVelRelativeToLook().x < maxAir.x && FindVelRelativeToLook().y < maxAir.y) || (FindVelRelativeToLook().x < -maxAir.x && FindVelRelativeToLook().y < -maxAir.y))
+            {
+                _rb.AddForce(targetVel * airMultiplierA);
+            }
+            else
+            {
+                _rb.AddForce(targetVel * airMultiplierB);
+            }
         }
     }
 
@@ -120,30 +116,7 @@ public class playerMovement : MonoBehaviour
     private void ResetJump()
     {
         isReadyToJump = true;
-    }
-
-    private void CounterMovement(float x, float y, Vector2 mag)
-    {
-        if (isGrounded && x == 0)
-        {
-            if (Math.Abs(mag.x) > threshold && Math.Abs(x) < 0.05f || (mag.x < -threshold && x > 0) || (mag.x > threshold && x < 0)) 
-            {
-                _rb.AddForce(moveSpeed * orientation.transform.right * Time.deltaTime * -mag.x * counterMovement);
-            }
-        }
-
-        if (isGrounded && y == 0)
-        {
-            if (Math.Abs(mag.y) > threshold && Math.Abs(y) < 0.05f || (mag.y < -threshold && y > 0) || (mag.y > threshold && y < 0)) 
-            {
-                _rb.AddForce(moveSpeed * orientation.transform.forward * Time.deltaTime * -mag.y * counterMovement);
-            }
-        }
-        
-        if (isGrounded)
-        {
-        
-        }
+        _rds.JumpReset();
     }
 
     public Vector2 FindVelRelativeToLook() 
@@ -161,18 +134,13 @@ public class playerMovement : MonoBehaviour
         return new Vector2(xMag, yMag);
     }
 
-    private bool IsFloor(Vector3 v) 
-    {
-        float angle = Vector3.Angle(Vector3.up, v);
-        return angle < maxSlopeAngle;
-    }
-
     //Ground Collision detection
     private void OnTriggerStay(Collider col)
     {
         if (LayerMask.NameToLayer("Ground") == col.gameObject.layer)
         {
             isGrounded = true;
+            _rds.isGrounded();
             playerInteraction.isGrounded = true;
             cancellingGrounded = false;
             CancelInvoke(nameof(StopGrounded));
@@ -189,7 +157,20 @@ public class playerMovement : MonoBehaviour
     private void StopGrounded() 
     {
         isGrounded = false;
+        _rds.isNotGrounded();
         playerInteraction.isGrounded = false;
+    }
+
+    public void FallingCheck()
+    {
+        if (_rb.velocity.y < -0.5f && !isGrounded && Time.timeSinceLevelLoad > 2f)
+        {
+            _rds.isFalling();
+        }
+        else
+        {
+            _rds.isNotFalling();
+        }
     }
 
     private void OnTriggerEnter(Collider col)
