@@ -195,7 +195,7 @@ public class playerInteraction : MonoBehaviour
     {
         float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), col.gameObject.transform.position - transform.position).normalized, transform.forward, Vector3.up);
         float dist = Vector3.Distance(col.gameObject.transform.position, transform.position);
-
+        
         if (angle < angleTolerance && angle > - angleTolerance)
         {
             if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
@@ -229,6 +229,24 @@ public class playerInteraction : MonoBehaviour
             {
                 touchedToggleSwitch = null;
             }
+        }
+    }
+
+    private void OnTriggerExit (Collider col)
+    {
+        if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
+        {
+            touchedPowerOrb = null;
+        }
+
+        if (col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle")
+        {
+            touchedReceptacle = null;
+        }
+
+        if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
+        {
+            touchedToggleSwitch = null;
         }
     }
 }
