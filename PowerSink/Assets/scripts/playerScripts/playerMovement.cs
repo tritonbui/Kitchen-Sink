@@ -24,8 +24,13 @@ public class playerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     private bool cancellingGrounded;
     private bool isLevelLoading = false;
+    [Header("Step Up Properties")]
+    public float stepHeight = 0.3f;
+    public float stepSmooth = 0.1f;
+    public GameObject stepRayUpper;
+    public GameObject stepRayLower;
 
-    [Header("Movement Stuff")]
+    [Header("Movement Properties")]
     public float moveSpeed = 4500f;
     public float jumpForce = 550f;
     public float maxSpeed = 7f;
@@ -40,6 +45,7 @@ public class playerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         isLevelLoading = false;
+        stepRayUpper.transform.position = new Vector3(stepRayUpper.transform.position.x, stepHeight, stepRayUpper.transform.position.z);
     }
 
     private void Update()
@@ -75,6 +81,7 @@ public class playerMovement : MonoBehaviour
     public void Movement()
     {
         FallingCheck();
+        stepClimb();
 
         //Target Direction Angle
         Quaternion targetDir = Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized, Vector3.up);
@@ -97,6 +104,39 @@ public class playerMovement : MonoBehaviour
             else
             {
                 _rb.AddForce(targetVel * airMultiplierB);
+            }
+        }
+    }
+
+    public void stepClimb()
+    {
+        RaycastHit hitLower;
+        if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(Vector3.forward), out hitLower, 0.1f))
+        {
+            RaycastHit hitUpper;
+            if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(Vector3.forward), out hitUpper, 0.2f))
+            {
+                _rb.position -= new Vector3(0f, -stepSmooth, 0f);
+            }
+        }
+
+        RaycastHit hitLower45;
+        if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(1.5f, 0, 1), out hitLower45, 0.1f))
+        {
+            RaycastHit hitUpper45;
+            if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(1.5f, 0, 1), out hitUpper45, 0.2f))
+            {
+                _rb.position -= new Vector3(0f, -stepSmooth, 0f);
+            }
+        }
+
+        RaycastHit hitLowerMinus45;
+        if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(-1.5f, 0, 1), out hitLowerMinus45, 0.1f))
+        {
+            RaycastHit hitUpperMinus45;
+            if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(-1.5f, 0, 1), out hitUpperMinus45, 0.2f))
+            {
+                _rb.position -= new Vector3(0f, -stepSmooth, 0f);
             }
         }
     }

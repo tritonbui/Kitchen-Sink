@@ -189,6 +189,11 @@ public class playerInteraction : MonoBehaviour
         {
             GameManager._instance.gameUI.lookAtNothing();
         }
+
+        if (GameManager._instance.isLevelFinished && touchedToggleSwitch == null)
+        {
+            GameManager._instance.gameUI.lookAtNothing();
+        }
     }
 
     private void OnTriggerStay(Collider col)
