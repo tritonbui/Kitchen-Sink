@@ -177,7 +177,7 @@ public class playerMovement : MonoBehaviour
 
     public void FallingCheck()
     {
-        if (_rb.velocity.y < -0.5f && !isGrounded && Time.timeSinceLevelLoad > 2f)
+        if (_rb.velocity.y < -2f && !isGrounded && Time.timeSinceLevelLoad > 5f)
         {
             _rds.isFalling();
         }

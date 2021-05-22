@@ -227,8 +227,8 @@ GameObject:
   - component: {fileID: 7720137393161213610}
   - component: {fileID: 7720137393161213613}
   - component: {fileID: 7720137393161213612}
-  - component: {fileID: 7116234411685293649}
   - component: {fileID: 8522217502687569484}
+  - component: {fileID: 6876394435344723813}
   m_Layer: 6
   m_Name: receptacleBlock
   m_TagString: receptacleBlock
@@ -324,20 +324,8 @@ MonoBehaviour:
   powerOrbAsset: {fileID: 0}
   insertedPowerOrb: {fileID: 0}
   hasPowerOrb: 0
+  check: 0
   canTakePowerOrb: 1
---- !u!65 &7116234411685293649
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7720137393161213608}
-  m_Material: {fileID: 13400000, guid: dbb7f73635d5c014392e1323e8fc5d77, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.24, y: 0.35, z: 1.26}
-  m_Center: {x: 0, y: 1.36, z: 0}
 --- !u!95 &8522217502687569484
 Animator:
   serializedVersion: 3
@@ -357,6 +345,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &6876394435344723813
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7720137393161213608}
+  m_Material: {fileID: 13400000, guid: dbb7f73635d5c014392e1323e8fc5d77, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8657627
+  m_Center: {x: 0, y: 0.75132656, z: 0}
 --- !u!1 &7720137393440490893
 GameObject:
   m_ObjectHideFlags: 0
