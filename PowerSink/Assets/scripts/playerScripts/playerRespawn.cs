@@ -7,6 +7,7 @@ using UnityEngine;
 public class playerRespawn : MonoBehaviour
 {
     public playerInteraction _pi;
+    public playerMovement _pm;
     private Rigidbody _rb;
     public Transform playerSpawnPoint;
     public GameObject[] toggleSwitches;
@@ -51,7 +52,7 @@ public class playerRespawn : MonoBehaviour
             Respawn();
         }
 
-        if (col.gameObject.tag == "checkpoint")
+        if (col.gameObject.tag == "checkpoint" && _pm.isGrounded)
         {
             playerSpawnPoint.position = col.gameObject.transform.position;
         }

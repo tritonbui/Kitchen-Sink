@@ -14,8 +14,6 @@ public class playerMovement : MonoBehaviour
     public playerInteraction playerInteraction;
     public riggedDiverScript _rds;
         
-    private bool isReadyToJump = true;
-    private float jumpCooldown = 0.25f;
     private float desiredX;
     private float x;
     private float y;
@@ -24,28 +22,27 @@ public class playerMovement : MonoBehaviour
     public LayerMask whatIsGround;
     private bool cancellingGrounded;
     private bool isLevelLoading = false;
-    [Header("Step Up Properties")]
-    public float stepHeight = 0.3f;
-    public float stepSmooth = 0.1f;
-    public GameObject stepRayUpper;
-    public GameObject stepRayLower;
 
     [Header("Movement Properties")]
-    public float moveSpeed = 4500f;
-    public float jumpForce = 550f;
-    public float maxSpeed = 7f;
-    public float counterMovement = 0.175f;
-    public float airMultiplierA = 4f;
-    public float airMultiplierB = 0.5f;
+    public float moveSpeed;
+    public float maxSpeed;
+    public float airMultiplierA;
+    public float airMultiplierB;
     public Vector2 maxAir;
-    public float rotationSpeed = 1f;
+    public float rotationSpeed;
+    [Header("Jump Properties")]
+    public float jumpForce;
+    private float currentJumpForce;
+    [Min(0)]
+    public float jumpRedux;
+    private bool isHoldingJump;
+
 
 
     void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        this._rb = this.GetComponent<Rigidbody>();
         isLevelLoading = false;
-        stepRayUpper.transform.position = new Vector3(stepRayUpper.transform.position.x, stepHeight, stepRayUpper.transform.position.z);
     }
 
     private void Update()
@@ -81,7 +78,7 @@ public class playerMovement : MonoBehaviour
     public void Movement()
     {
         FallingCheck();
-        stepClimb();
+        Jump2();
 
         //Target Direction Angle
         Quaternion targetDir = Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized, Vector3.up);
@@ -108,55 +105,33 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public void stepClimb()
-    {
-        RaycastHit hitLower;
-        if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(Vector3.forward), out hitLower, 0.1f))
-        {
-            RaycastHit hitUpper;
-            if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(Vector3.forward), out hitUpper, 0.2f))
-            {
-                _rb.position -= new Vector3(0f, -stepSmooth, 0f);
-            }
-        }
-
-        RaycastHit hitLower45;
-        if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(1.5f, 0, 1), out hitLower45, 0.1f))
-        {
-            RaycastHit hitUpper45;
-            if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(1.5f, 0, 1), out hitUpper45, 0.2f))
-            {
-                _rb.position -= new Vector3(0f, -stepSmooth, 0f);
-            }
-        }
-
-        RaycastHit hitLowerMinus45;
-        if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(-1.5f, 0, 1), out hitLowerMinus45, 0.1f))
-        {
-            RaycastHit hitUpperMinus45;
-            if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(-1.5f, 0, 1), out hitUpperMinus45, 0.2f))
-            {
-                _rb.position -= new Vector3(0f, -stepSmooth, 0f);
-            }
-        }
-    }
-
     public void Jump(InputAction.CallbackContext context)
     {
-        if(context.performed && isGrounded && isReadyToJump && !GameManager._instance.isPaused)
+        if (context.performed && isGrounded)
         {
-            isReadyToJump = false;
+            isHoldingJump = true;
+            currentJumpForce = jumpForce;
+        }
 
-            _rb.AddForce(Vector2.up * jumpForce);
-            
-            Invoke(nameof(ResetJump), jumpCooldown);
+        if (context.canceled)
+        {
+            isHoldingJump = false;
         }
     }
 
-    private void ResetJump()
+    public void Jump2()
     {
-        isReadyToJump = true;
-        _rds.JumpReset();
+        if (isHoldingJump)
+        {
+            _rb.AddForce(Vector3.up * currentJumpForce);
+            currentJumpForce -= jumpRedux;
+            
+            if(currentJumpForce < 0)
+            {
+                currentJumpForce = 0;
+            }
+            Debug.Log(this.currentJumpForce);
+        }
     }
 
     public Vector2 FindVelRelativeToLook() 
