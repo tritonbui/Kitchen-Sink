@@ -78,7 +78,7 @@ public class playerMovement : MonoBehaviour
     public void Movement()
     {
         FallingCheck();
-        Jump2();
+        JumpUpdate();
 
         //Target Direction Angle
         Quaternion targetDir = Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized, Vector3.up);
@@ -119,7 +119,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public void Jump2()
+    public void JumpUpdate()
     {
         if (isHoldingJump)
         {
@@ -130,7 +130,6 @@ public class playerMovement : MonoBehaviour
             {
                 currentJumpForce = 0;
             }
-            Debug.Log(this.currentJumpForce);
         }
     }
 

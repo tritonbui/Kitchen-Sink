@@ -20,19 +20,6 @@ public class riggedDiverScript : MonoBehaviour
         }
     }
     
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            animator.SetBool("isJumping", true);
-        }
-    }
-
-    public void JumpReset()
-    {
-        animator.SetBool("isJumping", false);
-    }
-
     public void isFalling()
     {
         animator.SetBool("isFalling", true);
