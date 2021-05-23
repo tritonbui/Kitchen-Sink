@@ -14,6 +14,7 @@ public class playerInteraction : MonoBehaviour
     protected GameObject touchedReceptacle = null;
     public GameObject touchedToggleSwitch = null;
     public PlayerInput playerInput;
+    public riggedDiverScript _rds;
 
     public bool isGrounded {get; set;}
     public bool hasPowerOrb {get; set;} = false;
@@ -97,6 +98,7 @@ public class playerInteraction : MonoBehaviour
             heldPowerOrb = touchedPowerOrb;
             touchedPowerOrb = null;
             heldPowerOrb.SetActive(false);
+            _rds.hasPowerOrb();
         }
     }
 
@@ -111,6 +113,7 @@ public class playerInteraction : MonoBehaviour
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = false;
             touchedReceptacle.GetComponent<receptacleBlock>().startPowerDown();
             GameManager._instance.gameUI.pickUpOrb();
+            _rds.hasPowerOrb();
         }
     }
 
@@ -124,6 +127,7 @@ public class playerInteraction : MonoBehaviour
             heldPowerOrb.transform.position = orbSpawnPoint.position;
             heldPowerOrb.SetActive(true);
             heldPowerOrb = null;
+            _rds.hasNothing();
         }
     }
 
@@ -138,6 +142,7 @@ public class playerInteraction : MonoBehaviour
             GameManager._instance.gameUI.putDownOrb();
             touchedReceptacle.GetComponent<receptacleBlock>().startPowerUp();
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = true;
+            _rds.hasNothing();
         }
         else
         {

@@ -51,6 +51,16 @@ public class riggedDiverScript : MonoBehaviour
         animator.SetBool("isJumping", false);
     }
 
+    public void hasPowerOrb()
+    {
+        animator.SetBool("hasOrb", true);
+    }
+
+    public void hasNothing()
+    {
+        animator.SetBool("hasOrb", false);
+    }
+
     public void FixedUpdate()
     {
         InputCheck();
