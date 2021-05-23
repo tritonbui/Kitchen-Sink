@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
 	public void LevelLoad()
 	{
 		uiManager.OnGame();
+		isLevelFinished = false;
 		_playingGame = true;
 	}
 

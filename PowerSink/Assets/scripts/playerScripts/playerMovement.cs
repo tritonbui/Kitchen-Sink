@@ -110,6 +110,7 @@ public class playerMovement : MonoBehaviour
         if (context.performed && isGrounded)
         {
             isHoldingJump = true;
+            _rds.isJumping();
             currentJumpForce = jumpForce;
         }
 
@@ -177,7 +178,7 @@ public class playerMovement : MonoBehaviour
 
     public void FallingCheck()
     {
-        if (_rb.velocity.y < -2f && !isGrounded && Time.timeSinceLevelLoad > 5f)
+        if (_rb.velocity.y < -1f && !isGrounded && Time.timeSinceLevelLoad > 5f)
         {
             _rds.isFalling();
         }

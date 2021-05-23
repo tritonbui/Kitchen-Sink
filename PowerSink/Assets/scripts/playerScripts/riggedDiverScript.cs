@@ -40,6 +40,17 @@ public class riggedDiverScript : MonoBehaviour
         animator.SetBool("isGrounded", false);
     }
 
+    public void isJumping()
+    {
+        animator.SetBool("isJumping", true);
+        Invoke("isNotJumping", 0.1f);
+    }
+
+    public void isNotJumping()
+    {
+        animator.SetBool("isJumping", false);
+    }
+
     public void FixedUpdate()
     {
         InputCheck();
