@@ -13,12 +13,10 @@ public class GameUI : MonoBehaviour
 	public GameObject switchGP;
 	public GameObject pickUpGP;
 	public GameObject putDownGP;
-	public GameObject powerOrbImage;
 
 	// Use this for initialization
 	void Start () 
 	{
-		powerOrbImage.SetActive(false);
 		switchKM.SetActive(false);
 		pickUpKM.SetActive(false);
 		putDownKM.SetActive(false);
@@ -27,16 +25,6 @@ public class GameUI : MonoBehaviour
 	public void SetGameUI(int level)
 	{
 		levelText.text = "Level: " + level;
-	}
-
-	public void pickUpOrb()
-	{
-		powerOrbImage.SetActive(true);
-	}
-
-	public void putDownOrb()
-	{
-		powerOrbImage.SetActive(false);
 	}
 
 	public void lookAtSwitchKM()

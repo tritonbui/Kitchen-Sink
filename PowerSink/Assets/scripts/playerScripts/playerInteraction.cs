@@ -94,7 +94,6 @@ public class playerInteraction : MonoBehaviour
         {
             hasPowerOrb = true;
             receptacleSound.Play();
-            GameManager._instance.gameUI.pickUpOrb();
             heldPowerOrb = touchedPowerOrb;
             touchedPowerOrb = null;
             heldPowerOrb.SetActive(false);
@@ -112,7 +111,6 @@ public class playerInteraction : MonoBehaviour
             touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb = null;
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = false;
             touchedReceptacle.GetComponent<receptacleBlock>().startPowerDown();
-            GameManager._instance.gameUI.pickUpOrb();
             _rds.hasPowerOrb();
         }
     }
@@ -123,7 +121,6 @@ public class playerInteraction : MonoBehaviour
         {
             hasPowerOrb = false;
             receptacleSound.Play();
-            GameManager._instance.gameUI.putDownOrb();
             heldPowerOrb.transform.position = orbSpawnPoint.position;
             heldPowerOrb.SetActive(true);
             heldPowerOrb = null;
@@ -139,7 +136,6 @@ public class playerInteraction : MonoBehaviour
             receptacleSound.Play();
             touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb = heldPowerOrb;
             heldPowerOrb = null;
-            GameManager._instance.gameUI.putDownOrb();
             touchedReceptacle.GetComponent<receptacleBlock>().startPowerUp();
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = true;
             _rds.hasNothing();

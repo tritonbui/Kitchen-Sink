@@ -32,16 +32,10 @@ public class playerRespawn : MonoBehaviour
 
         if (_pi.heldPowerOrb != null)
         {
-            GameManager._instance.gameUI.putDownOrb();
             _pi.heldPowerOrb.SetActive(true);
             _pi.heldPowerOrb.GetComponent<powerOrb>().Die();
             _pi.heldPowerOrb = null;
             _pi.hasPowerOrb = false;
-        }
-
-        foreach (GameObject toggleSwitch in toggleSwitches)
-        {
-            toggleSwitch.GetComponent<toggleSwitch>().StateA();
         }
     }
 
