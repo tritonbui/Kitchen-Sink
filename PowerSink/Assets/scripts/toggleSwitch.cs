@@ -17,15 +17,13 @@ public class toggleSwitch : MonoBehaviour
         foreach (GameObject toggleABlock in toggleABlocks)
         {
             toggleABlock.GetComponent<BoxCollider>().enabled = true;
-            toggleABlock.transform.GetChild(0).gameObject.SetActive(true);
-            toggleABlock.transform.GetChild(1).gameObject.SetActive(false);
+            toggleABlock.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
         }
 
         foreach (GameObject toggleBBlock in toggleBBlocks)
         {
             toggleBBlock.GetComponent<BoxCollider>().enabled = false;
-            toggleBBlock.transform.GetChild(0).gameObject.SetActive(false);
-            toggleBBlock.transform.GetChild(1).gameObject.SetActive(true);
+            toggleBBlock.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
         }
     }
 
@@ -62,8 +60,7 @@ public class toggleSwitch : MonoBehaviour
         foreach (GameObject toggleABlock in toggleABlocks)
         {
             toggleABlock.GetComponent<BoxCollider>().enabled = true;
-            toggleABlock.transform.GetChild(0).gameObject.SetActive(true);
-            toggleABlock.transform.GetChild(1).gameObject.SetActive(false);
+            toggleABlock.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
         }
     }
 
@@ -72,8 +69,7 @@ public class toggleSwitch : MonoBehaviour
         foreach (GameObject toggleABlock in toggleABlocks)
         {
             toggleABlock.GetComponent<BoxCollider>().enabled = false;
-            toggleABlock.transform.GetChild(0).gameObject.SetActive(false);
-            toggleABlock.transform.GetChild(1).gameObject.SetActive(true);
+            toggleABlock.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
         }
     }
 
@@ -82,8 +78,7 @@ public class toggleSwitch : MonoBehaviour
         foreach (GameObject toggleBBlock in toggleBBlocks)
         {
             toggleBBlock.GetComponent<BoxCollider>().enabled = true;
-            toggleBBlock.transform.GetChild(0).gameObject.SetActive(true);
-            toggleBBlock.transform.GetChild(1).gameObject.SetActive(false);
+            toggleBBlock.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
         }
     }
 
@@ -92,8 +87,7 @@ public class toggleSwitch : MonoBehaviour
         foreach (GameObject toggleBBlock in toggleBBlocks)
         {
             toggleBBlock.GetComponent<BoxCollider>().enabled = false;
-            toggleBBlock.transform.GetChild(0).gameObject.SetActive(false);
-            toggleBBlock.transform.GetChild(1).gameObject.SetActive(true);
+            toggleBBlock.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
         }
     }
 }

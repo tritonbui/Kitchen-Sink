@@ -42,15 +42,15 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: powerOrb
+    path: powerOrb_Model
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 2100000, guid: fd6bc0f4923d33b4980c4dc1fd6f126b, type: 2}
+      value: {fileID: 2100000, guid: 36a83bf21623a7c4a928dd03fafa8e76, type: 2}
     - time: 0.016666668
-      value: {fileID: 2100000, guid: 845d43ee604470b4996f25aafe5ec7d4, type: 2}
+      value: {fileID: 2100000, guid: 8a66534aac55944428a2161fe93ef46f, type: 2}
     attribute: m_Materials.Array.data[1]
     path: receptacleBlock_Model
     classID: 23
@@ -63,7 +63,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4147908187
+      path: 1331942744
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -77,8 +77,8 @@ AnimationClip:
       customType: 21
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 2100000, guid: fd6bc0f4923d33b4980c4dc1fd6f126b, type: 2}
-    - {fileID: 2100000, guid: 845d43ee604470b4996f25aafe5ec7d4, type: 2}
+    - {fileID: 2100000, guid: 36a83bf21623a7c4a928dd03fafa8e76, type: 2}
+    - {fileID: 2100000, guid: 8a66534aac55944428a2161fe93ef46f, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -125,7 +125,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: powerOrb
+    path: powerOrb_Model
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []

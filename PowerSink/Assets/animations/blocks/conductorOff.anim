@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 2100000, guid: fd6bc0f4923d33b4980c4dc1fd6f126b, type: 2}
+      value: {fileID: 2100000, guid: ef7c421283fa2114aa29ea2a0e70ae49, type: 2}
     - time: 0.016666668
-      value: {fileID: 2100000, guid: 845d43ee604470b4996f25aafe5ec7d4, type: 2}
+      value: {fileID: 2100000, guid: 71d71bb2ec16d094885ae2c1008ba7c6, type: 2}
     attribute: m_Materials.Array.data[1]
     path: conductorBlock_Model
     classID: 23
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 21
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 2100000, guid: fd6bc0f4923d33b4980c4dc1fd6f126b, type: 2}
-    - {fileID: 2100000, guid: 845d43ee604470b4996f25aafe5ec7d4, type: 2}
+    - {fileID: 2100000, guid: ef7c421283fa2114aa29ea2a0e70ae49, type: 2}
+    - {fileID: 2100000, guid: 71d71bb2ec16d094885ae2c1008ba7c6, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

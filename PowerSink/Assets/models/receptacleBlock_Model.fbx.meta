@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 8239c6ef792257b488757608b465f32b
+guid: 80e330f2d9c7978499dae4104115dfed
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: receptacleBlock_Base_mat
+    second: {fileID: 2100000, guid: 8df214f387a3bd44ebafb6866c18dff4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: receptacleBlock_Light_mat
+    second: {fileID: 2100000, guid: 36a83bf21623a7c4a928dd03fafa8e76, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 24fd9676cf890ff40bb073800745789f
+guid: 3b51398dbe318a0489be6f1f205051f7
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light_Mat
+    second: {fileID: 2100000, guid: 80c5cbaebe3523b4d88bb6d7b3f9ea3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: signalBlock_mat
+    second: {fileID: 2100000, guid: 0b019d928e5f8bf45993669aeb9b8607, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

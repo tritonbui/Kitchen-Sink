@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: dbaf61754d7066e4c8c7ca486d15ba75
+guid: 8c9835cc64ef9964096a3da4cb96df13
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trapBlock_mat
+    second: {fileID: 2100000, guid: bc79a653b3e4fa041b46aa376de99ba9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 0eb99465adb6e99449ee8faf479cb6ef
+guid: 29c038340c4d50c4ba3e1005f265bbd4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: scaffolding_mat
+    second: {fileID: 2100000, guid: d6df158d05b92d54ca5b5e27de105caf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

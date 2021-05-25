@@ -16,7 +16,7 @@ public class receptacleBlock : MonoBehaviour
     public void Start()
     {
         _sb = GameObject.Find("signalBlock").GetComponent<signalBlock>();
-        powerOrbAsset = transform.GetChild(2).gameObject;
+        powerOrbAsset = transform.GetChild(1).gameObject;
         canTakePowerOrb = true;
     }
     
