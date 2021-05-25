@@ -22,9 +22,6 @@ public class playerInteraction : MonoBehaviour
 
     [Range (0, 180)]
     public float angleTolerance = 45f;
-    
-    [Range (0, 10)]
-    public float distanceTolerance = 5f;
 
     void Start()
     {

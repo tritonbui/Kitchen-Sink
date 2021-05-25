@@ -10,6 +10,7 @@ public class playerRespawn : MonoBehaviour
     public playerMovement _pm;
     private Rigidbody _rb;
     public Transform playerSpawnPoint;
+    public riggedDiverScript _rds;
     public GameObject[] toggleSwitches;
 
     public void Awake()
@@ -36,6 +37,7 @@ public class playerRespawn : MonoBehaviour
             _pi.heldPowerOrb.GetComponent<powerOrb>().Die();
             _pi.heldPowerOrb = null;
             _pi.hasPowerOrb = false;
+            _rds.hasNothing();
         }
     }
 
