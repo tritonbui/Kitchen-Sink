@@ -7,7 +7,8 @@ public class signalBlock : MonoBehaviour
     public Animator animator;
     public AudioSource levelFinishSound;
     public AudioSource doorOpenSound;
-    public GameObject levelTramDoor;
+    public GameObject tram;
+    public Animator tramAnimator;
     public GameObject[] receptacles; //prefab
     public List<receptacleBlock> receptacleBlocks;
     public int receptacleNo;
@@ -17,6 +18,8 @@ public class signalBlock : MonoBehaviour
     public void Start()
     {
         ReceptacleStuff();
+        tram = GameObject.Find("tram");
+        tramAnimator = tram.GetComponent<Animator>();
     }
 
     public void Update()
@@ -46,8 +49,9 @@ public class signalBlock : MonoBehaviour
             levelFinishSound.Play();
             doorOpenSound.Play();
             animator.Play("signal_Powered", 0, 0f);
+            tramAnimator.SetBool("isLevelFinished", true);
             GameManager._instance.isLevelFinished = true;
-            levelTramDoor.SetActive(false);
+            
             foreach (receptacleBlock blocks in receptacleBlocks)
             {
                 blocks.canTakePowerOrb = false;
