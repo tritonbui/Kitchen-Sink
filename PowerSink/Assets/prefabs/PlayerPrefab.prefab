@@ -273,7 +273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690750644034084}
-  m_LocalRotation: {x: -0.000000017293734, y: 0.9839536, z: -0.17842482, w: -0.000000095369195}
+  m_LocalRotation: {x: -0.0000000065656502, y: 0.9839536, z: -0.17842478, w: -0.000000036207382}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1217,7 +1217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: -0.000000009171988, y: 0.9897855, z: -0.14256495, w: -0.00000006367835}
+  m_LocalRotation: {x: -0.000000003920122, y: 0.9897855, z: -0.14256495, w: -0.000000027216235}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1291,7 +1291,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752203351772}
-  m_LocalRotation: {x: -0.0000000057940106, y: 0.9870362, z: -0.16049765, w: -0.000000035632294}
+  m_LocalRotation: {x: -0.000000008555595, y: 0.9870362, z: -0.16049765, w: -0.000000052615615}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1433,8 +1433,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.134716, y: 1.0011922, z: 0.6582632}
-  m_Center: {x: 0, y: -0.41932404, z: -0.062748894}
+  m_Size: {x: 1.0078053, y: 1.0011922, z: 0.6582632}
+  m_Center: {x: -0.006665468, y: -0.41932404, z: -0.06274891}
 --- !u!135 &4469555874907710175
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1459,8 +1459,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1033344, y: 0.09229773, z: 0.62234116}
-  m_Center: {x: 0, y: -0.9318491, z: -0.06335735}
+  m_Size: {x: 0.9651227, y: 0.09229779, z: 0.62234116}
+  m_Center: {x: -0.007463455, y: -0.9318491, z: -0.06335735}
 --- !u!54 &3423568436341008142
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1503,8 +1503,8 @@ MonoBehaviour:
   airMultiplierB: 0.5
   maxAir: {x: 4, y: 4}
   rotationSpeed: 10
-  jumpForce: 600
-  jumpRedux: 100
+  jumpForce: 400
+  jumpRedux: 40
 --- !u!114 &1134457127913124457
 MonoBehaviour:
   m_ObjectHideFlags: 0
