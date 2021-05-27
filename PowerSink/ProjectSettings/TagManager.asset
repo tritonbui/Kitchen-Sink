@@ -13,6 +13,7 @@ TagManager:
   - toggleB
   - psuedoReceptacle
   - checkpoint
+  - tram
   layers:
   - Default
   - TransparentFX

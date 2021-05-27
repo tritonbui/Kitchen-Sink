@@ -18,7 +18,7 @@ public class signalBlock : MonoBehaviour
     public void Start()
     {
         ReceptacleStuff();
-        tram = GameObject.Find("tram");
+        tram = GameObject.FindWithTag("tram");
         tramAnimator = tram.GetComponent<Animator>();
     }
 
