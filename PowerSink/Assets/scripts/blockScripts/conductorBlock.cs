@@ -9,9 +9,9 @@ public class conductorBlock : MonoBehaviour
     public AudioSource powerUp;
     public bool isLightOn = false;
 
-    public void Update()
+    public void Update() //manages updating the conductor's state based on power information from the baseBlock script & current status (meaning it wont play animations again and again)
     {
-        if (baseBlock.isPowered && !isLightOn)
+        if (baseBlock.isPowered && !isLightOn) 
         {
             animator.Play("conductorOn", 0, 0f);
             powerUp.Play();

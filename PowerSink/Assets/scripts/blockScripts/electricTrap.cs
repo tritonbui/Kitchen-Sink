@@ -13,7 +13,7 @@ public class electricTrap : MonoBehaviour
         deathToggle();
     }
 
-    public void deathToggle()
+    public void deathToggle() //toggles the death barrier around the electric trap and plays appropriate sounds
     {
         if (_bb.isPowered && !_deathField.activeSelf)
         {

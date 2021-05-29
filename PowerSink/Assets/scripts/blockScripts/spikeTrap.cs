@@ -14,7 +14,7 @@ public class spikeTrap : MonoBehaviour
         deathToggle();
     }
 
-    public void deathToggle()
+    public void deathToggle() //toggles the death barrier around the spike trap and plays appropriate animations
     {
         if (_bb.isPowered && _deathField.activeSelf)
         {

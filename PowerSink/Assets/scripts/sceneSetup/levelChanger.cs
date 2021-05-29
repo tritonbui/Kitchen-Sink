@@ -7,10 +7,8 @@ public class levelChanger : MonoBehaviour
 {
     public Animator animator;
     private string levelToLoad;
-    void Update()
-    {
-        
-    }
+    
+    //plays fade out animation and then loads level
 
     public void FadeToLevel (string LevelName)
     {

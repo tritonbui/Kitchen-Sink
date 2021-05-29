@@ -89,8 +89,8 @@ public class GameManager : MonoBehaviour
 			}
 		}
 	}
-	//resume game
-	public void TogglePause()
+	
+	public void TogglePause() //time pausing function (for game menu)
 	{
 		if (Time.timeScale == 0f)
 		{
@@ -224,7 +224,10 @@ public class GameManager : MonoBehaviour
        	}*/
         	Application.Quit();
     }
-	//Loads Game from Scene
+	
+	//Below is unused, but planned saving and starting functionality.
+
+	/*
 	void StartGameAt(GameData g)
 	{
 		_gd = g; //set the game data
@@ -258,5 +261,5 @@ public class GameManager : MonoBehaviour
 		Debug.Log(dataAsJson);
 		string filePath = Application.streamingAssetsPath + "/" +  saveFileName;
 		File.WriteAllText (filePath, dataAsJson);
-	}
+	}*/
 }

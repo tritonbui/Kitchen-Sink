@@ -49,7 +49,7 @@ public class playerInteraction : MonoBehaviour
         }
     }
 
-    public void orbInteraction(InputAction.CallbackContext context)
+    public void orbInteraction(InputAction.CallbackContext context) //all code related to Orb Interactions
     {
         if (context.performed && !hasPowerOrb && touchedPowerOrb != null && !GameManager._instance.isPaused)
         {
@@ -143,7 +143,7 @@ public class playerInteraction : MonoBehaviour
         }
     }
 
-    private void LookAtUI()
+    private void LookAtUI() //All code related to appropriate UI control hints
     {
         if ((touchedPowerOrb != null || touchedReceptacle != null || touchedToggleSwitch != null) && isGrounded)
         {
@@ -194,7 +194,7 @@ public class playerInteraction : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider col)
+    private void OnTriggerStay(Collider col) //Manages the interactions between player and all interactable objects in the scene
     {
         float angle = Vector3.SignedAngle(Vector3.Scale(new Vector3(1, 0, 1), col.gameObject.transform.position - transform.position).normalized, transform.forward, Vector3.up);
         float dist = Vector3.Distance(col.gameObject.transform.position, transform.position);
@@ -235,7 +235,7 @@ public class playerInteraction : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit (Collider col)
+    private void OnTriggerExit (Collider col) //Manages disconnecting the player and all interactable objects being no longer interacted with (as a second layer of redundency)
     {
         if (LayerMask.NameToLayer("PowerOrb") == col.gameObject.layer)
         {

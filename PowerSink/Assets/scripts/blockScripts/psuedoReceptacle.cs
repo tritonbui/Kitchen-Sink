@@ -18,7 +18,7 @@ public class psuedoReceptacle : MonoBehaviour
         }
     }
 
-    public void startWithOrb()
+    public void startWithOrb() //sets up a power orb to start in the psuedo receptacle
     {
         GameObject newOrb = Instantiate(_pop, _orbSpawn.position, Quaternion.identity);
         _spawnedPop = newOrb;
@@ -28,7 +28,7 @@ public class psuedoReceptacle : MonoBehaviour
         _rcpB.hasPowerOrb = true;
     }
 
-    public void Respawn()
+    public void Respawn() //respawns powerOrb that started in the current psuedo receptacle
     {
         _spawnedPop.transform.GetChild(1).gameObject.transform.position = _orbSpawn.position;
         _rcpB.insertedPowerOrb = _spawnedPop.transform.GetChild(1).gameObject;

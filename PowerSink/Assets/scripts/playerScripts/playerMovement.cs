@@ -55,7 +55,7 @@ public class playerMovement : MonoBehaviour
         Movement();
     }
 
-    public void MyInput(InputAction.CallbackContext context)
+    public void MyInput(InputAction.CallbackContext context) //Control scheme input values (is changed when the state of the input is change) (e.g. when w is pressed and when it is lifted)
     {
         if (!GameManager._instance.isPaused)
         {
@@ -64,7 +64,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public void Look()
+    public void Look() //Manages the look & orientation information of the player (based on camera data)
     {
         Vector3 input_dir = new Vector3(x, 0f, y).normalized;
         Vector3 targ_dir = Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized;
@@ -75,10 +75,10 @@ public class playerMovement : MonoBehaviour
         orientation.transform.rotation = Quaternion.LookRotation(targ_dir, Vector3.up);
     }
 
-    public void Movement()
+    public void Movement() //Executes all movement related code that requires consistent updating
     {
         FallingCheck();
-        JumpUpdate();
+        JumpUpdate(); 
 
         //Target Direction Angle
         Quaternion targetDir = Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized, Vector3.up);
@@ -86,7 +86,7 @@ public class playerMovement : MonoBehaviour
         //finds target velocity
         Vector3 targetVel = targetDir * new Vector3(x, 0f, y).normalized * moveSpeed;
 
-        //applies forces to player
+        //applies forces to player related to their desired velocity and their current grounded state.
         if(isGrounded)
         {
             targetVel += Vector3.up * _rb.velocity.y;
@@ -96,16 +96,16 @@ public class playerMovement : MonoBehaviour
         {
             if((FindVelRelativeToLook().x < maxAir.x && FindVelRelativeToLook().y < maxAir.y) || (FindVelRelativeToLook().x < -maxAir.x && FindVelRelativeToLook().y < -maxAir.y))
             {
-                _rb.AddForce(targetVel * airMultiplierA);
+                _rb.AddForce(targetVel * airMultiplierA); //if player is moving slower than their max air velocity, then they are able to accelerate faster while in the air
             }
             else
             {
-                _rb.AddForce(targetVel * airMultiplierB);
+                _rb.AddForce(targetVel * airMultiplierB); //if player is moving over the max air velocity, they accelerate very slowly
             }
         }
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    public void Jump(InputAction.CallbackContext context) //controls player jump state (allows for hopping & big jumps at will)
     {
         if (context.performed && isGrounded)
         {
@@ -120,7 +120,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public void JumpUpdate()
+    public void JumpUpdate() //reduces jump force over time to allow a natural jump arc
     {
         if (isHoldingJump)
         {
@@ -134,7 +134,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-    public Vector2 FindVelRelativeToLook() 
+    public Vector2 FindVelRelativeToLook() //Finds velocity of player, relative to the current orientation
     {
         float lookAngle = orientation.transform.eulerAngles.y;
         float moveAngle = Mathf.Atan2(_rb.velocity.x, _rb.velocity.z) * Mathf.Rad2Deg;
@@ -176,7 +176,7 @@ public class playerMovement : MonoBehaviour
         playerInteraction.isGrounded = false;
     }
 
-    public void FallingCheck()
+    public void FallingCheck() //Animation falling buffer (to stop small falls over uneven colliders starting the falling animation)
     {
         if (_rb.velocity.y < -1f && !isGrounded && Time.timeSinceLevelLoad > 5f)
         {

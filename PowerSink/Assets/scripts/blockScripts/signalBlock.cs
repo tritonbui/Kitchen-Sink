@@ -31,7 +31,7 @@ public class signalBlock : MonoBehaviour
         LevelFinish();
     }
 
-    public void ReceptacleStuff()
+    public void ReceptacleStuff() //Finds how many receptacle Blocks exist in the scene, then sets the number of required powered receptacles to the number of real (non-psuedo) receptacles in the scene
     {
         receptacles = GameObject.FindGameObjectsWithTag("receptacleBlock");
         foreach (GameObject receptacle in receptacles)
@@ -45,7 +45,7 @@ public class signalBlock : MonoBehaviour
         receptacleNo = receptacles.Length;
     }
 
-    public void LevelFinish()
+    public void LevelFinish() //Locks level in current state (in terms of powered stuff), and plays necessary cues
     {
         if (receptacleNo == poweredReceptacles && !isLevelFinished)
         {

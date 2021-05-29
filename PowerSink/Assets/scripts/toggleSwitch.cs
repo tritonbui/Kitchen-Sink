@@ -6,22 +6,24 @@ public class toggleSwitch : MonoBehaviour
 {
     public Animator animator;
     public bool isSwitchedOn = true;
-    public GameObject[] toggleABlocks; //prefab
-    public GameObject[] toggleBBlocks;
+    public GameObject[] toggleABlocks; 
+    public GameObject[] toggleBBlocks; 
 
     public void Start()
     {
-        toggleABlocks = GameObject.FindGameObjectsWithTag("toggleA");
-        toggleBBlocks = GameObject.FindGameObjectsWithTag("toggleB");
+        toggleABlocks = GameObject.FindGameObjectsWithTag("toggleA"); //finds all toggle A Blocks
+        toggleBBlocks = GameObject.FindGameObjectsWithTag("toggleB"); //finds all toggle B blocks
 
         foreach (GameObject toggleABlock in toggleABlocks)
         {
+            //defaults toggle A Blocks to being activated
             toggleABlock.GetComponent<BoxCollider>().enabled = true;
             toggleABlock.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
         }
 
         foreach (GameObject toggleBBlock in toggleBBlocks)
         {
+            //defaults toggle B Blocks to being deactivated
             toggleBBlock.GetComponent<BoxCollider>().enabled = false;
             toggleBBlock.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
         }
@@ -31,11 +33,11 @@ public class toggleSwitch : MonoBehaviour
     {
         if (isSwitchedOn)
         {
-            StateB();
+            StateB(); //turns A blocks on, and B blocks off
         }
         else
         {
-            StateA();
+            StateA(); //turns A blocks off, and B blocks on
         }
     }
 
@@ -55,7 +57,7 @@ public class toggleSwitch : MonoBehaviour
         TurnOnToggleBs();
     }
 
-    public void TurnOnToggleAs()
+    public void TurnOnToggleAs() //self explanatory from here
     {
         foreach (GameObject toggleABlock in toggleABlocks)
         {

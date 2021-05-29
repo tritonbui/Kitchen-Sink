@@ -20,7 +20,7 @@ public class receptacleBlock : MonoBehaviour
         canTakePowerOrb = true;
     }
     
-    public void Update()
+    public void Update() //manages state of receptacle based on power orb and powered status
     {
         if (hasPowerOrb && !baseBlock.isPowered)
         {
@@ -40,7 +40,7 @@ public class receptacleBlock : MonoBehaviour
         check = false;
     }
 
-    public void startPowerUp()
+    public void startPowerUp() //powers surrounding blocks and tells signal block that it is powered
     {
         baseBlock.powerOn();
         if (this.tag == "receptacleBlock")
@@ -49,7 +49,7 @@ public class receptacleBlock : MonoBehaviour
         }
     }
 
-    public void startPowerDown()
+    public void startPowerDown() //powers down surrounding blocks and tells signal block that it is no longer powered
     {
         baseBlock.powerOff();
         if (this.tag == "receptacleBlock")

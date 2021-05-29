@@ -20,6 +20,8 @@ public class riggedDiverScript : MonoBehaviour
         }
     }
     
+    //the following is a series of animation state management functions
+
     public void isFalling()
     {
         animator.SetBool("isFalling", true);

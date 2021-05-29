@@ -8,6 +8,7 @@ public class baseBlock : MonoBehaviour
     public bool doesConductPower;
     public float checkDist = 0.5f;
 
+    //below is all the raycast stuff for a block to know it's surrounding blocks
     public Transform _topRay;
     protected GameObject _top = null;
 
@@ -30,17 +31,17 @@ public class baseBlock : MonoBehaviour
     {   
         if (this.tag == "conductsPower" || this.tag == "receptacleBlock" || this.tag == "psuedoReceptacle")
         {
-            doesConductPower = true;
+            doesConductPower = true; //automatically sets conductability based on block's tag
         }
         else
         {
             doesConductPower = false;
         }
 
-        assignAdjBlocks();
+        assignAdjBlocks(); //sets adjacent blocks with raycasts
     }
 
-    public void assignAdjBlocks()
+    public void assignAdjBlocks() //using the raycast points set above, this function checks for blocks immediately adjacent to the current block, and assigns them to gameobject variables for later use
     {
         LayerMask ground = LayerMask.GetMask("Ground");
         
@@ -80,13 +81,13 @@ public class baseBlock : MonoBehaviour
         }
     }
 
-    public void powerOn()
+    public void powerOn() //powering block function
     {
         if(!isPowered)
         {
-            isPowered = true;
+            isPowered = true; //sets block to powered
 
-            if(doesConductPower)
+            if(doesConductPower) //starts power On function in adjacent blocks given the current block conducts power
             {
                 _top?.GetComponent<baseBlock>().powerOn();
                 _bot?.GetComponent<baseBlock>().powerOn();
@@ -98,13 +99,13 @@ public class baseBlock : MonoBehaviour
         }
     }
 
-    public void powerOff()
+    public void powerOff() //depowering block function
     {
         if(isPowered)
         {
-            isPowered = false;
+            isPowered = false; //sets block to unpowered
 
-            if(doesConductPower)
+            if(doesConductPower) //starts powering down function in adjacent blocks given the current block conducts power
             {
                 _top?.GetComponent<baseBlock>().powerOff();
                 _bot?.GetComponent<baseBlock>().powerOff();

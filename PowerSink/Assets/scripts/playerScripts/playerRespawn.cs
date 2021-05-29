@@ -18,7 +18,7 @@ public class playerRespawn : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
     
-    public void Respawn()
+    public void Respawn() //respawns player and resets necessary values
     {
         GameObject _pf;
         _pf = GameObject.Find("playerFollow");
@@ -48,7 +48,7 @@ public class playerRespawn : MonoBehaviour
             Respawn();
         }
 
-        if (col.gameObject.tag == "checkpoint" && _pm.isGrounded)
+        if (col.gameObject.tag == "checkpoint" && _pm.isGrounded) //changes player spawn point to checkpoint location on contact (also requires player is grounded)
         {
             playerSpawnPoint.position = col.gameObject.transform.position;
         }
