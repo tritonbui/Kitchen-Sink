@@ -19,7 +19,11 @@ public class signalBlock : MonoBehaviour
     {
         ReceptacleStuff();
         tram = GameObject.FindWithTag("tram");
-        tramAnimator = tram.GetComponent<Animator>();
+
+        if (tram != null)
+        {
+            tramAnimator = tram.GetComponent<Animator>();
+        }
     }
 
     public void Update()

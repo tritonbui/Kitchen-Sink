@@ -527,7 +527,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 16178a4b0c8eaf843b9ec7017b8ac47a, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: ef7c421283fa2114aa29ea2a0e70ae49, type: 2}
+      objectReference: {fileID: 2100000, guid: 71d71bb2ec16d094885ae2c1008ba7c6, type: 2}
     - target: {fileID: 919132149155446097, guid: 16178a4b0c8eaf843b9ec7017b8ac47a, type: 3}
       propertyPath: m_Name
       value: conductorBlock_Model
