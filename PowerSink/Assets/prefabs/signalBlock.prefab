@@ -66,7 +66,8 @@ MonoBehaviour:
   animator: {fileID: 7116732175094659621}
   levelFinishSound: {fileID: 7839318549075922750}
   doorOpenSound: {fileID: 1548987005662871050}
-  levelTramDoor: {fileID: 0}
+  tram: {fileID: 0}
+  tramAnimator: {fileID: 0}
   receptacles: []
   receptacleBlocks: []
   receptacleNo: 0
@@ -430,7 +431,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: e9dda4eb7950d8948b07b16e8051e5b2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7912be7074e1e034bb7e4727112de289, type: 2}
+      objectReference: {fileID: 2100000, guid: 04bdd0f74fc615049b8931bb4d4d7118, type: 2}
     - target: {fileID: 919132149155446097, guid: e9dda4eb7950d8948b07b16e8051e5b2, type: 3}
       propertyPath: m_Name
       value: signalBlockFlowGauge_Model
@@ -496,7 +497,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3b51398dbe318a0489be6f1f205051f7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0b019d928e5f8bf45993669aeb9b8607, type: 2}
+      objectReference: {fileID: 2100000, guid: 04bdd0f74fc615049b8931bb4d4d7118, type: 2}
     - target: {fileID: -7511558181221131132, guid: 3b51398dbe318a0489be6f1f205051f7, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
