@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 16178a4b0c8eaf843b9ec7017b8ac47a
+guid: 7ae542626b7e0ec42b2f2fb6cf906f81
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: conductorBlock_Base_mat
-    second: {fileID: 2100000, guid: 04bdd0f74fc615049b8931bb4d4d7118, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: conductorBlock_Light_mat
-    second: {fileID: 2100000, guid: ef7c421283fa2114aa29ea2a0e70ae49, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
