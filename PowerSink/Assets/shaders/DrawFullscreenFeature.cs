@@ -5,7 +5,7 @@ namespace UnityEngine.Rendering.Universal
         CameraColor,
         Custom 
     }
-
+    
     public class DrawFullscreenFeature : ScriptableRendererFeature
     {
         [System.Serializable]
