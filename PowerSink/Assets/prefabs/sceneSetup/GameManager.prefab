@@ -7898,7 +7898,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -5801122672091901102, guid: 98e2a462e18845946b6474c192fea280, type: 3}
+      objectReference: {fileID: 2100000, guid: d6df158d05b92d54ca5b5e27de105caf, type: 2}
     - target: {fileID: 919132149155446097, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Name
       value: scaffolding_Model
@@ -7964,7 +7964,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -5801122672091901102, guid: 98e2a462e18845946b6474c192fea280, type: 3}
+      objectReference: {fileID: 2100000, guid: d6df158d05b92d54ca5b5e27de105caf, type: 2}
     - target: {fileID: 919132149155446097, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Name
       value: scaffolding_Model (1)
@@ -8034,7 +8034,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -5801122672091901102, guid: 98e2a462e18845946b6474c192fea280, type: 3}
+      objectReference: {fileID: 2100000, guid: d6df158d05b92d54ca5b5e27de105caf, type: 2}
     - target: {fileID: 919132149155446097, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Name
       value: scaffolding_Model (3)
@@ -8104,7 +8104,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -5801122672091901102, guid: 98e2a462e18845946b6474c192fea280, type: 3}
+      objectReference: {fileID: 2100000, guid: d6df158d05b92d54ca5b5e27de105caf, type: 2}
     - target: {fileID: 919132149155446097, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Name
       value: scaffolding_Model (1)
@@ -8170,7 +8170,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -5801122672091901102, guid: 98e2a462e18845946b6474c192fea280, type: 3}
+      objectReference: {fileID: 2100000, guid: d6df158d05b92d54ca5b5e27de105caf, type: 2}
     - target: {fileID: 919132149155446097, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Name
       value: scaffolding_Model
@@ -8240,7 +8240,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -5801122672091901102, guid: 98e2a462e18845946b6474c192fea280, type: 3}
+      objectReference: {fileID: 2100000, guid: d6df158d05b92d54ca5b5e27de105caf, type: 2}
     - target: {fileID: 919132149155446097, guid: 0eb99465adb6e99449ee8faf479cb6ef, type: 3}
       propertyPath: m_Name
       value: scaffolding_Model (2)
