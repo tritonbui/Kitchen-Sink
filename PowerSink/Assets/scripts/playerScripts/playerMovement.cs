@@ -94,7 +94,7 @@ public class playerMovement : MonoBehaviour
         }
         else
         {
-            if((FindVelRelativeToLook().x < maxAir.x && FindVelRelativeToLook().y < maxAir.y) || (FindVelRelativeToLook().x < -maxAir.x && FindVelRelativeToLook().y < -maxAir.y))
+            if((FindVelRelativeToLook().x < maxAir.x && FindVelRelativeToLook().y < maxAir.y) && (FindVelRelativeToLook().x > -maxAir.x && FindVelRelativeToLook().y > -maxAir.y))
             {
                 _rb.AddForce(targetVel * airMultiplierA); //if player is moving slower than their max air velocity, then they are able to accelerate faster while in the air
             }
