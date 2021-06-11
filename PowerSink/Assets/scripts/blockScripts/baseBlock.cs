@@ -29,7 +29,7 @@ public class baseBlock : MonoBehaviour
 
     public void Start()
     {   
-        if (this.tag == "conductsPower" || this.tag == "receptacleBlock" || this.tag == "psuedoReceptacle")
+        if (this.tag == "conductsPower" || this.tag == "receptacleBlock" || this.tag == "psuedoReceptacle" || this.tag == "mpPoints")
         {
             doesConductPower = true; //automatically sets conductability based on block's tag
         }
@@ -43,11 +43,11 @@ public class baseBlock : MonoBehaviour
 
     public void assignAdjBlocks() //using the raycast points set above, this function checks for blocks immediately adjacent to the current block, and assigns them to gameobject variables for later use
     {
-        LayerMask ground = LayerMask.GetMask("Ground");
+        LayerMask powerSys = LayerMask.GetMask("powerSys");
         
         RaycastHit hit;
 
-        if(Physics.Raycast(_topRay.position, _topRay.up, out hit, checkDist, ground))   
+        if(Physics.Raycast(_topRay.position, _topRay.up, out hit, checkDist, powerSys))   
         {
             if(hit.transform.gameObject.ToString() == "signalBlock")
             {
@@ -55,27 +55,27 @@ public class baseBlock : MonoBehaviour
             }
         }
 
-        if(Physics.Raycast(_botRay.position, -_botRay.up, out hit, checkDist, ground))   
+        if(Physics.Raycast(_botRay.position, -_botRay.up, out hit, checkDist, powerSys))   
         {
             _bot = hit.transform.gameObject;
         }     
 
-        if(Physics.Raycast(_frontRay.position, _frontRay.forward, out hit, checkDist, ground))   
+        if(Physics.Raycast(_frontRay.position, _frontRay.forward, out hit, checkDist, powerSys))   
         {
             _front = hit.transform.gameObject;
         }     
 
-        if(Physics.Raycast(_backRay.position, -_backRay.forward, out hit, checkDist, ground))   
+        if(Physics.Raycast(_backRay.position, -_backRay.forward, out hit, checkDist, powerSys))   
         {
             _back = hit.transform.gameObject;
         }     
 
-        if(Physics.Raycast(_leftRay.position, -_leftRay.right, out hit, checkDist, ground))   
+        if(Physics.Raycast(_leftRay.position, -_leftRay.right, out hit, checkDist, powerSys))   
         {
             _left = hit.transform.gameObject;
         }     
 
-        if(Physics.Raycast(_rightRay.position, _rightRay.right, out hit, checkDist, ground))   
+        if(Physics.Raycast(_rightRay.position, _rightRay.right, out hit, checkDist, powerSys))   
         {
             _right = hit.transform.gameObject;
         }

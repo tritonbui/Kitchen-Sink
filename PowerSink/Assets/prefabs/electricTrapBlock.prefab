@@ -45,6 +45,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 2.5, z: 4}
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!1 &1722578099011263391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8192573195864272050}
+  - component: {fileID: 8517421808863000760}
+  m_Layer: 6
+  m_Name: ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8192573195864272050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722578099011263391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6376759282791597512}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8517421808863000760
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722578099011263391}
+  m_Material: {fileID: 13400000, guid: dbb7f73635d5c014392e1323e8fc5d77, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.5, z: 2.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2201510938720959564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4953,7 +4997,7 @@ GameObject:
   - component: {fileID: 6376759282791597518}
   - component: {fileID: 595274479}
   - component: {fileID: 1513850058296273882}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: electricTrapBlock
   m_TagString: conductsPower
   m_Icon: {fileID: 0}
@@ -4981,6 +5025,7 @@ Transform:
   - {fileID: 6376759281992685295}
   - {fileID: 6376759282688342817}
   - {fileID: 6376759282231521635}
+  - {fileID: 8192573195864272050}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

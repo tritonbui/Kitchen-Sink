@@ -6,16 +6,17 @@ public class movingPlatform : MonoBehaviour
 {
     public Transform startPoint;
     public Transform endPoint;
+    public bool isPowered;
     public bool isReturning;
+    public bool isStopped;
     public float moveSpeed;
     private float startTime;
-    private float journeyLength;
+    private float journeyLength = 1f;
     
     public void Start()
     {
         startPoint.position = this.transform.position;
-        startTime = Time.time;
-        journeyLength = Vector3.Distance(startPoint.position, endPoint.position);
+        isReturning = true;
     }
 
     public void FixedUpdate()
@@ -26,13 +27,13 @@ public class movingPlatform : MonoBehaviour
     public void Movement()
     {
         
-        if (this.transform.position == endPoint.position && !isReturning)
+        if (this.transform.position == endPoint.position && !isReturning && isPowered)
         {
             isReturning = true;
             startTime = Time.time;
             journeyLength = Vector3.Distance(endPoint.position, startPoint.position);
         }
-        else if (this.transform.position == startPoint.position && isReturning)
+        else if (this.transform.position == startPoint.position && isReturning && isPowered)
         {
             isReturning = false;
             startTime = Time.time;
