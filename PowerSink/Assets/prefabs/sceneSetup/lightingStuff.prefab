@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6717078664154743809
 Transform:
   m_ObjectHideFlags: 0
@@ -78,11 +78,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 2
   parameters:
-    albedo: {r: 0.03385347, g: 0.032840863, b: 0.16981131, a: 1}
-    meanFreePath: 20
+    albedo: {r: 0.016429355, g: 0.013305449, b: 0.122641504, a: 1}
+    meanFreePath: 50
     anisotropy: 0
     volumeMask: {fileID: 0}
-    textureScrollingSpeed: {x: 0, y: 0, z: 0}
+    textureScrollingSpeed: {x: 5, y: 0, z: 0}
     textureTiling: {x: 1, y: 1, z: 1}
     positiveFade: {x: 0, y: 0, z: 0}
     negativeFade: {x: 0, y: 0, z: 0}
@@ -90,7 +90,7 @@ MonoBehaviour:
     m_EditorPositiveFade: {x: 0, y: 0, z: 0}
     m_EditorNegativeFade: {x: 0, y: 0, z: 0}
     m_EditorAdvancedFade: 0
-    size: {x: 1, y: 1, z: 1}
+    size: {x: 100, y: 100, z: 100}
     invertFade: 0
     distanceFadeStart: 10000
     distanceFadeEnd: 10000
@@ -139,8 +139,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.31216627, g: 0.42836607, b: 0.5754717, a: 1}
-  m_Intensity: 3
+  m_Color: {r: 0.7688679, g: 0.8126169, b: 1, a: 1}
+  m_Intensity: 6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -183,7 +183,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 11413.002
+  m_ColorTemperature: 20000
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 3
+  m_Intensity: 6
   m_EnableSpotReflector: 0
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_InteractsWithSky: 1
   m_AngularDiameter: 0.5
   m_FlareSize: 1.71
-  m_FlareTint: {r: 0, g: 0.27541065, b: 1, a: 1}
+  m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
   m_FlareFalloff: 10.7
   m_SurfaceTexture: {fileID: 0}
   m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
