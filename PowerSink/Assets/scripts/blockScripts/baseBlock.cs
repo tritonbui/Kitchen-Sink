@@ -29,7 +29,7 @@ public class baseBlock : MonoBehaviour
 
     public void Start()
     {   
-        if (this.tag == "conductsPower" || this.tag == "receptacleBlock" || this.tag == "psuedoReceptacle" || this.tag == "mpPoints")
+        if (this.tag == "conductsPower" || this.tag == "mpPoints")
         {
             doesConductPower = true; //automatically sets conductability based on block's tag
         }
@@ -49,7 +49,7 @@ public class baseBlock : MonoBehaviour
 
         if(Physics.Raycast(_topRay.position, _topRay.up, out hit, checkDist, powerSys))   
         {
-            if(hit.transform.gameObject.ToString() == "signalBlock")
+            if(hit.transform.gameObject.ToString() == "signalBlock" || hit.transform.gameObject.layer == LayerMask.NameToLayer("powerSys"))
             {
                 _top = hit.transform.gameObject;
             }
@@ -115,5 +115,29 @@ public class baseBlock : MonoBehaviour
                 _right?.GetComponent<baseBlock>().powerOff();
             }
         }
+    }
+
+    public void receptaclePowerOn()
+    {
+        isPowered = true; //sets block to powered
+
+        _top?.GetComponent<baseBlock>().powerOn();
+        _bot?.GetComponent<baseBlock>().powerOn();
+        _front?.GetComponent<baseBlock>().powerOn();
+        _back?.GetComponent<baseBlock>().powerOn();
+        _left?.GetComponent<baseBlock>().powerOn();
+        _right?.GetComponent<baseBlock>().powerOn();
+    }
+
+    public void receptaclePowerOff()
+    {
+        isPowered = false; //sets block to unpowered
+
+        _top?.GetComponent<baseBlock>().powerOff();
+        _bot?.GetComponent<baseBlock>().powerOff();
+        _front?.GetComponent<baseBlock>().powerOff();
+        _back?.GetComponent<baseBlock>().powerOff();
+        _left?.GetComponent<baseBlock>().powerOff();
+        _right?.GetComponent<baseBlock>().powerOff();
     }
 }

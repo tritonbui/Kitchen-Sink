@@ -42,7 +42,8 @@ public class receptacleBlock : MonoBehaviour
 
     public void startPowerUp() //powers surrounding blocks and tells signal block that it is powered
     {
-        baseBlock.powerOn();
+        baseBlock.receptaclePowerOn();
+        
         if (this.tag == "receptacleBlock")
         {
             _sb.IncreasePoweredReceptacles();
@@ -51,7 +52,8 @@ public class receptacleBlock : MonoBehaviour
 
     public void startPowerDown() //powers down surrounding blocks and tells signal block that it is no longer powered
     {
-        baseBlock.powerOff();
+        baseBlock.receptaclePowerOff();
+        
         if (this.tag == "receptacleBlock")
         {
             _sb.DecreasePoweredReceptacles();
