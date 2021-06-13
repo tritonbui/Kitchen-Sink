@@ -13,8 +13,10 @@ public class playerInteraction : MonoBehaviour
     public GameObject heldPowerOrb = null;
     protected GameObject touchedReceptacle = null;
     public GameObject touchedToggleSwitch = null;
+    public GameObject touchedTeleporter = null;
     public PlayerInput playerInput;
     public riggedDiverScript _rds;
+    private Rigidbody _rb;
 
     public bool isGrounded {get; set;}
     public bool hasPowerOrb {get; set;} = false;
@@ -22,6 +24,10 @@ public class playerInteraction : MonoBehaviour
 
     [Range (0, 180)]
     public float angleTolerance = 45f;
+    void Awake()
+    {
+        this._rb = this.GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
@@ -46,6 +52,15 @@ public class playerInteraction : MonoBehaviour
         if (context.performed && touchedToggleSwitch != null && !GameManager._instance.isPaused)
         {
             touchedToggleSwitch.GetComponent<toggleSwitch>().Toggle();
+        }
+    }
+
+    public void teleport(InputAction.CallbackContext context)
+    {
+        if (context.performed && touchedTeleporter != null && !GameManager._instance.isPaused)
+        {
+            _rb.position = touchedTeleporter.GetComponent<teleportScript>().targetLocation.position;
+            _rb.velocity = Vector3.zero;
         }
     }
 
@@ -103,10 +118,10 @@ public class playerInteraction : MonoBehaviour
         if (isGrounded)
         {
             hasPowerOrb = true;
-            receptacleSound.Play();
-            heldPowerOrb = touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb;
             touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb = null;
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = false;
+            receptacleSound.Play();
+            heldPowerOrb = touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb;
             touchedReceptacle.GetComponent<receptacleBlock>().startPowerDown();
             _rds.hasPowerOrb();
         }
@@ -233,6 +248,11 @@ public class playerInteraction : MonoBehaviour
                 touchedToggleSwitch = null;
             }
         }
+
+        if (col.gameObject.layer == LayerMask.NameToLayer("teleporter"))
+        {
+            touchedTeleporter = col.gameObject;
+        }
     }
 
     private void OnTriggerExit (Collider col) //Manages disconnecting the player and all interactable objects being no longer interacted with (as a second layer of redundency)
@@ -251,5 +271,11 @@ public class playerInteraction : MonoBehaviour
         {
             touchedToggleSwitch = null;
         }
+
+        if (col.gameObject.layer == LayerMask.NameToLayer("teleporter"))
+        {
+            touchedTeleporter = null;
+        }
+        
     }
 }

@@ -11,6 +11,7 @@ public class receptacleBlock : MonoBehaviour
     public GameObject insertedPowerOrb = null;
     public bool hasPowerOrb = false;
     public bool check = false;
+    public bool orbCheck = true;
     public bool canTakePowerOrb = true;
 
     public void Start()
@@ -32,6 +33,17 @@ public class receptacleBlock : MonoBehaviour
             animator.Play("receptacleOn", 0, 0f);
             check = true;
         }
+
+        if (this.tag == "receptacleBlock" && hasPowerOrb && orbCheck)
+        {
+            _sb.IncreasePoweredReceptacles();
+            orbCheck = false;
+        }
+        else if (this.tag == "receptacleBlock" && !hasPowerOrb && !orbCheck)
+        {
+            _sb.DecreasePoweredReceptacles();
+            orbCheck = true;
+        }
     }
 
     public void receptacleOff()
@@ -43,20 +55,10 @@ public class receptacleBlock : MonoBehaviour
     public void startPowerUp() //powers surrounding blocks and tells signal block that it is powered
     {
         baseBlock.receptaclePowerOn();
-        
-        if (this.tag == "receptacleBlock")
-        {
-            _sb.IncreasePoweredReceptacles();
-        }
     }
 
     public void startPowerDown() //powers down surrounding blocks and tells signal block that it is no longer powered
     {
         baseBlock.receptaclePowerOff();
-        
-        if (this.tag == "receptacleBlock")
-        {
-            _sb.DecreasePoweredReceptacles();
-        }
     }
 }
