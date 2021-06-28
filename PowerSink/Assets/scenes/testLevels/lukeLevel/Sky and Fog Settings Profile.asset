@@ -202,11 +202,11 @@ MonoBehaviour:
     min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 0.1015117
+    m_Value: 0.04647742
     min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.011366918, y: 0.098072216, z: 0.5}
+    m_Value: {x: 0.009344168, y: 0.101009004, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 1
     m_Value: 5
@@ -222,7 +222,7 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: cb4b5aa141f322149a62be030a6d42fd, type: 2}
+    m_Value: {fileID: 8900000, guid: ba43e1785992ace48ac079411586c090, type: 3}
   enableDistortion:
     m_OverrideState: 0
     m_Value: 1
@@ -527,7 +527,7 @@ MonoBehaviour:
     showEyeDropper: 1
   tint:
     m_OverrideState: 0
-    m_Value: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
@@ -550,10 +550,10 @@ MonoBehaviour:
     min: 0
   baseHeight:
     m_OverrideState: 1
-    m_Value: 43.44
+    m_Value: 107.4
   maximumHeight:
-    m_OverrideState: 0
-    m_Value: 136.3
+    m_OverrideState: 1
+    m_Value: 107.4
   meanFreePath:
     m_OverrideState: 1
     m_Value: 209.9
@@ -563,13 +563,13 @@ MonoBehaviour:
     m_Value: 1
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.05473478, g: 0.12547067, b: 0.2830189, a: 1}
+    m_Value: {r: 0.18431373, g: 0.23286624, b: 0.34901962, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
   globalLightProbeDimmer:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
     min: 0
     max: 1
   depthExtent:
