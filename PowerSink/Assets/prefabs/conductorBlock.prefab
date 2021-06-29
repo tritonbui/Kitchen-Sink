@@ -577,6 +577,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: conductorBlock_Model
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7ae542626b7e0ec42b2f2fb6cf906f81, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ae542626b7e0ec42b2f2fb6cf906f81, type: 3}
 --- !u!4 &8594375382678331540 stripped
