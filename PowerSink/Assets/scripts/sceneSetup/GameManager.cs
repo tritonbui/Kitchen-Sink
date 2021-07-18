@@ -152,6 +152,16 @@ public class GameManager : MonoBehaviour
 		levelChanger.FadeToLevel("levelFour");
 	}
 
+	public void LoadLevelFive()
+	{
+		levelChanger.FadeToLevel("levelFive");
+	}
+
+	public void LoadLevelSix()
+	{
+		levelChanger.FadeToLevel("levelSix");
+	}
+
 	public void TestLevels()
 	{
 		uiManager.OnTestLevelSelect();
