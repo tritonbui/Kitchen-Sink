@@ -15,6 +15,7 @@ TagManager:
   - checkpoint
   - tram
   - mpPoints
+  - emmitsPower
   layers:
   - Default
   - TransparentFX

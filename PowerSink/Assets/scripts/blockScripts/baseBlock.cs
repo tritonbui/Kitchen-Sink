@@ -10,22 +10,22 @@ public class baseBlock : MonoBehaviour
 
     //below is all the raycast stuff for a block to know it's surrounding blocks
     public Transform _topRay;
-    protected GameObject _top = null;
+    public GameObject _top {get; set;} = null;
 
     public Transform _botRay;    
-    protected GameObject _bot = null;
+    public GameObject _bot {get; set;} = null;
 
     public Transform _frontRay;
-    protected GameObject _front = null;
+    public GameObject _front {get; set;} = null;
 
     public Transform _backRay;
-    protected GameObject _back = null;
+    public GameObject _back {get; set;} = null;
 
     public Transform _leftRay;
-    protected GameObject _left = null;
+    public GameObject _left {get; set;} = null;
 
     public Transform _rightRay;
-    protected GameObject _right = null;
+    public GameObject _right {get; set;} = null;
 
     public void Start()
     {   
