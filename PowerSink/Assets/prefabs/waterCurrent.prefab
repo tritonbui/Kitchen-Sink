@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffccf47e34776ef48afacb1854c7e170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lerpDestination: {fileID: 5627851645934007152}
 --- !u!1 &5627851646314662531
 GameObject:
   m_ObjectHideFlags: 0
