@@ -209,8 +209,20 @@ public class playerMovement : MonoBehaviour
                 GameManager._instance.LoadLevelFour();
                 isLevelLoading = true;
             }
+
+            if (SceneManager.GetActiveScene().name == "levelFour")
+            {
+                GameManager._instance.LoadLevelFive();
+                isLevelLoading = true;
+            }
+
+            if (SceneManager.GetActiveScene().name == "levelFive")
+            {
+                GameManager._instance.LoadLevelSix();
+                isLevelLoading = true;
+            }
             
-            if (SceneManager.GetActiveScene().name == "levelFour" || SceneManager.GetActiveScene().name == "lukeLevel" || SceneManager.GetActiveScene().name == "rhysLevel" || SceneManager.GetActiveScene().name == "tristonLevel" || SceneManager.GetActiveScene().name == "tashLevel" || SceneManager.GetActiveScene().name == "zharaLevel")
+            if (SceneManager.GetActiveScene().name == "levelSix" || SceneManager.GetActiveScene().name == "lukeLevel" || SceneManager.GetActiveScene().name == "rhysLevel" || SceneManager.GetActiveScene().name == "tristonLevel" || SceneManager.GetActiveScene().name == "tashLevel" || SceneManager.GetActiveScene().name == "zharaLevel")
             {
                 GameManager._instance.FinishToMainMenu();
                 isLevelLoading = true;
