@@ -160,7 +160,7 @@ public class playerInteraction : MonoBehaviour
 
     private void LookAtUI() //All code related to appropriate UI control hints
     {
-        if ((touchedPowerOrb != null || touchedReceptacle != null || touchedToggleSwitch != null) && isGrounded)
+        if ((touchedPowerOrb != null || touchedReceptacle != null || touchedToggleSwitch != null) && isGrounded && touchedTeleporter == null)
         {
             if ((touchedPowerOrb != null && !hasPowerOrb) || (touchedReceptacle != null && !hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb && touchedReceptacle.GetComponent<receptacleBlock>().canTakePowerOrb))
             {
@@ -198,12 +198,24 @@ public class playerInteraction : MonoBehaviour
                 }
             }
         }
+        else if (touchedTeleporter != null)
+        {
+            if (playerInput.currentControlScheme == "Keyboard&Mouse")
+            {
+                GameManager._instance.gameUI.onTeleporterKM();
+            }
+            else if (playerInput.currentControlScheme == "Gamepad")
+            {
+                GameManager._instance.gameUI.onTeleporterGP();
+            }
+            
+        }
         else
         {
             GameManager._instance.gameUI.lookAtNothing();
         }
 
-        if (GameManager._instance.isLevelFinished && touchedToggleSwitch == null)
+        if (GameManager._instance.isLevelFinished && touchedToggleSwitch == null && touchedTeleporter == null)
         {
             GameManager._instance.gameUI.lookAtNothing();
         }

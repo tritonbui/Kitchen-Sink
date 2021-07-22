@@ -7,9 +7,11 @@ using TMPro;
 public class GameUI : MonoBehaviour 
 {
 	public TextMeshProUGUI levelText;
+	public GameObject teleporterKM;
 	public GameObject switchKM;
 	public GameObject pickUpKM;
 	public GameObject putDownKM;
+	public GameObject teleporterGP;
 	public GameObject switchGP;
 	public GameObject pickUpGP;
 	public GameObject putDownGP;
@@ -17,9 +19,7 @@ public class GameUI : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		switchKM.SetActive(false);
-		pickUpKM.SetActive(false);
-		putDownKM.SetActive(false);
+		lookAtNothing();
 	}
 	
 	public void SetGameUI(int level)
@@ -27,71 +27,61 @@ public class GameUI : MonoBehaviour
 		levelText.text = "Level: " + level;
 	}
 
+	public void onTeleporterKM()
+	{
+		lookAtNothing();
+		teleporterKM.SetActive(true);
+	}
+
+	public void onTeleporterGP()
+	{
+		lookAtNothing();
+		teleporterGP.SetActive(true);
+	}
+
 	public void lookAtSwitchKM()
 	{
+		lookAtNothing();
 		switchKM.SetActive(true);
-		pickUpKM.SetActive(false);
-		putDownKM.SetActive(false);
-		switchGP.SetActive(false);
-		pickUpGP.SetActive(false);
-		putDownGP.SetActive(false);
 	}
 
 	public void lookAtSwitchGP()
 	{
-		switchKM.SetActive(false);
-		pickUpKM.SetActive(false);
-		putDownKM.SetActive(false);
+		lookAtNothing();
 		switchGP.SetActive(true);
-		pickUpGP.SetActive(false);
-		putDownGP.SetActive(false);
 	}
 
 	public void lookAtOrbKM()
 	{
-		switchKM.SetActive(false);
+		lookAtNothing();
 		pickUpKM.SetActive(true);
-		putDownKM.SetActive(false);
-		switchGP.SetActive(false);
-		pickUpGP.SetActive(false);
-		putDownGP.SetActive(false);
 	}
 
 	public void lookAtOrbGP()
 	{
-		switchKM.SetActive(false);
-		pickUpKM.SetActive(false);
-		putDownKM.SetActive(false);
-		switchGP.SetActive(false);
+		lookAtNothing();
 		pickUpGP.SetActive(true);
-		putDownGP.SetActive(false);
 	}
 
 	public void lookAtReceptacleKM()
 	{
-		switchKM.SetActive(false);
-		pickUpKM.SetActive(false);
+		lookAtNothing();
 		putDownKM.SetActive(true);
-		switchGP.SetActive(false);
-		pickUpGP.SetActive(false);
-		putDownGP.SetActive(false);
 	}
 
 	public void lookAtReceptacleGP()
 	{
-		switchKM.SetActive(false);
-		pickUpKM.SetActive(false);
-		putDownKM.SetActive(false);
-		switchGP.SetActive(false);
-		pickUpGP.SetActive(false);
+		lookAtNothing();
 		putDownGP.SetActive(true);
 	}
 
 	public void lookAtNothing()
 	{
+		teleporterKM.SetActive(false);
 		switchKM.SetActive(false);
 		pickUpKM.SetActive(false);
 		putDownKM.SetActive(false);
+		teleporterGP.SetActive(false);
 		switchGP.SetActive(false);
 		pickUpGP.SetActive(false);
 		putDownGP.SetActive(false);
