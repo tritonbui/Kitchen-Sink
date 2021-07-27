@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpDestination: {fileID: 5627851645934007152}
+  player: {fileID: 0}
+  speed: 5
 --- !u!1 &5627851646314662531
 GameObject:
   m_ObjectHideFlags: 0

@@ -103,6 +103,11 @@ public class playerMovement : MonoBehaviour
                 _rb.AddForce(targetVel * airMultiplierB); //if player is moving over the max air velocity, they accelerate very slowly
             }
         }
+
+        if (_rb.velocity.y < -0.2f)
+        {
+            _rb.AddForce(Vector3.down * 15f);
+        }
     }
 
     public void Jump(InputAction.CallbackContext context) //controls player jump state (allows for hopping & big jumps at will)
@@ -152,7 +157,7 @@ public class playerMovement : MonoBehaviour
     //Ground Collision detection
     private void OnTriggerStay(Collider col)
     {
-        if (LayerMask.NameToLayer("Ground") == col.gameObject.layer)
+        if (LayerMask.NameToLayer("Ground") == col.gameObject.layer || LayerMask.NameToLayer("torpedoLauncher") == col.gameObject.layer)
         {
             isGrounded = true;
             _rds.isGrounded();

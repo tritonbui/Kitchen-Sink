@@ -118,10 +118,10 @@ public class playerInteraction : MonoBehaviour
         if (isGrounded)
         {
             hasPowerOrb = true;
+            heldPowerOrb = touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb;
             touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb = null;
             touchedReceptacle.GetComponent<receptacleBlock>().hasPowerOrb = false;
             receptacleSound.Play();
-            heldPowerOrb = touchedReceptacle.GetComponent<receptacleBlock>().insertedPowerOrb;
             touchedReceptacle.GetComponent<receptacleBlock>().startPowerDown();
             _rds.hasPowerOrb();
         }
@@ -135,6 +135,7 @@ public class playerInteraction : MonoBehaviour
             receptacleSound.Play();
             heldPowerOrb.transform.position = orbSpawnPoint.position;
             heldPowerOrb.SetActive(true);
+            heldPowerOrb.transform.SetParent(null);
             heldPowerOrb = null;
             _rds.hasNothing();
         }
@@ -235,7 +236,7 @@ public class playerInteraction : MonoBehaviour
 
             if (col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle")
             {
-                touchedReceptacle = col.gameObject;
+                touchedReceptacle = col.gameObject.transform.parent.gameObject;
             }
 
             if (LayerMask.NameToLayer("toggleSwitch") == col.gameObject.layer)
@@ -250,7 +251,7 @@ public class playerInteraction : MonoBehaviour
                 touchedPowerOrb = null;
             }
 
-            if ((col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle") && touchedReceptacle == col.gameObject)
+            if ((col.gameObject.tag == "receptacleBlock" || col.gameObject.tag == "psuedoReceptacle") && touchedReceptacle == col.gameObject.transform.parent.gameObject)
             {
                 touchedReceptacle = null;
             }

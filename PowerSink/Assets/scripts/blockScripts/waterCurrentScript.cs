@@ -6,7 +6,6 @@ public class waterCurrentScript : MonoBehaviour
 {
     public Transform lerpDestination;
     public GameObject player;
-    public Rigidbody _rb;
     public float speed;
 
     public void OnTriggerStay(Collider col)
@@ -18,7 +17,7 @@ public class waterCurrentScript : MonoBehaviour
                 player = col.gameObject;
             }
 
-            player.GetComponent<Rigidbody>().useGravity = false;
+            //player.GetComponent<Rigidbody>().useGravity = false;
         }
     }
 
@@ -26,7 +25,11 @@ public class waterCurrentScript : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            player.GetComponent<Rigidbody>().useGravity = true;
+            if (player != null)
+            {
+                player.GetComponent<Rigidbody>().useGravity = true;
+            }
+
             player = null;
         }
     }
@@ -40,7 +43,13 @@ public class waterCurrentScript : MonoBehaviour
     {
         if (player != null)
         {
-            player.transform.position = Vector3.Lerp(player.transform.position, lerpDestination.position, Time.deltaTime * speed);
+            Vector3 targetDir = lerpDestination.position - player.transform.position;
+
+            Vector3 targetVel = targetDir * speed;
+
+            Rigidbody _rb = player.GetComponent<Rigidbody>();
+
+            _rb.AddForce(targetVel - _rb.velocity, ForceMode.Impulse);
         }
     }
 }
