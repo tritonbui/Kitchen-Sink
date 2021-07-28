@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 987209433678320086}
   m_Layer: 0
   m_Name: trigger
-  m_TagString: receptacleBlock
+  m_TagString: psuedoReceptacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
