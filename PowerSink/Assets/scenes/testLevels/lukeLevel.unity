@@ -6280,6 +6280,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7619851282488056014, guid: bf2cf590364581246b7dbdd71b3022ca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8154198
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619851282488056014, guid: bf2cf590364581246b7dbdd71b3022ca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8154198
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619851282488056014, guid: bf2cf590364581246b7dbdd71b3022ca, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8154198
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619851282488056014, guid: bf2cf590364581246b7dbdd71b3022ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.008
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf2cf590364581246b7dbdd71b3022ca, type: 3}
 --- !u!4 &1042798247 stripped
@@ -11116,11 +11132,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752125244218, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000043201872
+      value: -0.000000027216235
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752125244218, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000006222633
+      value: -0.000000003920122
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752125244218, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.y
@@ -11754,16 +11770,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1695728398, guid: eb8e92b2cca3e7d47ac63c934b35b87a, type: 3}
-      propertyPath: parameters.albedo.b
-      value: 0.1792453
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695728398, guid: eb8e92b2cca3e7d47ac63c934b35b87a, type: 3}
-      propertyPath: parameters.albedo.g
-      value: 0.100529514
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695728398, guid: eb8e92b2cca3e7d47ac63c934b35b87a, type: 3}
-      propertyPath: parameters.albedo.r
-      value: 0.054957286
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 314540974983687843, guid: eb8e92b2cca3e7d47ac63c934b35b87a, type: 3}
       propertyPath: m_Name
