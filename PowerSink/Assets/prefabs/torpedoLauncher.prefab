@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f072233d1f2b0c47a814674caca2846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torpedo: {fileID: 4573159943636359183, guid: c426a20c68fcf2347bc8dca2c20c5d5d, type: 3}
+  torpedo: {fileID: 3934988462437154665, guid: 6416f5ff813508445b969b85b7913882, type: 3}
   baseBlock: {fileID: 4808438602520835250}
   target: {fileID: 3421180853945654327}
 --- !u!1 &4808438603080646686
