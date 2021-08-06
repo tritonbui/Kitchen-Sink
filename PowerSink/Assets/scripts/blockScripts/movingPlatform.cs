@@ -8,8 +8,9 @@ public class movingPlatform : MonoBehaviour
     public Transform endPoint;
     public bool isPowered;
     public bool isReturning;
-    public bool isStopped;
+    private bool canReturn;
     public float moveSpeed;
+    public float bufferTime = 1f;
     private float startTime;
     private float journeyLength = 1f;
     
@@ -30,23 +31,25 @@ public class movingPlatform : MonoBehaviour
         if (this.transform.position == endPoint.position && !isReturning && isPowered)
         {
             isReturning = true;
-            startTime = Time.time;
+            canReturn = false;
+            Invoke("Buffer", bufferTime);
             journeyLength = Vector3.Distance(endPoint.position, startPoint.position);
         }
         else if (this.transform.position == startPoint.position && isReturning && isPowered)
         {
             isReturning = false;
-            startTime = Time.time;
+            canReturn = false;
+            Invoke("Buffer", bufferTime);
             journeyLength = Vector3.Distance(startPoint.position, endPoint.position);
         }
         
-        if (!isReturning)
+        if (!isReturning && canReturn)
         {
             float distCovered = (Time.time - startTime) * moveSpeed;
             float fractionOfJourney = distCovered / journeyLength;
             transform.position = Vector3.Lerp(startPoint.position, endPoint.position, fractionOfJourney);
         }
-        else if (isReturning)
+        else if (isReturning && canReturn)
         {
             float distCovered = (Time.time - startTime) * moveSpeed;
             float fractionOfJourney = distCovered / journeyLength;
@@ -68,5 +71,11 @@ public class movingPlatform : MonoBehaviour
         {
             col.transform.SetParent(null);
         }
+    }
+
+    public void Buffer()
+    {
+        startTime = Time.time;
+        canReturn = true;
     }
 }

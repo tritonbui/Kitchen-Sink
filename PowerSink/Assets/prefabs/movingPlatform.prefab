@@ -751,8 +751,8 @@ MonoBehaviour:
   endPoint: {fileID: 8479994251977926436}
   isPowered: 0
   isReturning: 0
-  isStopped: 0
-  moveSpeed: 3
+  moveSpeed: 5
+  bufferTime: 1
 --- !u!65 &4223297901779469238
 BoxCollider:
   m_ObjectHideFlags: 0
