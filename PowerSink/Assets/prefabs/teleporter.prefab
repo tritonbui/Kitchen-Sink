@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3553608255861835295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.146, z: 0}
-  m_LocalScale: {x: 0.010864, y: 0.010864, z: 0.010864}
+  m_LocalPosition: {x: 0, y: -0.14099987, z: 0}
+  m_LocalScale: {x: 0.0115, y: 0.0115, z: 0.0115}
   m_Children: []
   m_Father: {fileID: 3553608257235947460}
   m_RootOrder: 0
@@ -164,8 +164,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3553608256422071507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.146, z: 0}
-  m_LocalScale: {x: 0.010864, y: 0.010864, z: 0.010864}
+  m_LocalPosition: {x: 0, y: -0.14099987, z: 0}
+  m_LocalScale: {x: 0.0115, y: 0.0115, z: 0.0115}
   m_Children: []
   m_Father: {fileID: 3553608257489622237}
   m_RootOrder: 0
@@ -358,6 +358,8 @@ GameObject:
   - component: {fileID: 3553608257235947460}
   - component: {fileID: 3553608257235947466}
   - component: {fileID: 3553608257235947467}
+  - component: {fileID: 7059130241870635587}
+  - component: {fileID: 1213060513341520597}
   m_Layer: 11
   m_Name: teleporterA
   m_TagString: insulatesPower
@@ -373,7 +375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3553608257235947461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.664, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3553608255861835294}
@@ -419,6 +421,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5000014, y: 0.2829097, z: 2.5000014}
   m_Center: {x: 0, y: -0.10854795, z: 0}
+--- !u!95 &7059130241870635587
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553608257235947461}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e136479eb9930040a3c996aec6d2157, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1213060513341520597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553608257235947461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c5b798eb56f1f43a62382893cd5144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7059130241870635587}
+  OnAnimation: teleA_On
+  OffAnimation: teleA_Off
+  baseBlock: {fileID: 3553608257235947466}
+  isLightOn: 0
 --- !u!1 &3553608257489622238
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +468,8 @@ GameObject:
   - component: {fileID: 3553608257489622237}
   - component: {fileID: 3553608257489622243}
   - component: {fileID: 3553608257489622236}
+  - component: {fileID: 6328366965216254715}
+  - component: {fileID: 5934629588367834164}
   m_Layer: 11
   m_Name: teleporterB
   m_TagString: insulatesPower
@@ -445,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3553608257489622238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.174, y: 0, z: -0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3553608256422071506}
@@ -491,6 +531,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5000014, y: 0.27819148, z: 2.5000014}
   m_Center: {x: 0, y: -0.11090595, z: 0}
+--- !u!95 &6328366965216254715
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553608257489622238}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b0ca93b24374c541bc23b3a39dd84df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5934629588367834164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553608257489622238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c5b798eb56f1f43a62382893cd5144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6328366965216254715}
+  OnAnimation: teleB_On
+  OffAnimation: teleB_Off
+  baseBlock: {fileID: 3553608257489622243}
+  isLightOn: 0
 --- !u!1 &3553608257577363204
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,15 +700,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.010864
+      value: 0.0115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.010864
+      value: 0.0115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.010864
+      value: 0.0115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -640,7 +716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.146
+      value: -0.141
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -677,7 +753,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bf8290ed3fd2e014eba355b947e3769c, type: 2}
+      objectReference: {fileID: 2100000, guid: 6fd4eb3f940a6dc4b8c0a4821bd10c8f, type: 2}
     - target: {fileID: 919132149155446097, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_Name
       value: teleporter_Model
@@ -702,15 +778,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.010864
+      value: 0.0115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.010864
+      value: 0.0115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.010864
+      value: 0.0115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -718,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.146
+      value: -0.14099987
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -755,7 +831,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bf8290ed3fd2e014eba355b947e3769c, type: 2}
+      objectReference: {fileID: 2100000, guid: 6fd4eb3f940a6dc4b8c0a4821bd10c8f, type: 2}
     - target: {fileID: 919132149155446097, guid: 9a53347f5b0128041bd2a60fefca556c, type: 3}
       propertyPath: m_Name
       value: teleporter_Model
