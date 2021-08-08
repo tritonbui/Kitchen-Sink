@@ -288,7 +288,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6753154574112390607}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6753154573838020329
 GameObject:
@@ -388,8 +388,8 @@ Transform:
   - {fileID: 6753154575057854348}
   - {fileID: 6753154573838020328}
   - {fileID: 6753154573946454822}
-  - {fileID: 8594375382678331540}
   - {fileID: 6753154573456083300}
+  - {fileID: 8594375382678331540}
   - {fileID: 340525812}
   - {fileID: 543133895957522872}
   - {fileID: 4282958241745552502}
@@ -446,6 +446,10 @@ MonoBehaviour:
   animator: {fileID: 5440450158013550641}
   powerUp: {fileID: 2939237017093880750}
   isLightOn: 0
+  LCL: {fileID: 2762333015011065051}
+  LCB: {fileID: 921402453093861216}
+  LCR: {fileID: 9222423207477440008}
+  LCF: {fileID: 5391363244744128732}
 --- !u!82 &2939237017093880750
 AudioSource:
   m_ObjectHideFlags: 0
@@ -799,6 +803,14 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7300509180333433018, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
+      propertyPath: m_Name
+      value: lightConeL
+      objectReference: {fileID: 0}
+    - target: {fileID: -5750010340587117315, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
+      propertyPath: m_Name
+      value: lightConeB
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
       propertyPath: m_Name
       value: lightCones1
@@ -815,6 +827,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4829556043433168277, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
+      propertyPath: m_Name
+      value: lightConeR
+      objectReference: {fileID: 0}
     - target: {fileID: 7591190418517200868, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
       propertyPath: m_CastShadows
       value: 0
@@ -823,11 +839,35 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8515003867371150145, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
+      propertyPath: m_Name
+      value: lightConeF
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
 --- !u!4 &4282958241745552502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
+  m_PrefabInstance: {fileID: 4394007632670499741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2762333015011065051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7300509180333433018, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
+  m_PrefabInstance: {fileID: 4394007632670499741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &921402453093861216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5750010340587117315, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
+  m_PrefabInstance: {fileID: 4394007632670499741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9222423207477440008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4829556043433168277, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
+  m_PrefabInstance: {fileID: 4394007632670499741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5391363244744128732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8515003867371150145, guid: 5bec2cd1eba62a74e8e981201736bfe4, type: 3}
   m_PrefabInstance: {fileID: 4394007632670499741}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8128966117358700415
@@ -839,11 +879,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7ae542626b7e0ec42b2f2fb6cf906f81, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ae542626b7e0ec42b2f2fb6cf906f81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ae542626b7e0ec42b2f2fb6cf906f81, type: 3}
       propertyPath: m_LocalPosition.y

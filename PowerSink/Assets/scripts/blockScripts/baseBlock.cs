@@ -27,7 +27,7 @@ public class baseBlock : MonoBehaviour
     public Transform _rightRay;
     public GameObject _right {get; set;} = null;
 
-    public void Start()
+    public void Awake()
     {   
         if (this.tag == "conductsPower" || this.tag == "mpPoints")
         {
