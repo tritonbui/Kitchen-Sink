@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 4808438602520835253}
   - component: {fileID: 4808438602520835250}
   - component: {fileID: 1417379606}
+  - component: {fileID: 4302941167375779050}
   m_Layer: 11
   m_Name: torpedoLauncher
   m_TagString: emmitsPower
@@ -337,6 +338,27 @@ MonoBehaviour:
   torpedo: {fileID: 3420667598539553903, guid: e362048ac46e75d45804f630e200a1fe, type: 3}
   baseBlock: {fileID: 4808438602520835250}
   target: {fileID: 3421180853945654327}
+  isLightOn: 0
+  animator: {fileID: 4302941167375779050}
+--- !u!95 &4302941167375779050
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808438602520835255}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0eeb1c066f0ed2242baeef5fbe2987b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4808438603080646686
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +500,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7f36a529bf3bd65439af93ea95897cd7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f097603c1877a7144a213a7091b3016a, type: 2}
     - target: {fileID: 919132149155446097, guid: 7f36a529bf3bd65439af93ea95897cd7, type: 3}
       propertyPath: m_Name
       value: torpedoLauncher_Model
