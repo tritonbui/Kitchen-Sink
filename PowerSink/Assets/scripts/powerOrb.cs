@@ -12,6 +12,7 @@ public class powerOrb : MonoBehaviour
     {
         _rb = this.gameObject.GetComponent<Rigidbody>();
     }
+
     public void Respawn()
     {
         transform.position = powerOrbSpawnPoint.position; //moves orb to it's spawn position

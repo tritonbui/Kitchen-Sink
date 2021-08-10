@@ -753,7 +753,7 @@ MonoBehaviour:
   endPoint: {fileID: 8479994251977926436}
   isPowered: 0
   isReturning: 0
-  moveSpeed: 5
+  moveSpeed: 4
   bufferTime: 1
   animator: {fileID: 6209765272463178448}
   isLightOn: 0

@@ -135,7 +135,6 @@ public class playerInteraction : MonoBehaviour
             receptacleSound.Play();
             heldPowerOrb.transform.position = orbSpawnPoint.position;
             heldPowerOrb.SetActive(true);
-            heldPowerOrb.transform.SetParent(null);
             heldPowerOrb = null;
             _rds.hasNothing();
         }
