@@ -22934,10 +22934,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 304252963}
     m_Modifications:
-    - target: {fileID: 170992012, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2368690750644034085, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0.00000006193861
@@ -22960,23 +22956,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752125244218, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14256497
+      value: 0.14256498
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752125244218, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000026234275
+      value: 0.00000006029553
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752125244218, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000037786863
+      value: -0.000000008684741
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752203351773, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000261614
+      value: 0.000000060128045
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752203351773, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000042539914
+      value: -0.0000000097771595
       objectReference: {fileID: 0}
     - target: {fileID: 2368690752335150762, guid: 39f74c7ea0b05e047b4e955a558761cd, type: 3}
       propertyPath: m_Name
@@ -29411,6 +29407,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 904393728}
     m_Modifications:
+    - target: {fileID: 132658436, guid: 6ca42518dcd4a27449a13d39c09399cf, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5627851646033254114, guid: 6ca42518dcd4a27449a13d39c09399cf, type: 3}
       propertyPath: m_RootOrder
       value: 0
