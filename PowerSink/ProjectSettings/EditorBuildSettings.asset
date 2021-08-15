@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/scenes/mainMenu.unity
     guid: aec6db4b40d5a674ca35d30feb762531
   - enabled: 1
+    path: Assets/scenes/levelSelect.unity
+    guid: e7a8b84e9e79bd14d8cb142253806a73
+  - enabled: 1
     path: Assets/scenes/puzzleLevels/levelOne.unity
     guid: 12ee7c833195ee343839b0a44bf2e55d
   - enabled: 1
@@ -21,10 +24,10 @@ EditorBuildSettings:
     path: Assets/scenes/puzzleLevels/levelFour.unity
     guid: 670ced268a37a5c4aaf5072476feaf93
   - enabled: 1
-    path: Assets/scenes/puzzleLevels/levelFive.unity
+    path: Assets/scenes/puzzleLevels/LevelFive.unity
     guid: f17741d66988a4346b4ae3ff1f87ad3d
   - enabled: 1
-    path: Assets/scenes/puzzleLevels/levelSix.unity
+    path: Assets/scenes/puzzleLevels/LevelSix.unity
     guid: 4a692d0cdad7aa544bd759a27da5fd7b
   - enabled: 1
     path: Assets/scenes/testLevels/lukeLevel.unity

@@ -11,23 +11,19 @@ public class UIManager : MonoBehaviour
 	public GameObject mainMenuModels;
 	public GameObject gameMenu;
 	public GameObject testLevelSelect;
-	public GameObject levelSelect;
-	public GameObject levelSelectModels;
 	public GameUI gameUI;
-	public GameObject FirstLevel;
 	public GameObject FirstTestLevel;
 	public GameObject FirstMainMenu;
 	public GameObject FirstGameMenu;
+	public GameObject levelSelectButton;
 			
 	public void OnGameMenu()
 	{
 		gameMenu.SetActive(true);
 		mainMenu.SetActive(false);
 		testLevelSelect.SetActive(false);
-		levelSelect.SetActive(false);
 		gameUI.gameObject.SetActive(false);
 		mainMenuModels.SetActive(false);
-		levelSelectModels.SetActive(false);
 
 		EventSystem.current.SetSelectedGameObject(FirstGameMenu);
 
@@ -40,10 +36,8 @@ public class UIManager : MonoBehaviour
 		gameMenu.SetActive(false);
 		mainMenu.SetActive(true);
 		testLevelSelect.SetActive(false);
-		levelSelect.SetActive(false);
 		gameUI.gameObject.SetActive(false);
 		mainMenuModels.SetActive(true);
-		levelSelectModels.SetActive(false);
 		
 		EventSystem.current.SetSelectedGameObject(FirstMainMenu);
 
@@ -56,28 +50,10 @@ public class UIManager : MonoBehaviour
 		gameMenu.SetActive(false);
 		mainMenu.SetActive(false);
 		testLevelSelect.SetActive(true);
-		levelSelect.SetActive(false);
 		gameUI.gameObject.SetActive(false);
 		mainMenuModels.SetActive(false);
-		levelSelectModels.SetActive(false);
 
 		EventSystem.current.SetSelectedGameObject(FirstTestLevel);
-
-		Cursor.lockState = CursorLockMode.None;
-       	Cursor.visible = true;
-	}
-
-	public void OnLevelSelect()
-	{
-		gameMenu.SetActive(false);
-		mainMenu.SetActive(false);
-		testLevelSelect.SetActive(false);
-		levelSelect.SetActive(true);
-		gameUI.gameObject.SetActive(false);
-		mainMenuModels.SetActive(false);
-		levelSelectModels.SetActive(true);
-
-		EventSystem.current.SetSelectedGameObject(FirstLevel);
 
 		Cursor.lockState = CursorLockMode.None;
        	Cursor.visible = true;
@@ -88,10 +64,8 @@ public class UIManager : MonoBehaviour
 		gameMenu.SetActive(false);
 		mainMenu.SetActive(false);
 		testLevelSelect.SetActive(false);
-		levelSelect.SetActive(false);
 		gameUI.gameObject.SetActive(true);
 		mainMenuModels.SetActive(false);
-		levelSelectModels.SetActive(false);
 
 		Cursor.lockState = CursorLockMode.Locked;
        	Cursor.visible = false;

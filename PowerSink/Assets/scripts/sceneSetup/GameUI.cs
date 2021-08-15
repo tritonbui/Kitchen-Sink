@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using TMPro;
 public class GameUI : MonoBehaviour 
 {
-	public TextMeshProUGUI levelText;
 	public GameObject teleporterKM;
 	public GameObject switchKM;
 	public GameObject pickUpKM;
@@ -21,11 +20,7 @@ public class GameUI : MonoBehaviour
 	{
 		lookAtNothing();
 	}
-	
-	public void SetGameUI(int level)
-	{
-		levelText.text = "Level: " + level;
-	}
+
 
 	public void onTeleporterKM()
 	{

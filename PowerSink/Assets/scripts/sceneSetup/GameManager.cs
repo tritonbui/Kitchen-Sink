@@ -58,15 +58,6 @@ public class GameManager : MonoBehaviour
 		StartLoadMainMenu();
 	}
 	
-	void Update () 
-	{
-		if (_playingGame)
-		{
-			currentLevel = SceneManager.GetActiveScene().buildIndex;
-			uiManager.gameUI.SetGameUI(currentLevel);
-		}		
-	}
-	
 	//new game start
 	public void NewGame()
 	{
@@ -115,14 +106,12 @@ public class GameManager : MonoBehaviour
 	public void MainMenuLoad()
 	{
 		uiManager.OnMainMenu();
-		_playingGame = false;
 	}
 
 	public void LevelLoad()
 	{
 		uiManager.OnGame();
 		isLevelFinished = false;
-		_playingGame = true;
 	}
 
 	public void FinishToMainMenu()
@@ -165,13 +154,12 @@ public class GameManager : MonoBehaviour
 	public void TestLevels()
 	{
 		uiManager.OnTestLevelSelect();
-		_playingGame = false;
 	}
 
 	public void LevelSelect()
 	{
-		uiManager.OnLevelSelect();
-		_playingGame = false;
+		levelChanger.FadeToLevel("levelSelect");
+		Time.timeScale = 1f;
 	}
 	
 	public void LoadLukeLevel()
@@ -202,14 +190,12 @@ public class GameManager : MonoBehaviour
 	public void ReturnToMainMenu()
 	{
 		uiManager.OnMainMenu();
-		_playingGame = false;
 	}
 
 	public void StartLoadMainMenu()
 	{
 		SceneManager.LoadScene(0);
 		uiManager.OnMainMenu();
-		_playingGame = false;
 	}
 
 	public void ResumeGame()
@@ -221,7 +207,6 @@ public class GameManager : MonoBehaviour
 	public void LoadGameScene()
 	{
 		SceneManager.LoadScene(_gd.currentLevel);
-		_playingGame = true;
 		uiManager.OnGame();
 	}
 	//Quits Game
