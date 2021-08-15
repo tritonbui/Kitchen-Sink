@@ -100,25 +100,25 @@ public class GameManager : MonoBehaviour
 	{
 		levelChanger.FadeToLevel("mainMenu");
 		Time.timeScale = 1f;
-		isPaused = false;
 	}
 
 	public void MainMenuLoad()
 	{
 		uiManager.OnMainMenu();
+		isPaused = false;
 	}
 
 	public void LevelLoad()
 	{
 		uiManager.OnGame();
 		isLevelFinished = false;
+		isPaused = false;
 	}
 
 	public void FinishToMainMenu()
 	{
 		levelChanger.FadeToLevel("mainMenu");
 		Time.timeScale = 1f;
-		isPaused = false;
 	}
 
 	public void LoadLevelOne()

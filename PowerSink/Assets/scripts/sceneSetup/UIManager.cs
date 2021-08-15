@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
 		gameUI.gameObject.SetActive(false);
 		mainMenuModels.SetActive(false);
 
+		EventSystem.current.sendNavigationEvents = true;
 		EventSystem.current.SetSelectedGameObject(FirstGameMenu);
 
 		Cursor.lockState = CursorLockMode.None;
@@ -38,7 +39,8 @@ public class UIManager : MonoBehaviour
 		testLevelSelect.SetActive(false);
 		gameUI.gameObject.SetActive(false);
 		mainMenuModels.SetActive(true);
-		
+
+		EventSystem.current.sendNavigationEvents = true;
 		EventSystem.current.SetSelectedGameObject(FirstMainMenu);
 
 		Cursor.lockState = CursorLockMode.None;
@@ -53,6 +55,7 @@ public class UIManager : MonoBehaviour
 		gameUI.gameObject.SetActive(false);
 		mainMenuModels.SetActive(false);
 
+		EventSystem.current.sendNavigationEvents = true;
 		EventSystem.current.SetSelectedGameObject(FirstTestLevel);
 
 		Cursor.lockState = CursorLockMode.None;
@@ -66,6 +69,8 @@ public class UIManager : MonoBehaviour
 		testLevelSelect.SetActive(false);
 		gameUI.gameObject.SetActive(true);
 		mainMenuModels.SetActive(false);
+
+		EventSystem.current.sendNavigationEvents = false;
 
 		Cursor.lockState = CursorLockMode.Locked;
        	Cursor.visible = false;

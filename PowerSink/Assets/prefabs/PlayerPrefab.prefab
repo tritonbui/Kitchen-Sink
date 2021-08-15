@@ -9890,7 +9890,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690750644034084}
-  m_LocalRotation: {x: 0.1784248, y: 0.000000051475116, z: -0.000000009334219, w: 0.98395354}
+  m_LocalRotation: {x: -0.00000001123161, y: 0.9839536, z: -0.1784248, w: -0.00000006193861}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10679,7 +10679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690751696560558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000006993822, y: 3, z: -8}
+  m_LocalPosition: {x: 0.0000006993822, y: 3, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2368690750644034085}
@@ -10826,10 +10826,10 @@ MonoBehaviour:
   m_CollideAgainst:
     serializedVersion: 2
     m_Bits: 193
-  m_IgnoreTag: 
+  m_IgnoreTag: props
   m_TransparentLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 9216
   m_MinimumDistanceFromTarget: 0.1
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
@@ -10963,7 +10963,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752125244217}
-  m_LocalRotation: {x: 0.14256498, y: 0.000000026051193, z: -0.000000003752316, w: 0.9897855}
+  m_LocalRotation: {x: -0.000000008684741, y: 0.9897855, z: -0.14256498, w: -0.00000006029553}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11044,7 +11044,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368690752203351772}
-  m_LocalRotation: {x: 0.16049767, y: 0.0000000261614, z: -0.0000000042539914, w: 0.9870362}
+  m_LocalRotation: {x: -0.0000000042539914, y: 0.9870362, z: -0.16049767, w: -0.0000000261614}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11265,7 +11265,7 @@ MonoBehaviour:
   airMultiplierA: 6
   airMultiplierB: 0.5
   maxAir: {x: 6, y: 6}
-  rotationSpeed: 10
+  rotationSpeed: 20
   jumpForce: 230
   jumpRedux: 12.5
 --- !u!114 &1134457127913124457

@@ -14,6 +14,7 @@ public class levelChanger : MonoBehaviour
     public void FadeToLevel (string LevelName)
     {
         levelToLoad = LevelName;
+        GameManager._instance.isPaused = true;
         animator.SetTrigger("FadeOut");
     }
 

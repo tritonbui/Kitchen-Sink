@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 1127287258501120946}
   m_Layer: 0
   m_Name: fenceSegmentProp
-  m_TagString: Untagged
+  m_TagString: props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 94ce29935c7de524abd6c6df7efa8c68, type: 3}
       propertyPath: m_Name
       value: fence_Segment_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 94ce29935c7de524abd6c6df7efa8c68, type: 3}
+      propertyPath: m_TagString
+      value: props
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94ce29935c7de524abd6c6df7efa8c68, type: 3}

@@ -47,12 +47,21 @@ public class playerMovement : MonoBehaviour
 
     private void Update()
     {
-        Look();
+        if (!GameManager._instance.isPaused)
+        {
+            Look();
+        }
     }
 
     private void FixedUpdate()
     {
         Movement();
+
+        if (GameManager._instance.isPaused)
+        {
+            x = 0f;
+            y = 0f;
+        }
     }
 
     public void MyInput(InputAction.CallbackContext context) //Control scheme input values (is changed when the state of the input is change) (e.g. when w is pressed and when it is lifted)

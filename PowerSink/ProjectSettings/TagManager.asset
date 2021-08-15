@@ -16,6 +16,7 @@ TagManager:
   - tram
   - mpPoints
   - emmitsPower
+  - props
   layers:
   - Default
   - TransparentFX

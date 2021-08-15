@@ -18,6 +18,11 @@ public class riggedDiverScript : MonoBehaviour
             x = context.ReadValue<Vector2>().x;
             y = context.ReadValue<Vector2>().y;
         }
+        else
+        {
+            x = 0f;
+            y = 0f;
+        }
     }
     
     //the following is a series of animation state management functions
