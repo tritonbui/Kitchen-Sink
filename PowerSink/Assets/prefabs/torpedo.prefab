@@ -162,6 +162,7 @@ MonoBehaviour:
   target: {fileID: 3420667598539553896}
   speed: 2
   deathTimer: 10
+  particleEffect: {fileID: 7653410857676925154, guid: e5b535fbbeaa35441a21fbdafc375cea, type: 3}
 --- !u!95 &8969930610854101067
 Animator:
   serializedVersion: 3

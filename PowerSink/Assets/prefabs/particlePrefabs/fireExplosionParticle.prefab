@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7653410857676925164}
   - component: {fileID: 7653410857676925155}
   - component: {fileID: 180879817}
+  - component: {fileID: 5910906749109370648}
   m_Layer: 0
   m_Name: fireExplosionParticle
   m_TagString: Untagged
@@ -48,7 +49,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4858,6 +4859,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5910906749109370648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653410857676925154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d67506aad7d63047af44575b413d1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTimer: 10
 --- !u!1 &7653410858725255789
 GameObject:
   m_ObjectHideFlags: 0
@@ -4904,7 +4918,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -7049,7 +7063,7 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 1

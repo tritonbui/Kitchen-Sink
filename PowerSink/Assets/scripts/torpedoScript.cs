@@ -10,6 +10,7 @@ public class torpedoScript : MonoBehaviour
     private Vector3 targetVel;
     public float speed = 2f;
     public float deathTimer = 10f;
+    public GameObject particleEffect;
 
     public void Start()
     {
@@ -21,7 +22,7 @@ public class torpedoScript : MonoBehaviour
 
         this.gameObject.transform.rotation = Quaternion.LookRotation(targetDir, Vector3.up);
 
-        Destroy(this.gameObject, deathTimer);
+        Invoke("ParticleEffect", deathTimer);
     }
 
     public void FixedUpdate()
@@ -34,11 +35,17 @@ public class torpedoScript : MonoBehaviour
         _rb.velocity = targetVel;
     }
 
+    public void ParticleEffect()
+    {
+        Instantiate(particleEffect, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
     public void OnTriggerEnter(Collider col)
     {
         if (!col.isTrigger || LayerMask.NameToLayer("deathBarrier") == col.gameObject.layer)
         {
-            Destroy(this.gameObject);
+            Invoke("ParticleEffect", 0f);
         }
     }
 }
