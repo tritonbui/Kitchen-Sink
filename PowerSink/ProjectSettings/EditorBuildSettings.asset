@@ -37,7 +37,7 @@ EditorBuildSettings:
     guid: e4e3ba22043092347b0dd48a26db55bd
   - enabled: 1
     path: Assets/scenes/testLevels/tristonLevel.unity
-    guid: 0bd3d486510cc2245855f89409380821
+    guid: 5cc16483af13b2d4ba5adf70880d3946
   - enabled: 1
     path: Assets/scenes/testLevels/tashLevel.unity
     guid: 85b071d78819de44a94a18ed3e70b184
